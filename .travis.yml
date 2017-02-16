@@ -14,7 +14,7 @@ android:
   - extra-google-m2repository
   - addon-google_apis-google-16
 before_script:
-  - chmod +x ~/android/gradlew
+  - chmod +x /action_list_sample/android/gradlew
 script:
 - npm run ci
 - cd action_list_sample/android && ./gradlew assembleRelease
