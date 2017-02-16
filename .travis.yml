@@ -3,9 +3,6 @@ language: android
 before_install:
   - nvm install 6
   - node --version
-install:
-  - npm install
-  - npm install -g react-native-cli
 android:
   components:
     - build-tools-23.0.1
@@ -15,6 +12,8 @@ android:
     - extra-google-m2repository
     - addon-google_apis-google-16
 before_script:
+  - cd action_list_sample && npm install
+  - cd action_list_sample && npm install -g react-native-cli
   - cd action_list_sample/android && chmod +x gradlew
 script:
 - ./gradlew assembleRelease
