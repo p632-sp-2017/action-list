@@ -4,8 +4,8 @@ before_install:
   - nvm install 6
   - node --version
 install:
-  - npm install
-  - npm install -g react-native-cli
+  - cd action_list_sample && npm install
+  - cd action_list_sample && npm install -g react-native-cli
 android:
   components:
     - build-tools-23.0.1
