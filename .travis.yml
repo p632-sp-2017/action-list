@@ -1,7 +1,23 @@
-language: java
-group: stable
-dist: precise
-os: linux
+
+language: android
+before_install:
+- nvm install 6
+- node --version
+install:
+- npm install
+android:
+  components:
+  - build-tools-23.0.1
+  - android-23
+  - extra-android-m2repository
+  - extra-google-google_play_services
+  - extra-google-m2repository
+  - addon-google_apis-google-16
+before_script:
+  - cd action_list_sample/android && chmod +x gradlew
+script:
+- npm run ci
+- cd action_list_sample/android && ./gradlew assembleRelease
 notifications:
   slack:
     secure: dqUJi58izliH6/aR5GQAfiMFhQEs/NFIbDZRejhJdhE4a17itixgJdeBYL9xJcpV6QHM4B5194lbUOhhhvpPt9FFdsFkcvRshCnGNj2XzjiEMLpXdU+QnQIy1DXUzGiBkEM7fT+rE0ycdBpzKQbin3zkLoos2zVq/EwSuR3uADInFFU34EShVadMXRcZnNX8N+457fjpS0IA3bjM3LvtN/UUVMl/Hv9nJcSaZa7WIkenua67yqxrQd+1vyFw0PF+p1MDzYDGrByajfkB0r3g6Za3KDhUTc8TYneCmyEEuF3O/7tQ4BGJKnC+y6anO1BgDlyC5nJolUDl8dbL08ftxaRcpw9Qet7o0apcnQjEaTpEWaMegTnRd9LKcCWTYrQpWjf65jyLDCYf8cgr01fJABxv9/J4R15/Kybr4jMcEN55y+MOgPHoGx6UQx3nTinwwvVD+PFjYV3KtHJ1XGjx/lg7ExjRh+bMESEMXCMTqs5yhAqLJVUDoSJw3OZxFPow8GN4B321jt+596nX0LP/douRE/AiMuo1BlCKCBoz34eH3ENmHsDoyF2/GdiRroXHNf4Pk9DZGzZO8QJKLVD5Q3fyV/PGOQdTsAsi48q69iFesydIlSbErpZan4LALZSmdTkFh+Tw+drab6TekOA2uZVDGGLpWfnVEDXd3vJGiGQ=
