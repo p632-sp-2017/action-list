@@ -14,7 +14,7 @@ android:
 before_script:
   - cd action_list_sample && npm install
   - npm install -g react-native-cli
-  - cd action_list_sample/android && chmod +x gradlew
+  - cd android && chmod +x gradlew
 script:
 - ./gradlew assembleRelease
 notifications:
