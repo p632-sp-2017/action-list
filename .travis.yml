@@ -1,21 +1,23 @@
 
+os: osx
 language: android
 before_install:
-- nvm install 6
-- node --version
+  - nvm install 6
+  - node --version
 install:
-- npm install
+  - npm install
 android:
   components:
-  - build-tools-23.0.1
-  - android-23
-  - extra-android-m2repository
-  - extra-google-google_play_services
-  - extra-google-m2repository
-  - addon-google_apis-google-16
+    - build-tools-23.0.1
+    - android-23
+    - extra-android-m2repository
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - addon-google_apis-google-16
 before_script:
   - cd action_list_sample/android && chmod +x gradlew
 script:
+- npm run ci
 - ./gradlew assembleRelease
 notifications:
   slack:
