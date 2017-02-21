@@ -4,10 +4,10 @@ import {
   Text,
   ListView,
   View,
-    ScrollView
+  ScrollView,
+  Button
 } from 'react-native';
 
-import { Button } from 'react-native-elements';
 import Panel from './panel';
 
 var lib = require("./commons.js")
@@ -23,14 +23,10 @@ export default class ActionList extends Component {
             <Text>{rowData.lastUpdated}</Text>
             <Text>{rowData.status}</Text>
             <Text>{rowData.actions}</Text>
-        <View style={{width: 300, flex: 1,
-         flexDirection:'row',}}>    
-        <Button
-                title='Take Action'  /> 
-          
-            <Button
-                title='Route Log' style={styles.routeButton}/> 
-        </View>
+            <View style={{width: 300, flex: 1, flexDirection:'row',}}>    
+              <Button title='Take Action'  /> 
+              <Button title='Route Log' style={styles.routeButton} /> 
+            </View>
           </Panel>
         </ScrollView>
         </View> 
@@ -75,17 +71,17 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 5
   },
   actionButton: {
-    width: 200,
+    width: 200
   },
   routeButton: {
-    width: 200,
-  },
+    width: 200
+  }
 });
