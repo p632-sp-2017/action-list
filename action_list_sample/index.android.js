@@ -23,23 +23,7 @@ export default class action_list_sample extends Component {
     return (
       <View>
       <Header />
-        <View>
-        <ScrollView style={styles.container}>
-
-          <Panel title="A Panel with short content text">
-            <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-          </Panel>
-
-          <Panel title="A Panel with long content text">
-           <ActionList />
-          </Panel>
-
-          <Panel title="Another Panel">
-            <Text>Lorem ipsum dolor sit amet...</Text>
-          </Panel>
-
-        </ScrollView>
-        </View>  
+        <ActionList /> 
       </View>
     );
   }
