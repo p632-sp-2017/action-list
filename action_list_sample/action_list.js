@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import { Button } from 'react-native-elements';
-
 import Panel from './panel';
 
 var lib = require("./commons.js")
@@ -60,7 +59,6 @@ const style = StyleSheet.create({
     container: {
         backgroundColor: "#ffffff"
     },
-    
     text: {
         color: "black",
         textAlign: "center",
@@ -84,10 +82,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-    actionButton: {
-      width: 200,
-    },
-    routeButton: {
-        width: 200,
-    },
+  actionButton: {
+    width: 200,
+  },
+  routeButton: {
+    width: 200,
+  },
 });

@@ -8,13 +8,16 @@ import {
       Animated
 } from 'react-native';
 
+var upArrow = require('./img/arrow_up.png');
+var downArrow = require('./img/arrow_down.png');
+
 export default class Panel extends Component{
     constructor(props){
         super(props);
 
         this.icons = {     
-            'up'    : require('./img/arrow_up.png'),
-            'down'  : require('./img/arrow_down.png')
+            'up'    : upArrow,
+            'down'  : downArrow
         };
 
         this.state = {       
@@ -23,11 +26,11 @@ export default class Panel extends Component{
             animation   : new Animated.Value()
         };
     }
-    
+
     toggle(){
         let initialValue    = this.state.expanded? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
         finalValue      = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
-        
+
         this.setState({
             expanded : !this.state.expanded  
         });
@@ -83,9 +86,8 @@ export default class Panel extends Component{
 
             </View>
             </Animated.View>
-        );
-    
-    }    
+        );    
+    }
 }
 
 var styles = StyleSheet.create({
@@ -104,7 +106,6 @@ var styles = StyleSheet.create({
         fontWeight:'bold'
     },
     button      : {
-
     },
     buttonImage : {
         width   : 30,
