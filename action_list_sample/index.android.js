@@ -18,11 +18,10 @@ import ActionList from './action_list';
 import Panel from './panel';
 
 export default class action_list_sample extends Component {
-
   render() {
     return (
       <View>
-		<Header />
+				<Header />
         <ActionList /> 
       </View>
     );
