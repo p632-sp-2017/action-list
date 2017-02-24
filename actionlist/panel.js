@@ -42,6 +42,7 @@ export default class Panel extends Component {
     super(props);
     this.icons = {
       /* eslint-disable global-require */
+      /* rule disabled since image loading need not be global */
       up: require('./img/arrow_up.png'),
       down: require('./img/arrow_down.png'),
     };

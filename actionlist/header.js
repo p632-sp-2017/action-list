@@ -1,4 +1,3 @@
-// eslint-disable-line global-require
 import React from 'react';
 import {
   StyleSheet,
@@ -28,6 +27,7 @@ const style = StyleSheet.create({
 });
 
 /* eslint-disable global-require */
+/* rule disabled since image loading need not be global */
 const Header = () => (
   <View style={style.container}>
     <Image style={style.image} source={require('./img/trident-large.png')} />
