@@ -12,7 +12,7 @@ android:
     - extra-google-m2repository
     - addon-google_apis-google-16
 before_script:
-  - cd action_list_sample && npm install
+  - cd actionlist && npm install
   - npm install -g react-native-cli
   - cd android && chmod +x gradlew
 script:
