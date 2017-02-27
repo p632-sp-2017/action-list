@@ -55,12 +55,6 @@ const style = StyleSheet.create({
     container: {
         backgroundColor: "#ffffff"
     },
-    text: {
-        color: "black",
-        textAlign: "center",
-        fontSize: 18,
-        padding: 5
-    }
 });
 
 const styles = StyleSheet.create({
