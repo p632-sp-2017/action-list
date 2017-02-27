@@ -21,8 +21,8 @@ export default class action_list_sample extends Component {
   render() {
     return (
       <View>
-	<Header />
-        <ActionList /> 
+        <Header />
+        <ActionList />
       </View>
     );
   }

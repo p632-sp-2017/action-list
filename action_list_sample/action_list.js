@@ -5,8 +5,8 @@ import {
   ListView,
   View,
   ScrollView,
-  Button
 } from 'react-native';
+import Button from 'react-native-button';
 
 import Panel from './panel';
 
@@ -23,9 +23,9 @@ export default class ActionList extends Component {
             <Text>{rowData.lastUpdated}</Text>
             <Text>{rowData.status}</Text>
             <Text>{rowData.actions}</Text>
-            <View style={{width: 300, flex: 1, flexDirection:'row',}}>    
-              <Button title='Take Action'  /> 
-              <Button title='Route Log' style={styles.routeButton} /> 
+            <View style={{flexDirection:'row', flexWrap:'wrap'}}>
+              <Button containerStyle={styles.routeContainer} style={styles.routeButton} onPress={() => {return true}}>Route Log</Button>  
+              <Button containerStyle={styles.actionContainer} style={styles.actionButton} onPress={() => {return true}}>Take Action</Button>
             </View>
           </Panel>
         </ScrollView>
@@ -79,9 +79,26 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   actionButton: {
-    width: 200
+    fontSize: 15,
+    color: '#ffffff'
   },
   routeButton: {
-    width: 200
+    fontSize: 15,
+    color: '#990000'  
+  },
+  actionContainer: {
+    backgroundColor : '#990000',
+    padding: 5,
+    borderRadius: 8,
+    width: 100
+  },
+  routeContainer: {
+    backgroundColor : '#ffffff',
+    padding: 5,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#990000',
+    marginRight: 10,
+    width: 100
   }
 });

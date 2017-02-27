@@ -8,8 +8,8 @@ import {
   Animated
 } from 'react-native';
 
-var upArrow = require('./img/arrow_up.png');
-var downArrow = require('./img/arrow_down.png');
+var upArrow = require('./img/up-icon.png');
+var downArrow = require('./img/down-icon.png');
 
 export default class Panel extends Component{
 	constructor(props){
@@ -98,8 +98,9 @@ var styles = StyleSheet.create({
   button      : {
   },
   buttonImage : {
-		width   : 30,
-    height  : 25
+    marginTop: 10,
+		width   : 20,
+    height  : 20
 	},
   body        : {
 		padding     : 10,

@@ -14,7 +14,7 @@ export default class Header extends Component {
                   style={style.toolbarTrident}
                   source={require('./img/trident-large.png')}/>
 
-                <Text style={ style.toolbarTitle}>IU Bloomington</Text>
+                <Text style={ style.toolbarTitle}>IU Action List</Text>
 
                   <Image
                     style={style.toolbarSearch}
@@ -22,7 +22,7 @@ export default class Header extends Component {
 
                 <Image
                   style={style.toolbarButton}
-                  source={require('./img/hamburger.png')}/>
+                  source={require('./img/menu-icon.png')}/>
             </View>
         )
     }
@@ -57,7 +57,7 @@ const style = StyleSheet.create({
     },
     toolbarTrident:{
         width: 43,
-        height:60, 
+        height:50, 
         marginLeft: 10
     },
     toolbarTitle:{
@@ -66,23 +66,21 @@ const style = StyleSheet.create({
         alignItems: 'center',
         fontFamily: 'BentonSansBold, Arial, sans-serif',
         fontWeight:'bold',
-        fontSize: 30,
+        fontSize: 24,
         marginLeft: 10,
+        marginTop: 7,
         flex:1               
     },
     toolbarSearch:{
-        backgroundColor:'#990000',
-        margin: 10,
-        padding: 30,
-        width: 30,
-        height: 35, 
-        justifyContent: 'center'
+        margin: 15,
+        width: 16,
+        height: 16,
     },
     toolbarButton:{
-        margin: 10,
-        width: 30,
-        height:31, 
-        marginRight: 10,
+        margin: 15,
+        width: 16,
+        height: 16,
+        marginRight: 20,
         justifyContent: 'flex-end'
     }
 });  
