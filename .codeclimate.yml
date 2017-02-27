@@ -13,4 +13,5 @@ engines:
         - javascript
 ratings:
   paths: []
-exclude_paths: []
+exclude_paths:
+  - "actionlist/.eslintrc.json"
