@@ -21,26 +21,15 @@ export default class Panel extends Component{
 		
     this.state = {
 			title       : props.title,
-      expanded    : true,
+      expanded    : false,
       animation   : new Animated.Value()
 		};
 	}
 	
   toggle(){
-		let initialValue    = this.state.expanded? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
-    finalValue      = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
-
     this.setState({
 			expanded : !this.state.expanded  
 		});
-        
-    this.state.animation.setValue(initialValue);
-    Animated.spring(
-			this.state.animation,
-      {
-				toValue: finalValue
-			}
-		).start();
 	}
     
   _setMaxHeight(event){
@@ -51,19 +40,15 @@ export default class Panel extends Component{
 
   _setMinHeight(event){
 		this.setState({
-			minHeight   : event.nativeEvent.layout.height
+			minHeight   : event.nativeEvent.layout.height+10
 		});
 	}
     
   render(){
-		let icon = this.icons['down'];
-		
-    if(this.state.expanded){
-			icon = this.icons['up'];
-		}
-        
+		let icon = this.state.expanded? this.icons['up'] : this.icons['down'];
+
 		return (
-			<Animated.View style={[styles.container,{height: this.state.animation}]}>
+			<Animated.View style={{height: this.state.animation}}>
 				<View style={styles.container} >
 					<View style={styles.titleContainer} onLayout={this._setMinHeight.bind(this)}>
 						<Text style={styles.title}>{this.state.title}</Text>
@@ -71,9 +56,7 @@ export default class Panel extends Component{
 							<Image style={styles.buttonImage} source={icon} ></Image>
 						</TouchableHighlight>
 					</View>
-					<View style={styles.body} onLayout={this._setMaxHeight.bind(this)}>
-						{this.props.children}
-					</View>
+          { this.state.expanded ? <View style={styles.body} onLayout={this._setMaxHeight.bind(this)}>{this.props.children}</View> : null}
 				</View>
 			</Animated.View>
 		);
@@ -82,14 +65,15 @@ export default class Panel extends Component{
 
 var styles = StyleSheet.create({
 	container   : {
-		backgroundColor: '#efecdc',
-    margin: 7,
+		backgroundColor: '#e9e9e9',
+    borderBottomWidth: 0.5,
+    paddingRight: 10,
     overflow:'hidden'
 	},
   titleContainer : {
 		flexDirection: 'row'
 	},
-  title       : {
+  title : {
 		flex    : 1,
     padding : 10,
     color   :'#663300',
