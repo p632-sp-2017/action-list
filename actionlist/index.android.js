@@ -8,17 +8,12 @@
 import React from 'react';
 import {
   AppRegistry,
-  View,
 } from 'react-native';
 
 import Header from './header';
-import ActionListItems from './action_list_items';
 
 const ActionList = () => (
-  <View>
-    <Header />
-    <ActionListItems />
-  </View>
+  <Header />
 );
 
 AppRegistry.registerComponent('ActionList', () => ActionList);

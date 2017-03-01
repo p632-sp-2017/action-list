@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
+  DrawerLayoutAndroid,
+  TouchableHighlight,
 } from 'react-native';
+
+import Button from 'react-native-button';
+
+import ActionListItems from './action_list_items';
 
 const style = StyleSheet.create({
   toolbar: {
@@ -41,28 +47,75 @@ const style = StyleSheet.create({
     marginRight: 20,
     justifyContent: 'flex-end',
   },
+  view: {
+    flex: 1,
+    backgroundColor: '#e9e9e9',
+    borderBottomWidth: 0.5,
+    paddingRight: 10,
+  },
+  text: {
+    color: '#7B1500',
+    margin: 10,
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'left',
+    borderBottomWidth: 0.5,
+  },
 });
 
 /* eslint-disable global-require */
 /* rule disabled since image loading need not be global */
-const Header = () => (
-  <View style={style.toolbar}>
-    <Image
-      style={style.toolbarTrident}
-      source={require('./img/trident-large.png')}
-    />
-    <Text style={style.toolbarTitle}>
-      IU Action List
-    </Text>
-    <Image
-      style={style.toolbarSearch}
-      source={require('./img/search.png')}
-    />
-    <Image
-      style={style.toolbarButton}
-      source={require('./img/menu-icon.png')}
-    />
-  </View>
-  );
+export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: true,
+    };
+  }
+  openDrawer = () => {
+    this.DRAWER.openDrawer();
+  };
+  render() {
+    const navigationView = (
+      <View style={style.view}>
+        <Button style={style.text}>Home</Button>
+        <Button style={style.text}>Prefrences</Button>
+        <Button style={style.text}>Filter</Button>
+        <Button style={style.text}>Sort</Button>
+      </View>
+    );
+    return (
+      <DrawerLayoutAndroid
+        ref={(c) => { this.DRAWER = c; }}
+        drawerWidth={300}
+        drawerPosition={DrawerLayoutAndroid.positions.Right}
+        renderNavigationView={() => navigationView}
+      >
+        <View>
+          <View style={style.toolbar}>
+            <Image
+              style={style.toolbarTrident}
+              source={require('./img/trident-large.png')}
+            />
+            <Text style={style.toolbarTitle}>
+              IU Action List
+            </Text>
+            <Image
+              style={style.toolbarSearch}
+              source={require('./img/search.png')}
+            />
+            <TouchableHighlight onPress={this.openDrawer}>
+              <Image
+                style={style.toolbarButton}
+                source={require('./img/menu-icon.png')}
+              />
+            </TouchableHighlight>
+          </View>
+          <ActionListItems />
+        </View>
+      </DrawerLayoutAndroid>
+    );
+  }
+}
 
-module.exports = Header;
