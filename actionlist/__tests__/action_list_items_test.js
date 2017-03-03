@@ -8,5 +8,5 @@ test('renders correctly', () => {
     <Ali />,
   ).toJSON();
 
-  expect(tree).toMatchSnapshot()
+  expect(tree).toMatchSnapshot();
 });
