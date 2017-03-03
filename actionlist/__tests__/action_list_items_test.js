@@ -1,12 +1,12 @@
 import 'react-native';
 import React from 'react';
-import Ali from '../action_list_items.js';
-
-// Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
+import Ali from '../action_list_items';
 
-it('renders correctly', () => {
+test('renders correctly', () => {
   const tree = renderer.create(
-    <Ali />
-  );
+    <Ali />,
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot()
 });

@@ -1,12 +1,12 @@
 import 'react-native';
 import React from 'react';
-import Panel from '../panel.js';
-
-// Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
+import Panel from '../panel';
 
-it('renders correctly', () => {
+test('renders correctly', () => {
   const tree = renderer.create(
-    <Panel />
-  );
+    <Panel />,
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
 });

@@ -1,12 +1,12 @@
 import 'react-native';
 import React from 'react';
+import renderer from 'react-test-renderer';
 import Header from '../header.js';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-it('renders correctly', () => {
+test('renders correctly', () => {
   const tree = renderer.create(
-    <Header />
-  );
+    <Header />,
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
 });
