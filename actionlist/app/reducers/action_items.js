@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import createReducer from '../lib/createReducer'
 import * as types from '../actions/types'
 
-const lib = require('../../commons.js');
+const lib = require('../lib/commons.js');
 
 export const defaultState = {
   dataSource: lib.getListJSON(),
