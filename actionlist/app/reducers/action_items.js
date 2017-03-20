@@ -1,22 +1,25 @@
 import { handleActions } from 'redux-actions';
-import createReducer from '../lib/createReducer'
-import * as types from '../actions/types'
+import * as types from '../actions/types';
 
 const lib = require('../lib/commons.js');
 
+var list = JSON.parse(lib.getListJSON())
+
+// for (var i=0; i < list.length; i++) {
+//   list[i].expanded = false
+// }
+
 export const defaultState = {
-  dataSource: lib.getListJSON(),
+  dataSource: list,
 };
 
-export const expandItem = createReducer({}, {
-  expanded: true,
-});
-
-export const collapseItem = createReducer({}, {
-  expanded: false,
-});
+const toggleItem = (state, action) => {
+  return {
+    ...state,
+    state: state
+  };
+};
 
 export default handleActions({
-  [types.EXPAND_ITEM]: expandItem,
-  [types.COLLAPSE_ITEM]: collapseItem,
+  [types.TOGGLE_ITEM]: toggleItem,
 }, defaultState);

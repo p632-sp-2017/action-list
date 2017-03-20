@@ -26,7 +26,7 @@ const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 const mapStateToProps = (state) => {
   return {
-    dataSource: ds.cloneWithRows(JSON.parse(state.actionItemsReducer.dataSource)),
+    dataSource: ds.cloneWithRows(state.actionItemsReducer.dataSource),
   };
 };
 

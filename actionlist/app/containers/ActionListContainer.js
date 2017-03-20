@@ -19,8 +19,3 @@ const ActionListContainer = () => (
 );
 
 export default ActionListContainer;
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(ActionCreators, dispatch);
-// }
-// export default connect(() => { return {} }, mapDispatchToProps)(ActionListContainer);
