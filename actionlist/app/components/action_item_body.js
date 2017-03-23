@@ -30,7 +30,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#990000',
   },
-})
+});
+
+const routeLog = () => {
+  return null;
+};
+
+const takeAction = () => {
+  return null;
+}
 
 const ActionItemBody = (rowData) => (
   <View>
@@ -43,13 +51,13 @@ const ActionItemBody = (rowData) => (
       <Button
         containerStyle={styles.routeContainer}
         style={styles.routeButton}
-        onPress={this.routeLog}
+        onPress={routeLog}
         title="Route Log"
       />
       <Button
         containerStyle={styles.actionContainer}
         style={styles.actionButton}
-        onPress={this.takeAction}
+        onPress={takeAction}
         title="Take Action"
       />
     </View>

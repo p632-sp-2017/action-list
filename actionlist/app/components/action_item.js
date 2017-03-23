@@ -51,7 +51,7 @@ const ActionItem = ({rowData, onToggle}) => (
         {rowData.title}
       </Text>
       <TouchableHighlight
-        onPress={() => onToggle(rowId)}
+        onPress={() => onToggle(rowData.id)}
         underlayColor="#e9e9e9"
       >
         <Image
@@ -71,8 +71,8 @@ const ActionItem = ({rowData, onToggle}) => (
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onToggle: (rowId) => dispatch(toggle_item(rowId))
+    onToggle: (id) => dispatch(toggle_item(id))
   };
 };
 
-export default connect(mapDispatchToProps)(ActionItem);
+export default connect(null, mapDispatchToProps)(ActionItem);

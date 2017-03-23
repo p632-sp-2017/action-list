@@ -3,20 +3,23 @@ import * as types from '../actions/types';
 
 const lib = require('../lib/commons.js');
 
-var list = JSON.parse(lib.getListJSON())
-
-// for (var i=0; i < list.length; i++) {
-//   list[i].expanded = false
-// }
+var list = lib.getHashJSON();
 
 export const defaultState = {
   dataSource: list,
 };
 
 const toggleItem = (state, action) => {
+  const changedObject = action.payload;
+  const oldItem = state.dataSource[action.payload];
+  var newItem = oldItem;
+  if (newItem) {
+    newItem.expanded = !newItem.expanded;
+  };
   return {
     ...state,
-    state: state
+      dataSource: state.dataSource,
+        oldItem: newItem,
   };
 };
 

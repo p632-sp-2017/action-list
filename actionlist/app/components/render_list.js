@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const RenderList = (rowData, rowId) => (
+const RenderList = (rowData) => (
   <View>
     <ScrollView style={styles.container}>
       <ActionItem rowData={rowData} />
