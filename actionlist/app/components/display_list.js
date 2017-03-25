@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import RenderList from './render_list';
 
+
 const styles = StyleSheet.create({
   full_container: {
     backgroundColor: '#ffffff',
