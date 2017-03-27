@@ -66,7 +66,7 @@ export default class ActionListItems extends Component {
     super(props);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
-      dataSource: ds.cloneWithRows(JSON.parse(lib.getListJSON())),
+      dataSource: ds.cloneWithRows(JSON.parse(lib.getItemJSON())),
     };
   }
 
