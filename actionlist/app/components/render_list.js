@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   ScrollView,
 } from 'react-native';
-import Button from 'react-native-button';
 import ActionItem from './action_item';
 
 const styles = StyleSheet.create({
@@ -25,12 +23,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const RenderList = (rowData) => (
+const RenderList = rowData => (
   <View>
     <ScrollView style={styles.container}>
       <ActionItem rowData={rowData} />
     </ScrollView>
   </View>
-)
+);
 
 export default RenderList;
+
+RenderList.propTypes = {
+  rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
+};
+
+RenderList.defaultProps = {
+  rowData: {},
+};

@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import ActionItemBody from './action_item_body';
-import { toggle_item } from '../actions/action_items';
+import { toggleItem } from '../actions/action_items';
 
 const styles = StyleSheet.create({
   container: {
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
 });
 
 const icons = {
-                /* eslint-disable global-require */
-                /* rule disabled since image loading need not be global */
-                up: require('./img/up-icon.png'),
-                down: require('./img/down-icon.png'),
-              };
+  /* eslint-disable global-require */
+  /* rule disabled since image loading need not be global */
+  up: require('./img/up-icon.png'),
+  down: require('./img/down-icon.png'),
+};
 
-const ActionItem = ({rowData, onToggle}) => (
+const ActionItem = ({ rowData, onToggle }) => (
   <View style={styles.container} >
     <View style={styles.titleContainer}>
       <Text style={styles.title}>
@@ -69,10 +69,13 @@ const ActionItem = ({rowData, onToggle}) => (
 );
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onToggle: (id) => dispatch(toggle_item(id))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onToggle: id => dispatch(toggleItem(id)),
+});
 
 export default connect(null, mapDispatchToProps)(ActionItem);
+
+ActionItem.propTypes = {
+  rowData: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  onToggle: React.PropTypes.func.isRequired,
+};

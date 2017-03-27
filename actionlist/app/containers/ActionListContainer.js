@@ -1,10 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-// import { ActionCreators } from '../actions';
 
 import {
-  AppRegistry,
   View,
 } from 'react-native';
 

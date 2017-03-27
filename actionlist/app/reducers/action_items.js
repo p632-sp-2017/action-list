@@ -1,25 +1,25 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { handleActions } from 'redux-actions';
 import * as types from '../actions/types';
 
 const lib = require('../lib/commons.js');
 
-var list = lib.getHashJSON();
+const list = lib.getHashJSON();
 
 export const defaultState = {
   dataSource: list,
 };
 
 const toggleItem = (state, action) => {
-  const changedObject = action.payload;
   const oldItem = state.dataSource[action.payload];
-  var newItem = oldItem;
+  const newItem = oldItem;
   if (newItem) {
     newItem.expanded = !newItem.expanded;
-  };
+  }
   return {
     ...state,
-      dataSource: state.dataSource,
-        oldItem: newItem,
+    dataSource: state.dataSource,
+    oldItem: newItem,
   };
 };
 

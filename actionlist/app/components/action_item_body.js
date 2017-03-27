@@ -32,15 +32,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const routeLog = () => {
-  return null;
-};
+const routeLog = () => ({});
 
-const takeAction = () => {
-  return null;
-}
+const takeAction = () => ({});
 
-const ActionItemBody = (rowData) => (
+const ActionItemBody = rowData => (
   <View>
     <Text>{rowData.processType}</Text>
     <Text>{rowData.initiator}</Text>
@@ -65,3 +61,12 @@ const ActionItemBody = (rowData) => (
 );
 
 export default ActionItemBody;
+
+ActionItemBody.propTypes = {
+  rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
+};
+
+ActionItemBody.defaultProps = {
+  rowData: {},
+};
+

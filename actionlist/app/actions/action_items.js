@@ -1,5 +1,6 @@
-import * as types from './types.js';
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { createAction } from 'redux-actions';
+import * as types from './types';
 
-export const set_action_list = createAction(types.SET_ACTION_LIST)
-export const toggle_item = createAction(types.TOGGLE_ITEM)
+export const setActionList = createAction(types.SET_ACTION_LIST);
+export const toggleItem = createAction(types.TOGGLE_ITEM);
