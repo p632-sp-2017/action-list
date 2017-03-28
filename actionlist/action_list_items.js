@@ -9,7 +9,7 @@ import {
 import Button from 'react-native-button';
 import Panel from './panel';
 
-import { processInstanceJSON } from './common';
+import { processInstanceJSON } from './commons';
 
 const styles = StyleSheet.create({
   full_container: {
