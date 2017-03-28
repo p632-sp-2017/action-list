@@ -9,7 +9,7 @@ import {
 import Button from 'react-native-button';
 import Panel from './panel';
 
-const lib = require('./commons.js');
+import { processInstanceJSON } from './commons';
 
 const styles = StyleSheet.create({
   full_container: {
@@ -66,7 +66,7 @@ export default class ActionListItems extends Component {
     super(props);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
-      dataSource: ds.cloneWithRows(JSON.parse(lib.getListJSON())),
+      dataSource: ds.cloneWithRows(JSON.parse(processInstanceJSON)),
     };
   }
 
