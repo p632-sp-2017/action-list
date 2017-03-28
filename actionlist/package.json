@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "./node_modules/eslint/bin/eslint.js *.js **/*.js --ignore-pattern node_modules/"
+    "lint": "./node_modules/eslint/bin/eslint.js . --ignore-pattern node_modules/"
   },
   "dependencies": {
     "@fugood/react-native-call-modal": "0.0.6",
@@ -23,8 +23,8 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "jest": "18.1.0",
-    "react-test-renderer": "15.4.2",
-    "react-native-drawer": "^2.3.0"
+    "react-native-drawer": "^2.3.0",
+    "react-test-renderer": "15.4.2"
   },
   "jest": {
     "preset": "react-native"

@@ -15,7 +15,9 @@ before_script:
   - npm install -g react-native-cli
   - cd android && chmod +x gradlew
 script:
-  - cd .. && npm run lint
+  - cd ..
+  - npm run lint
+  - npm test
   - cd android && ./gradlew assembleRelease
 notifications:
   slack:
