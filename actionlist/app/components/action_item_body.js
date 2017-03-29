@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: 100,
   },
+  bodyView: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
   routeContainer: {
     backgroundColor: '#ffffff',
     padding: 5,
@@ -36,14 +40,14 @@ const routeLog = () => ({});
 
 const takeAction = () => ({});
 
-const ActionItemBody = rowData => (
+const ActionItemBody = ({ actions, initiator, lastUpdated, processType, status }) => (
   <View>
-    <Text>{rowData.processType}</Text>
-    <Text>{rowData.initiator}</Text>
-    <Text>{rowData.lastUpdated}</Text>
-    <Text>{rowData.status}</Text>
-    <Text>{rowData.actions}</Text>
-    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+    <Text>{processType}</Text>
+    <Text>{initiator}</Text>
+    <Text>{lastUpdated}</Text>
+    <Text>{status}</Text>
+    <Text>{actions}</Text>
+    <View style={styles.bodyView}>
       <Button
         containerStyle={styles.routeContainer}
         style={styles.routeButton}
@@ -63,10 +67,17 @@ const ActionItemBody = rowData => (
 export default ActionItemBody;
 
 ActionItemBody.propTypes = {
-  rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  processType: React.PropTypes.string.isRequired,
+  actions: React.PropTypes.string.isRequired,
+  initiator: React.PropTypes.string.isRequired,
+  lastUpdated: React.PropTypes.string.isRequired,
+  status: React.PropTypes.string.isRequired,
 };
 
 ActionItemBody.defaultProps = {
-  rowData: {},
+  processType: '',
+  actions: '',
+  initiator: '',
+  lastUpdated: '',
+  status: '',
 };
-

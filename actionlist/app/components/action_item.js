@@ -76,6 +76,16 @@ const mapDispatchToProps = dispatch => ({
 export default connect(null, mapDispatchToProps)(ActionItem);
 
 ActionItem.propTypes = {
-  rowData: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  rowData: React.PropTypes.shape({
+    rowData: {
+      expanded: {},
+      title: {},
+    },
+  }),
   onToggle: React.PropTypes.func.isRequired,
 };
+
+ActionItem.defaultProps = {
+  rowData: {},
+};
+

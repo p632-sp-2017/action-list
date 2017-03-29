@@ -11,15 +11,19 @@ export const defaultState = {
 };
 
 const toggleItem = (state, action) => {
-  const oldItem = state.dataSource[action.payload];
-  const newItem = oldItem;
-  if (newItem) {
-    newItem.expanded = !newItem.expanded;
-  }
+  const dataSource = state.dataSource;
+  const oldItem = dataSource[action.payload];
+  const newItem = {
+    ...oldItem,
+    expanded: !oldItem.expanded,
+  };
+
   return {
     ...state,
-    dataSource: state.dataSource,
-    oldItem: newItem,
+    dataSource: {
+      ...dataSource,
+      [action.payload]: newItem,
+    },
   };
 };
 

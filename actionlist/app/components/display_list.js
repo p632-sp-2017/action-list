@@ -31,5 +31,9 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(DisplayList);
 
 DisplayList.propTypes = {
-  dataSource: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  dataSource: React.PropTypes.shape({ dataSource: [] }),
+};
+
+DisplayList.defaultProps = {
+  dataSource: [],
 };
