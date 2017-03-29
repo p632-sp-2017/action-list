@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#990000',
     padding: 5,
     borderRadius: 8,
+    marginLeft: 40,
     width: 100,
   },
   routeContainer: {
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#990000',
-    marginRight: 10,
+    marginLeft: 50,
     width: 100,
+    borderColor: '#990000',
   },
 });
 
