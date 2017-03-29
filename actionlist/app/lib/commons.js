@@ -14,9 +14,19 @@ function manipulateList(list) {
   return temp;
 }
 
+// Hack to initialize rowId and expanded state
+function manipulateList(list) {
+  const temp = list;
+  for (let i = 0; i < temp.length; i += 1) {
+    temp[i].expanded = false;
+  }
+  return temp;
+}
+
 export function getHashJSON() {
   const list = manipulateList(JSON.parse(processInstanceJSON));
-  const hash = {};
-  list.forEach((it) => { hash[it.id] = it; });
-  return hash;
 }
+
+
+
+

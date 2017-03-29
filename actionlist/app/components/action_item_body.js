@@ -93,3 +93,6 @@ ActionItemBody.defaultProps = {
   rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
+ActionItemBody.defaultProps = {
+  rowData: {},
+};

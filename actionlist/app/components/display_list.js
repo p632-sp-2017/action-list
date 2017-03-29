@@ -35,6 +35,4 @@ DisplayList.defaultProps = {
   dataSource: [],
 };
 
-DisplayList.propTypes = {
-  dataSource: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
+
