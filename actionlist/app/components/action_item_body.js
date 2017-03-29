@@ -40,7 +40,8 @@ const routeLog = () => ({});
 
 const takeAction = () => ({});
 
-const ActionItemBody = ({ actionRequested,
+const ActionItemBody = ({
+  actionRequested,
   initiator,
   lastApprovedDate,
   processType,
@@ -72,16 +73,16 @@ export default ActionItemBody;
 
 ActionItemBody.propTypes = {
   processType: React.PropTypes.shape({
-    label: {},
-  }),
+    label: React.PropTypes.string,
+  }).isRequired,
   actionRequested: React.PropTypes.shape({
-    label: {},
-  }),
+    label: React.PropTypes.string,
+  }).isRequired,
   initiator: React.PropTypes.string.isRequired,
   lastApprovedDate: React.PropTypes.string.isRequired,
   processInstanceStatus: React.PropTypes.shape({
-    label: {},
-  }),
+    label: React.PropTypes.string,
+  }).isRequired,
 };
 
 ActionItemBody.defaultProps = {

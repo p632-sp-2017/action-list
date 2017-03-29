@@ -1,6 +1,5 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { handleActions } from 'redux-actions';
-import * as types from '../actions/types';
+import { TOGGLE_ITEM } from '../actions/types';
 import { processInstances } from '../lib/commons';
 
 export const defaultState = {
@@ -25,5 +24,5 @@ const toggleItem = (state, action) => {
 };
 
 export default handleActions({
-  [types.TOGGLE_ITEM]: toggleItem,
+  [TOGGLE_ITEM]: toggleItem,
 }, defaultState);

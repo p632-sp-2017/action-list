@@ -1,6 +1,8 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { createAction } from 'redux-actions';
-import * as types from './types';
+import { TOGGLE_ITEM } from './types';
 
-export const setActionList = createAction(types.SET_ACTION_LIST);
-export const toggleItem = createAction(types.TOGGLE_ITEM);
+/* eslint-disable import/prefer-default-export */
+/* Needs to be done as actions are not dispatched without it.
+Will be removed when we have multiple actions */
+export const toggleItem = createAction(TOGGLE_ITEM);
+/* eslint-enable import/prefer-default-export */
