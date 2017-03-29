@@ -1,13 +1,10 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { handleActions } from 'redux-actions';
 import * as types from '../actions/types';
-
-const lib = require('../lib/commons.js');
-
-const list = lib.getHashJSON();
+import { processInstances } from '../lib/commons';
 
 export const defaultState = {
-  dataSource: list,
+  dataSource: processInstances,
 };
 
 const toggleItem = (state, action) => {

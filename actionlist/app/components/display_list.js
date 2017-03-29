@@ -31,9 +31,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(DisplayList);
 
 DisplayList.propTypes = {
-  dataSource: React.PropTypes.shape({ dataSource: [] }),
-};
-
-DisplayList.defaultProps = {
-  dataSource: [],
+  dataSource: React.PropTypes.shape({}).isRequired,
 };

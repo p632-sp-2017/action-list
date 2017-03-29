@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import ActionItemBody from './action_item_body';
 import { toggleItem } from '../actions/action_items';
+import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +43,7 @@ const icons = {
   /* rule disabled since image loading need not be global */
   up: require('./img/up-icon.png'),
   down: require('./img/down-icon.png'),
+  /* eslint-enable global-require */
 };
 
 const ActionItem = ({ rowData, onToggle }) => (
@@ -52,7 +54,7 @@ const ActionItem = ({ rowData, onToggle }) => (
       </Text>
       <TouchableHighlight
         onPress={() => onToggle(rowData.id)}
-        underlayColor="#e9e9e9"
+        underlayColor={Colors.IUGray}
       >
         <Image
           style={styles.buttonImage}
@@ -79,14 +81,6 @@ ActionItem.propTypes = {
   rowData: React.PropTypes.shape({
     expanded: React.PropTypes.bool,
     title: React.PropTypes.string,
-  }),
+  }).isRequired,
   onToggle: React.PropTypes.func.isRequired,
 };
-
-ActionItem.defaultProps = {
-  rowData: {
-    expanded: false,
-    title: '',
-  },
-};
-
