@@ -11,44 +11,6 @@ import DisplayList from '../components/display_list';
 import SideMenu from '../components/SideMenu';
 import { toggleDrawer } from '../actions/action_items';
 
-const style = StyleSheet.create({
-  toolbar: {
-    backgroundColor: '#7a1705',
-    borderTopColor: '#990000',
-    borderTopWidth: 5,
-    flexDirection: 'row',
-  },
-  toolbarTrident: {
-    width: 43,
-    height: 50,
-    marginLeft: 10,
-  },
-  toolbarTitle: {
-    color: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
-    fontWeight: 'bold',
-    fontSize: 24,
-    marginLeft: 10,
-    marginTop: 7,
-    flex: 1,
-  },
-  toolbarSearch: {
-    margin: 15,
-    width: 16,
-    height: 16,
-  },
-  toolbarButton: {
-    margin: 15,
-    width: 16,
-    height: 16,
-    marginRight: 20,
-    justifyContent: 'flex-end',
-  },
-});
-
-
 class ActionListContainer extends Component {
   constructor(props) {
     super(props);
