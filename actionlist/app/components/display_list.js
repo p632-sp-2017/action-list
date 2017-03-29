@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import RenderList from './render_list';
 
-
 const styles = StyleSheet.create({
   full_container: {
     backgroundColor: '#ffffff',
@@ -31,10 +30,11 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(DisplayList);
 
-DisplayList.propTypes = {
-  dataSource: React.PropTypes.shape({ dataSource: [] }),
-};
-
 DisplayList.defaultProps = {
   dataSource: [],
 };
+
+DisplayList.propTypes = {
+  dataSource: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+

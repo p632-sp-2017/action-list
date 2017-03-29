@@ -1,20 +1,15 @@
-import React from 'react';
-import React, { Component }  from 'react';
+\import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {
-  StyleSheet,
-  AppRegistry,
   View,
-  Text,
-  Image,
-  TouchableHighlight,
   DrawerLayoutAndroid,
 } from 'react-native';
 
-import sidemenu_press from '../actions/action_items';
-import SideMenu from '../components/SideMenu.js'
+import SideMenu from '../components/SideMenu';
+import Header from '../components/Header';
 import DisplayList from '../components/display_list';
+import { toggleDrawer } from '../actions/action_items';
 
 const style = StyleSheet.create({
   toolbar: {
@@ -53,52 +48,61 @@ const style = StyleSheet.create({
   },
 });
 
-export default ActionListContainer;
 
-  toggleDrawer() {
-    if (this.state.drawerClosed) {
+class ActionListContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      drawerExpanded: props.drawerExpanded,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      drawerExpanded: nextProps.drawerExpanded,
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.state.drawerExpanded) {
       this.DRAWER.openDrawer();
     } else {
       this.DRAWER.closeDrawer();
     }
-  }  
-  setDrawerState() {
-    this.setState({
-      drawerClosed: !this.state.drawerClosed
-    });
   }
-  render(){
-    return(
+
+  render() {
+    return (
       <DrawerLayoutAndroid
-      drawerWidth={300}
-      ref={(drawerElement) => { this.DRAWER = drawerElement; }}
-      drawerPosition={DrawerLayoutAndroid.positions.Right}
-      onDrawerOpen={this.setDrawerState}
-      onDrawerClose={this.setDrawerState}
-      renderNavigationView={SideMenu}>
-        
-      <View style={style.toolbar}>
-      <Image
-        style={style.toolbarTrident}
-        source={require('../components/img/trident-large.png')}
-      />
-      <Text style={style.toolbarTitle}>
-        IU Action List
-      </Text>
-      <Image
-        style={style.toolbarSearch}
-        source={require('../components/img/search.png')}
-      />
-      <TouchableHighlight onPress={this.toggleDrawer}>
-        <Image
-          style={style.toolbarButton}
-          source={require('../components/img/menu-icon.png')}
-        />
-      </TouchableHighlight>
-      </View>
-      <DisplayList/>
-    </DrawerLayoutAndroid>
-  );
+        ref={(c) => { this.DRAWER = c; }}
+        drawerWidth={300}
+        drawerPosition={DrawerLayoutAndroid.positions.Right}
+        onDrawerClose={this.props.setDrawerState}
+        renderNavigationView={SideMenu}
+      >
+        <View>
+          <Header />
+          <DisplayList />
+        </View>
+      </DrawerLayoutAndroid>
+    );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    drawerExpanded: state.actionItemsReducer.drawerExpanded,
+  };
+}
+
+const mapDispatchToProps = dispatch => ({
+  setDrawerState: () => dispatch(toggleDrawer()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActionListContainer);
+
+ActionListContainer.propTypes = {
+  drawerExpanded: React.PropTypes.bool.isRequired,
+  setDrawerState: React.PropTypes.func.isRequired,
+};
