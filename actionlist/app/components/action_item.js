@@ -77,15 +77,16 @@ export default connect(null, mapDispatchToProps)(ActionItem);
 
 ActionItem.propTypes = {
   rowData: React.PropTypes.shape({
-    rowData: {
-      expanded: {},
-      title: {},
-    },
+    expanded: React.PropTypes.bool,
+    title: React.PropTypes.string,
   }),
   onToggle: React.PropTypes.func.isRequired,
 };
 
 ActionItem.defaultProps = {
-  rowData: {},
+  rowData: {
+    expanded: false,
+    title: '',
+  },
 };
 

@@ -40,44 +40,54 @@ const routeLog = () => ({});
 
 const takeAction = () => ({});
 
-const ActionItemBody = ({ actions, initiator, lastUpdated, processType, status }) => (
-  <View>
-    <Text>{processType}</Text>
-    <Text>{initiator}</Text>
-    <Text>{lastUpdated}</Text>
-    <Text>{status}</Text>
-    <Text>{actions}</Text>
-    <View style={styles.bodyView}>
-      <Button
-        containerStyle={styles.routeContainer}
-        style={styles.routeButton}
-        onPress={routeLog}
-        title="Route Log"
-      />
-      <Button
-        containerStyle={styles.actionContainer}
-        style={styles.actionButton}
-        onPress={takeAction}
-        title="Take Action"
-      />
+const ActionItemBody = ({ actionRequested,
+  initiator,
+  lastApprovedDate,
+  processType,
+  processInstanceStatus }) => (
+    <View>
+      <Text>{processType.label}</Text>
+      <Text>{initiator}</Text>
+      <Text>{lastApprovedDate}</Text>
+      <Text>{processInstanceStatus.label}</Text>
+      <Text>{actionRequested.label}</Text>
+      <View style={styles.bodyView}>
+        <Button
+          containerStyle={styles.routeContainer}
+          style={styles.routeButton}
+          onPress={routeLog}
+          title="Route Log"
+        />
+        <Button
+          containerStyle={styles.actionContainer}
+          style={styles.actionButton}
+          onPress={takeAction}
+          title="Take Action"
+        />
+      </View>
     </View>
-  </View>
 );
 
 export default ActionItemBody;
 
 ActionItemBody.propTypes = {
-  processType: React.PropTypes.string.isRequired,
-  actions: React.PropTypes.string.isRequired,
+  processType: React.PropTypes.shape({
+    label: {},
+  }),
+  actionRequested: React.PropTypes.shape({
+    label: {},
+  }),
   initiator: React.PropTypes.string.isRequired,
-  lastUpdated: React.PropTypes.string.isRequired,
-  status: React.PropTypes.string.isRequired,
+  lastApprovedDate: React.PropTypes.string.isRequired,
+  processInstanceStatus: React.PropTypes.shape({
+    label: {},
+  }),
 };
 
 ActionItemBody.defaultProps = {
-  processType: '',
-  actions: '',
+  processType: { label: {} },
+  actionRequested: { label: {} },
   initiator: '',
-  lastUpdated: '',
-  status: '',
+  lastApprovedDate: '',
+  processInstanceStatus: { label: {} },
 };
