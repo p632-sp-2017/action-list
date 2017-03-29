@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import SideMenu from '../components/SideMenu';
-import Header from '../components/Header';
+import Header from '../components/header';
 import DisplayList from '../components/display_list';
 import { toggleDrawer } from '../actions/action_items';
 
