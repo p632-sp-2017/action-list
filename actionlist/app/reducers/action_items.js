@@ -35,5 +35,3 @@ export default handleActions({
   [types.TOGGLE_ITEM]: toggleItem,
   [types.TOGGLE_DRAWER]: toggleDrawer,
 }, defaultState);
-
-

@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Image,
-  DrawerLayoutAndroid,
 } from 'react-native';
-
 import Button from 'react-native-button';
 
 const style = StyleSheet.create({
-   view: {
+  view: {
     flex: 1,
     backgroundColor: '#e9e9e9',
     borderBottomWidth: 0.5,
@@ -27,7 +23,7 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = () => (
+const SideMenu = (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
@@ -36,5 +32,5 @@ const SideMenu = () => (
   </View>
 );
 
-
 export default SideMenu;
+

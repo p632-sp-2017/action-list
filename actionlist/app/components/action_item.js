@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -6,7 +8,8 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-
+import ActionItemBody from './action_item_body';
+import { toggleItem } from '../actions/action_items';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,58 +38,45 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ActionItem extends Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.icons = {
-      /* eslint-disable global-require */
-      /* rule disabled since image loading need not be global */
-      up: require('./img/up-icon.png'),
-      down: require('./img/down-icon.png'),
-    };
+const icons = {
+  /* eslint-disable global-require */
+  /* rule disabled since image loading need not be global */
+  up: require('./img/up-icon.png'),
+  down: require('./img/down-icon.png'),
+};
 
-    this.state = {
-      title: props.title,
-      expanded: false,
-    };
-  }
+const ActionItem = ({ rowData, onToggle }) => (
+  <View style={styles.container} >
+    <View style={styles.titleContainer}>
+      <Text style={styles.title}>
+        {rowData.title}
+      </Text>
+      <TouchableHighlight
+        onPress={() => onToggle(rowData.id)}
+        underlayColor="#e9e9e9"
+      >
+        <Image
+          style={styles.buttonImage}
+          source={rowData.expanded ? icons.up : icons.down}
+        />
+      </TouchableHighlight>
+    </View>
+    { rowData.expanded ?
+      <View style={styles.body}>
+        <ActionItemBody {...rowData} />
+      </View> : null
+    }
+  </View>
+);
 
-  toggle() {
-    this.setState({
-      expanded: !this.state.expanded,
-    });
-  }
 
-  render() {
-    const icon = this.state.expanded ? this.icons.up : this.icons.down;
-    return (
-      <View style={styles.container} >
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>
-            {this.state.title}
-          </Text>
-          <TouchableHighlight
-            onPress={this.toggle}
-            underlayColor="#e9e9e9"
-          >
-            <Image
-              style={styles.buttonImage}
-              source={icon}
-            />
-          </TouchableHighlight>
-        </View>
-        { this.state.expanded ?
-          <View style={styles.body}>
-            {this.props.children}
-          </View> : null
-        }
-      </View>
-    );
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  onToggle: id => dispatch(toggleItem(id)),
+});
+
+export default connect(null, mapDispatchToProps)(ActionItem);
 
 ActionItem.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  children: React.PropTypes.arrayOf(Object).isRequired,
+  rowData: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  onToggle: React.PropTypes.func.isRequired,
 };

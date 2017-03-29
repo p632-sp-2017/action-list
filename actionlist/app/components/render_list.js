@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   ScrollView,
 } from 'react-native';
-import Button from 'react-native-button';
 import ActionItem from './action_item';
 
 const styles = StyleSheet.create({
@@ -23,59 +21,22 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  actionButton: {
-    fontSize: 15,
-    color: '#ffffff',
-  },
-  routeButton: {
-    fontSize: 15,
-    color: '#990000',
-  },
-  actionContainer: {
-    backgroundColor: '#990000',
-    padding: 5,
-    borderRadius: 8,
-    width: 100,
-  },
-  routeContainer: {
-    backgroundColor: '#ffffff',
-    padding: 5,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#990000',
-    marginRight: 10,
-    width: 100,
-  },
 });
 
-const RenderList = (rowData) => (
+const RenderList = rowData => (
   <View>
     <ScrollView style={styles.container}>
-      <ActionItem title = {rowData.title} >
-        <Text>{rowData.processType}</Text>
-        <Text>{rowData.initiator}</Text>
-        <Text>{rowData.lastUpdated}</Text>
-        <Text>{rowData.status}</Text>
-        <Text>{rowData.actions}</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-          <Button
-            containerStyle={styles.routeContainer}
-            style={styles.routeButton}
-            onPress={this.routeLog}
-          >
-            Route Log
-          </Button>
-          <Button
-            containerStyle={styles.actionContainer}
-            style={styles.actionButton}
-            onPress={this.takeAction}
-          >
-            Take Action
-          </Button>
-        </View>
-      </ActionItem>
+      <ActionItem rowData={rowData} />
     </ScrollView>
   </View>
-)
+);
 
 export default RenderList;
+
+RenderList.propTypes = {
+  rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
+};
+
+RenderList.defaultProps = {
+  rowData: {},
+};
