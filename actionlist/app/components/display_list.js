@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -37,4 +38,3 @@ DisplayList.defaultProps = {
 DisplayList.propTypes = {
   dataSource: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
-

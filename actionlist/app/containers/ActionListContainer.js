@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 \import React from 'react';
+=======
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
+>>>>>>> Lint error fix
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -6,9 +10,9 @@ import {
   DrawerLayoutAndroid,
 } from 'react-native';
 
-import SideMenu from '../components/SideMenu';
 import Header from '../components/header';
 import DisplayList from '../components/display_list';
+import SideMenu from '../components/SideMenu';
 import { toggleDrawer } from '../actions/action_items';
 
 const style = StyleSheet.create({
@@ -78,7 +82,7 @@ class ActionListContainer extends Component {
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Right}
         onDrawerClose={this.props.setDrawerState}
-        renderNavigationView={SideMenu}
+        renderNavigationView={() => SideMenu}
       >
         <View>
           <Header />

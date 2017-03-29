@@ -1,9 +1,5 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
-<<<<<<< HEAD
-=======
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
-
->>>>>>> Sidemenu redux implementation
 import { handleActions } from 'redux-actions';
 import * as types from '../actions/types';
 
@@ -13,30 +9,6 @@ const list = lib.getHashJSON();
 
 export const defaultState = {
   dataSource: list,
-<<<<<<< HEAD
-};
-
-const toggleItem = (state, action) => {
-  const dataSource = state.dataSource;
-  const oldItem = dataSource[action.payload];
-  const newItem = {
-    ...oldItem,
-    expanded: !oldItem.expanded,
-  };
-
-  return {
-    ...state,
-    dataSource: {
-      ...dataSource,
-      [action.payload]: newItem,
-    },
-  };
-};
-
-export default handleActions({
-  [types.TOGGLE_ITEM]: toggleItem,
-}, defaultState);
-=======
   drawerExpanded: false,
 };
 
@@ -63,5 +35,3 @@ export default handleActions({
   [types.TOGGLE_DRAWER]: toggleDrawer,
 }, defaultState);
 
-
->>>>>>> Sidemenu redux implementation

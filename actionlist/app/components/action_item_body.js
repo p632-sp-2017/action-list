@@ -90,4 +90,6 @@ ActionItemBody.defaultProps = {
   initiator: '',
   lastApprovedDate: '',
   processInstanceStatus: { label: {} },
+  rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
+
