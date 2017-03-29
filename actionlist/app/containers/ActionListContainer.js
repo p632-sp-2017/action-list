@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-\import React from 'react';
-=======
 /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
->>>>>>> Lint error fix
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
