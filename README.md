@@ -3,4 +3,4 @@
 
 An Action List shows all electronic documents (eDocs) currently routed to you for action. From your list, you can view the contents and routing history of each eDoc. You may be asked to approve, acknowledge, complete, or get an "FYI" for each eDoc in your Action List. Once you take the appropriate action, that eDoc automatically disappears from your Action List.
 
-So this is an android mobile application for action list built with react-native. This project is aimed at giving a more sophisticated user experience for action on the documents. 
+So this is an android mobile application for action list built with react-native and redux. This project is aimed at giving a more sophisticated user experience for action on the documents. 
