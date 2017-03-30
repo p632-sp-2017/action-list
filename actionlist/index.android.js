@@ -15,7 +15,7 @@ import ActionListContainer from './app/containers/ActionListContainer';
 const store = createStore(reducer);
 
 const ActionList = () => (
-  <Provider store={ store }>
+  <Provider store={store}>
     <ActionListContainer />
   </Provider>
 );
