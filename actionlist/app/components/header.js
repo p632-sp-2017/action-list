@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
   View,
   Image,
+  TouchableHighlight,
 } from 'react-native';
+
+import { toggleDrawer } from '../actions/action_items';
 
 const style = StyleSheet.create({
   toolbar: {
@@ -45,7 +49,7 @@ const style = StyleSheet.create({
 
 /* eslint-disable global-require */
 /* rule disabled since image loading need not be global */
-const Header = () => (
+const Header = ({ ontoggleDrawer }) => (
   <View style={style.toolbar}>
     <Image
       style={style.toolbarTrident}
@@ -58,12 +62,22 @@ const Header = () => (
       style={style.toolbarSearch}
       source={require('./img/search.png')}
     />
-    <Image
-      style={style.toolbarButton}
-      source={require('./img/menu-icon.png')}
-    />
+    <TouchableHighlight onPress={() => ontoggleDrawer()}>
+      <Image
+        style={style.toolbarButton}
+        source={require('./img/menu-icon.png')}
+      />
+    </TouchableHighlight>
   </View>
 );
-/* eslint-enable global-require */
 
-module.exports = Header;
+const mapDispatchToProps = dispatch => ({
+  ontoggleDrawer: () => dispatch(toggleDrawer()),
+});
+
+export default connect(null, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+  ontoggleDrawer: React.PropTypes.func.isRequired,
+};
+
