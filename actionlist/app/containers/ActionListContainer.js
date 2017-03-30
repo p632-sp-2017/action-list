@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -5,9 +6,9 @@ import {
   DrawerLayoutAndroid,
 } from 'react-native';
 
-import SideMenu from '../components/SideMenu';
 import Header from '../components/header';
 import DisplayList from '../components/display_list';
+import SideMenu from '../components/SideMenu';
 import { toggleDrawer } from '../actions/action_items';
 
 class ActionListContainer extends Component {

@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -80,4 +81,5 @@ export default connect(null, mapDispatchToProps)(Header);
 Header.propTypes = {
   ontoggleDrawer: React.PropTypes.func.isRequired,
 };
+
 
