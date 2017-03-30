@@ -68,7 +68,6 @@ const ActionItemBody = ({
       </View>
     </View>
 );
-
 export default ActionItemBody;
 
 ActionItemBody.propTypes = {
@@ -91,9 +90,4 @@ ActionItemBody.defaultProps = {
   initiator: '',
   lastApprovedDate: '',
   processInstanceStatus: { label: {} },
-  rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
-};
-
-ActionItemBody.defaultProps = {
-  rowData: {},
 };

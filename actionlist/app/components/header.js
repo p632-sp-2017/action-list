@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import React from 'react';
 import { connect } from 'react-redux';
 import {
