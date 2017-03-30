@@ -33,4 +33,3 @@ DisplayList.propTypes = {
 };
 
 export default connect(mapStateToProps)(DisplayList);
-

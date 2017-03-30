@@ -70,13 +70,14 @@ const Header = ({ ontoggleDrawer }) => (
     </TouchableHighlight>
   </View>
 );
+/* eslint-enable global-require */
 
 const mapDispatchToProps = dispatch => ({
   ontoggleDrawer: () => dispatch(toggleDrawer()),
 });
 
-export default connect(null, mapDispatchToProps)(Header);
-
 Header.propTypes = {
   ontoggleDrawer: React.PropTypes.func.isRequired,
 };
+
+export default connect(null, mapDispatchToProps)(Header);

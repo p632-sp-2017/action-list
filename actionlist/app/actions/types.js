@@ -1,4 +1,2 @@
-const TOGGLE_ITEM = 'toggle_item';
-const TOGGLE_DRAWER = 'toggle_drawer';
-export { TOGGLE_DRAWER, TOGGLE_ITEM };
-
+export const TOGGLE_ITEM = 'toggle_item';
+export const TOGGLE_DRAWER = 'toggle_drawer';
