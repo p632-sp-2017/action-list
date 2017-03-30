@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -40,7 +39,7 @@ class ActionListContainer extends Component {
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Right}
         onDrawerClose={this.props.setDrawerState}
-        renderNavigationView={SideMenu}
+        renderNavigationView={() => SideMenu}
       >
         <View>
           <Header />

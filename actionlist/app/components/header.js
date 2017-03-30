@@ -81,5 +81,3 @@ export default connect(null, mapDispatchToProps)(Header);
 Header.propTypes = {
   ontoggleDrawer: React.PropTypes.func.isRequired,
 };
-
-
