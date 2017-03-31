@@ -1,14 +1,12 @@
-jest.unmock('redux-mock-store');
-jest.unmock('../app/components/action_item');
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
-import configureStore from 'redux-mock-store'
-import { createStore } from 'redux';
-import reducer from '../app/reducers/index';
+import configureStore from 'redux-mock-store';
 import ActionItem from '../app/components/action_item';
+
+jest.unmock('redux-mock-store');
+jest.unmock('../app/components/action_item');
 
 describe('action_items', () => {
   it('should take props and contain row title and image source', () => {
@@ -30,7 +28,6 @@ describe('action_items', () => {
     expect(wrapper.contains('View'));
     expect(wrapper.find('View'));
     expect(wrapper.find('Image'));
-    expect(wrapper.props().rowData).to.be.defined;
     expect(wrapper.props().rowData.title).to.equal('Hello World');
   });
 
