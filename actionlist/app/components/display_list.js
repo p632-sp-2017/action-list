@@ -28,8 +28,8 @@ const mapStateToProps = state => ({
   dataSource: ds.cloneWithRows(state.actionItemsReducer.dataSource),
 });
 
-export default connect(mapStateToProps)(DisplayList);
-
 DisplayList.propTypes = {
   dataSource: React.PropTypes.shape({}).isRequired,
 };
+
+export default connect(mapStateToProps)(DisplayList);

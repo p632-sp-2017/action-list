@@ -69,8 +69,6 @@ const ActionItemBody = ({
     </View>
 );
 
-export default ActionItemBody;
-
 ActionItemBody.propTypes = {
   processType: React.PropTypes.shape({
     label: React.PropTypes.string,
@@ -92,3 +90,5 @@ ActionItemBody.defaultProps = {
   lastApprovedDate: '',
   processInstanceStatus: { label: {} },
 };
+
+export default ActionItemBody;

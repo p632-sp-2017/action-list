@@ -31,8 +31,6 @@ const RenderList = rowData => (
   </View>
 );
 
-export default RenderList;
-
 RenderList.propTypes = {
   rowData: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
@@ -40,3 +38,5 @@ RenderList.propTypes = {
 RenderList.defaultProps = {
   rowData: {},
 };
+
+export default RenderList;

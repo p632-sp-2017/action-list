@@ -75,8 +75,6 @@ const mapDispatchToProps = dispatch => ({
   onToggle: id => dispatch(toggleItem(id)),
 });
 
-export default connect(null, mapDispatchToProps)(ActionItem);
-
 ActionItem.propTypes = {
   rowData: React.PropTypes.shape({
     expanded: React.PropTypes.bool,
@@ -84,3 +82,6 @@ ActionItem.propTypes = {
   }).isRequired,
   onToggle: React.PropTypes.func.isRequired,
 };
+
+export default connect(null, mapDispatchToProps)(ActionItem);
+
