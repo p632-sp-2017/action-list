@@ -13,7 +13,7 @@ describe('action_items', () => {
           expanded: false,
         },
         otherCard: {
-          expanded: true,
+          expanded: false,
         },
       },
     };
@@ -24,7 +24,7 @@ describe('action_items', () => {
           expanded: true,
         },
         otherCard: {
-          expanded: true,
+          expanded: false,
         },
       },
     };

@@ -14,7 +14,7 @@ const toggleHelper = (dataSource) => {
   Object.keys(dataSource).forEach((key) => {
     const val = dataSource[key];
     val.expanded = false;
-    temp[val.id] = val;
+    temp[key] = val;
   });
   return temp;
 };
