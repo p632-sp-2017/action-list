@@ -6,19 +6,18 @@
  */
 
 import React from 'react';
-import {
-  AppRegistry,
-  View,
-} from 'react-native';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './app/reducers/index';
+import ActionListContainer from './app/containers/ActionListContainer';
 
-import Header from './header';
-import ActionListItems from './action_list_items';
+const store = createStore(reducer);
 
 const ActionList = () => (
-  <View>
-    <Header />
-    <ActionListItems />
-  </View>
+  <Provider store={store}>
+    <ActionListContainer />
+  </Provider>
 );
 
 AppRegistry.registerComponent('ActionList', () => ActionList);

@@ -63,6 +63,7 @@ const Header = () => (
       source={require('./img/menu-icon.png')}
     />
   </View>
-  );
+);
+/* eslint-enable global-require */
 
 module.exports = Header;
