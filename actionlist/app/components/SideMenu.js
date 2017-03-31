@@ -23,7 +23,7 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = (
+const SideMenu = () => (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
