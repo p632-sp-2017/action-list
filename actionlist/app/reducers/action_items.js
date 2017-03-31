@@ -8,9 +8,24 @@ export const defaultState = {
   drawerExpanded: false,
 };
 
+// ToggleHelper to toggleback already opened card when other card is clicked
+const toggleHelper = (dataSource) => {
+  const temp = {};
+  Object.keys(dataSource).forEach((key) => {
+    const val = dataSource[key];
+    val.expanded = false;
+    temp[val.id] = val;
+  });
+  return temp;
+};
+
 const toggleItem = (state, action) => {
-  const dataSource = state.dataSource;
+  let dataSource = state.dataSource;
   const oldItem = dataSource[action.payload];
+  if (!oldItem.expanded) {
+    dataSource = toggleHelper(dataSource);
+  }
+
   const newItem = {
     ...oldItem,
     expanded: !oldItem.expanded,
