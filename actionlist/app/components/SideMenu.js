@@ -28,16 +28,16 @@ const SideMenu = () => (
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
     <Button style={style.text}>Filter</Button>
-	<View style={style.view}>
-		<Text style={style.text}>
-			Sort
-		</Text>
-    		<Button style={style.text}>Date Created</Button>
-		<Button style={style.text}>Last Updated</Button>
-		<Button style={style.text}>Process Type</Button>
-		<Button style={style.text}>Action Requested</Button>
-	</View>
-  </View>
+		<View style={style.view}>
+			<Text style={style.text}>
+				Sort
+			</Text>
+    	<Button style={style.text}>Date Created</Button>
+			<Button style={style.text}>Last Updated</Button>
+			<Button style={style.text}>Process Type</Button>
+			<Button style={style.text}>Action Requested</Button>
+		</View>
+ 	</View>
 );
 
 export default SideMenu;
