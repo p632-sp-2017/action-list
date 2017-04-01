@@ -5,10 +5,7 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 
-import { createSortDate } from '../actions/action_items';
-import { lastUpdatedSortDate } from '../actions/action_items';
-import { sortProcessType } from '../actions/action_items';
-import { sortActionRequested } from '../actions/action_items';
+import { createSortDate, lastUpdatedSortDate, sortProcessType, sortActionRequested } from '../actions/action_items';
 
 const style = StyleSheet.create({
   view: {
