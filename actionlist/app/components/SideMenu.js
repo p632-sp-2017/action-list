@@ -5,6 +5,11 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 
+import { createSortDate } from '../actions/action_items';
+import { lastUpdatedSortDate } from '../actions/action_items';
+import { sortProcessType } from '../actions/action_items';
+import { sortActionRequested } from '../actions/action_items';
+
 const style = StyleSheet.create({
   view: {
     flex: 1,
@@ -32,12 +37,34 @@ const SideMenu = () => (
 			<Text style={style.text}>
 				Sort
 			</Text>
-    	<Button style={style.text}>Date Created</Button>
-			<Button style={style.text}>Last Updated</Button>
-			<Button style={style.text}>Process Type</Button>
-			<Button style={style.text}>Action Requested</Button>
+			<TouchableHighlight onPress={() => oncreateSortDate()}>
+				<Button style={style.text}>Date Created</Button>
+			</TouchableHighlight>
+    	<TouchableHighlight onPress={() => onlastUpdatedSortDate()}>
+				<Button style={style.text}>Last Updated</Button>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onsortProcessType()}>
+				<Button style={style.text}>Process Type</Button>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onsortActionRequested()}>
+				<Button style={style.text}>Action Requested</Button>
+			</TouchableHighlight>
 		</View>
  	</View>
 );
 
-export default SideMenu;
+const mapDispatchToProps = dispatch => ({
+  oncreateSortDate: () => dispatch(createSortDate()),
+	onlastUpdatedSortDate: () => dispatch(lastUpdatedSortDate()),
+	onsortProcessType: () => dispatch(sortProcessType()),
+	onsortActionRequested: () => dispatch(sortActionRequested()),
+});
+
+SideMenu.propTypes = {
+  oncreateSortDate: React.PropTypes.func.isRequired,
+	onlastUpdatedSortDate: React.PropTypes.func.isRequired,
+	onsortProcessType: React.PropTypes.func.isRequired,
+	onsortActionRequested: React.PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(SideMenu);
