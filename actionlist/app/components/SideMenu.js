@@ -30,7 +30,7 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ onFilterByDocumentRouteStatus, onFilterByActionRequested, 
+const SideMenu = ({ onFilterByDocumentRouteStatus, onFilterByActionRequested,
   onFilterByDocumentType, onFilterByDocumentCreationDate, onFilterByDocumentAssignedDate }) => (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
