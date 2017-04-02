@@ -10,7 +10,7 @@ import {
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
 
-import { sortByCreationDate } from '../actions/action_items';
+import { sortByCreationDate, sortByLastUpdatedDate, sortByProcessType, sortByActionRequested } from '../actions/action_items';
 
 const style = StyleSheet.create({
   view: {
@@ -30,7 +30,7 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ onSortByCreationDate }) => (
+const SideMenu = ({ onSortByCreationDate, onSortByLastUpdatedDate, onSortByProcessType, onSortByActionRequested}) => (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
@@ -42,19 +42,31 @@ const SideMenu = ({ onSortByCreationDate }) => (
       <TouchableHighlight onPress={() => onSortByCreationDate()}>
         <Text style={style.text}> Date Created</Text>
       </TouchableHighlight>
-      <Button style={style.text}>Last Updated</Button>
-      <Button style={style.text}>Process Type</Button>
-      <Button style={style.text}>Action Requested</Button>
+			<TouchableHighlight onPress={() => onSortByLastUpdatedDate()}>
+        <Text style={style.text}> Last Updated</Text>
+      </TouchableHighlight>
+			<TouchableHighlight onPress={() => onSortByProcessType()}>
+        <Text style={style.text}> Process Type</Text>
+      </TouchableHighlight>
+			<TouchableHighlight onPress={() => onSortByActionRequested()}>
+        <Text style={style.text}> Action Requested</Text>
+      </TouchableHighlight>
     </View>
   </View>
 );
 
 const mapDispatchToProps = dispatch => ({
   onSortByCreationDate: () => dispatch(sortByCreationDate()),
+	onSortByLastUpdatedDate: () => dispatch(sortByLastUpdatedDate()),
+	onSortByProcessType: () => dispatch(sortByProcessType()),
+	onSortByActionRequested: () => dispatch(sortByActionRequested()),
 });
 
 SideMenu.propTypes = {
   onSortByCreationDate: React.PropTypes.func.isRequired,
+	onSortByLastUpdatedDate: React.PropTypes.func.isRequired,
+	onSortByProcessType: React.PropTypes.func.isRequired,
+	onSortByActionRequested: React.PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(SideMenu);
