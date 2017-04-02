@@ -9,18 +9,19 @@ import {
 
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
-
 import { sortByCreationDate, sortByLastUpdatedDate, sortByProcessType, sortByActionRequested } from '../actions/action_items';
+import { Colors } from '../lib/commons';
+
 
 const style = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: '#e9e9e9',
+    backgroundColor: Colors.IUGray,
     borderBottomWidth: 0.5,
     paddingRight: 10,
   },
   text: {
-    color: '#7B1500',
+    color: Colors.IUCrimson,
     margin: 10,
     fontFamily: 'BentonSansBold, Arial, sans-serif',
     fontWeight: 'bold',

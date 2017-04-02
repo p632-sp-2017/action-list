@@ -2,13 +2,8 @@ export const processInstanceJSON = '[{"id":"12345","processInstanceId":"23456","
 export const preferenceJSON = '{"pageSize":10,"refreshRate":15,"showPrimaryDelegations":true,"showSecondaryDelegations":false,"showSummary":true,"showFilters":true,"columns":[{"name":"processInstanceId","title":"Process Instance","link":"processInstance"},{"name":"processType","title":"Process Type"},{"name":"title","title":"Title"},{"name":"log","title":"Log","icon":"log","link":"log"}],"colors":{"S":"red","A":"orange"},"notifications":{"defaultFrequency":"immediate","primaryDelegation":true,"secondaryDelegation":false,"approval":true,"complete":true,"acknowledge":true,"fyi":false,"processTypeOverrides":{"Some Process":"daily"}}}';
 export const Colors = {
   IUGray: '#e9e9e9',
+  IUCrimson: '#7B1500',
 };
 
 // Adding expanded state and exporting to a hash
-export const processInstances = JSON.parse(processInstanceJSON).map(item => ({
-  ...item,
-  expanded: false,
-})).reduce((hash, item) => ({
-  ...hash,
-  [item.id]: item,
-}), {});
+export const processInstances = JSON.parse(processInstanceJSON);

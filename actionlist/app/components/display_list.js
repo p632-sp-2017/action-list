@@ -3,34 +3,40 @@ import { connect } from 'react-redux';
 import {
   StyleSheet,
   View,
-  ListView,
+  ScrollView,
 } from 'react-native';
-import RenderList from './render_list';
+import Accordion from 'react-native-collapsible/Accordion';
+import ActionItemHeader from './action_item_header';
+import ActionItemBody from './action_item_body';
 
 const styles = StyleSheet.create({
   full_container: {
     backgroundColor: '#ffffff',
   },
+  container: {
+    backgroundColor: '#f4f7f9',
+    paddingTop: 0,
+  },
 });
 
 const DisplayList = ({ dataSource }) => (
   <View style={styles.full_container}>
-    <ListView
-      dataSource={dataSource}
-      renderRow={rowData => <RenderList {...rowData} />}
-    />
+    <ScrollView style={styles.container}>
+      <Accordion
+        sections={dataSource}
+        renderHeader={ActionItemHeader}
+        renderContent={ActionItemBody}
+      />
+    </ScrollView>
   </View>
 );
 
-const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-
 const mapStateToProps = state => ({
-
-  dataSource: ds.cloneWithRows(state.actionItemsReducer.dataSource),
+  dataSource: state.actionItemsReducer.dataSource,
 });
 
 DisplayList.propTypes = {
-  dataSource: React.PropTypes.shape({}).isRequired,
+  dataSource: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
 };
 
 export default connect(mapStateToProps)(DisplayList);
