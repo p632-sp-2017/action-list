@@ -41,24 +41,24 @@ describe('action_items', () => {
     const cardToExpand = 'foobar';
     const beforeState = {
       dataSource: {
-        cardToExpand: {
+        [cardToExpand]: {
           expanded: false,
         },
         cardOne: {
           expanded: false,
         },
         cardTwo: {
-          expanded: true,
+          expanded: false,
         },
         cardThree: {
-          expanded: false,
+          expanded: true,
         },
       },
     };
     const action = toggleItem(cardToExpand);
     const afterState = {
       dataSource: {
-        cardToExpand: {
+        [cardToExpand]: {
           expanded: true,
         },
         cardOne: {
