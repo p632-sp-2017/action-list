@@ -30,23 +30,23 @@ const SideMenu = () => (
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
     <Button style={style.text}>Filter</Button>
-		<View style={style.view}>
-			<Text style={style.text}>
+		  <View style={style.view}>
+			 <Text style={style.text}>
 				Sort
-			</Text>
-			<TouchableHighlight onPress={() => oncreateSortDate()}>
+			 </Text>
+			 <TouchableHighlight onPress={() => oncreateSortDate()}>
 				<Button style={style.text}>Date Created</Button>
-			</TouchableHighlight>
-    	<TouchableHighlight onPress={() => onlastUpdatedSortDate()}>
+			 </TouchableHighlight>
+    	 <TouchableHighlight onPress={() => onlastUpdatedSortDate()}>
 				<Button style={style.text}>Last Updated</Button>
-			</TouchableHighlight>
-			<TouchableHighlight onPress={() => onsortProcessType()}>
+			 </TouchableHighlight>
+			 <TouchableHighlight onPress={() => onsortProcessType()}>
 				<Button style={style.text}>Process Type</Button>
-			</TouchableHighlight>
-			<TouchableHighlight onPress={() => onsortActionRequested()}>
+			 </TouchableHighlight>
+			 <TouchableHighlight onPress={() => onsortActionRequested()}>
 				<Button style={style.text}>Action Requested</Button>
-			</TouchableHighlight>
-		</View>
+			 </TouchableHighlight>
+		  </View>
  	</View>
 );
 
