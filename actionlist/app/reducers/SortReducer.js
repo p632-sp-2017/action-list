@@ -9,8 +9,7 @@ export const defaultState = {
 };
 
 
-
-const sortByCreationDate = (state,action) => {
+const sortByCreationDate = (state, action) => {
   return {
     ...state,
     drawerExpanded: !state.drawerExpanded,

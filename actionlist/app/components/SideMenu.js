@@ -3,7 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native';
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
