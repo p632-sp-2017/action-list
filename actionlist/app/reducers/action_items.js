@@ -11,21 +11,25 @@ export const defaultState = {
 // ToggleHelper to toggleback already opened card when other card is clicked
 const toggleHelper = (dataSource) => {
   const temp = {};
-  Object.keys(dataSource).forEach((key) => {
-    const val = dataSource[key];
-    val.expanded = false;
-    temp[key] = val;
+  Object.keys(dataSource).map((key) => {
+    const obj = dataSource[key];
+    temp[key] = {
+      ...obj,
+      expanded: false,
+    };
+    return 0;
   });
   return temp;
 };
 
-const toggleItem = (state, action) => {
-  let dataSource = state.dataSource;
-  const oldItem = dataSource[action.payload];
-  if (!oldItem.expanded) {
-    dataSource = toggleHelper(dataSource);
-  }
 
+const toggleItem = (state, action) => {
+  let dataS = state.dataSource;
+  const oldItem = dataS[action.payload];
+
+  if (!oldItem.expanded) {
+    dataS = toggleHelper(dataS);
+  }
   const newItem = {
     ...oldItem,
     expanded: !oldItem.expanded,
@@ -34,7 +38,7 @@ const toggleItem = (state, action) => {
   return {
     ...state,
     dataSource: {
-      ...dataSource,
+      ...dataS,
       [action.payload]: newItem,
     },
   };

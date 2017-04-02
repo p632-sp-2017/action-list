@@ -35,3 +35,47 @@ describe('action_items', () => {
     expect(reducer(beforeState, action)).toEqual(afterState);
   });
 });
+
+describe('action_items', () => {
+  it('should have only one card open at a time', () => {
+    const cardToExpand = 'foobar';
+    const beforeState = {
+      dataSource: {
+        cardToExpand: {
+          expanded: false,
+        },
+        cardOne: {
+          expanded: false,
+        },
+        cardTwo: {
+          expanded: true,
+        },
+        cardThree: {
+          expanded: false,
+        },
+      },
+    };
+    const action = toggleItem(cardToExpand);
+    const afterState = {
+      dataSource: {
+        cardToExpand: {
+          expanded: true,
+        },
+        cardOne: {
+          expanded: false,
+        },
+        cardTwo: {
+          expanded: false,
+        },
+        cardThree: {
+          expanded: false,
+        },
+      },
+    };
+
+    deepFreeze(beforeState);
+    deepFreeze(action);
+
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
