@@ -30,7 +30,8 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ onFilterByDocumentRouteStatus, onFilterByActionRequested, onFilterByDocumentType, onFilterByDocumentCreationDate, onFilterByDocumentAssignedDate }) => (
+const SideMenu = ({ onFilterByDocumentRouteStatus, onFilterByActionRequested, 
+  onFilterByDocumentType, onFilterByDocumentCreationDate, onFilterByDocumentAssignedDate }) => (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
@@ -48,7 +49,7 @@ const SideMenu = ({ onFilterByDocumentRouteStatus, onFilterByActionRequested, on
       <TouchableHighlight onPress={() => onFilterByDocumentCreationDate()}>
         <Text style={style.text}>Document Creation Date</Text>
       </TouchableHighlight>
-       <TouchableHighlight onPress={() => onFilterByDocumentAssignedDate()}>
+      <TouchableHighlight onPress={() => onFilterByDocumentAssignedDate()}>
         <Text style={style.text}>Document Assigned Date</Text>
       </TouchableHighlight>
     </View>
@@ -71,5 +72,6 @@ SideMenu.propTypes = {
   onFilterByDocumentCreationDate: React.PropTypes.func.isRequired,
   onFilterByDocumentAssignedDate: React.PropTypes.func.isRequired,
 };
+
 
 export default connect(null, mapDispatchToProps)(SideMenu);
