@@ -29,14 +29,15 @@ const style = StyleSheet.create({
 });
 
 const SideMenu = () => (
-  <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Prefrences</Button>
-    <Button style={style.text}>Filter</Button>
+<View style={style.view}>
+  <Button style={style.text}>Home</Button>
+  <Button style={style.text}>Prefrences</Button>
+  <Button style={style.text}>Filter</Button>
 		<View style={style.view}>
-			<Text style={style.text}>
-				Sort
+		  <Text style={style.text}>
+			  Sort
 			</Text>
+<<<<<<< HEAD
         <TouchableHighlight onPress = {() => onCreateSortData.id)}>
 				<Button style={style.text}> Date Created</Button>
         </TouchableHighlight>
@@ -44,6 +45,21 @@ const SideMenu = () => (
 				<Button style={style.text}>Process Type</Button>
 				<Button style={style.text}>Action Requested</Button>
 		</View>
+=======
+			<TouchableHighlight onPress={() => oncreateSortDate()}>
+			  <Button style={style.text}>Date Created</Button>
+			</TouchableHighlight>
+    	<TouchableHighlight onPress={() => onlastUpdatedSortDate()}>
+			  <Button style={style.text}>Last Updated</Button>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onsortProcessType()}>
+			  <Button style={style.text}>Process Type</Button>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onsortActionRequested()}>
+			  <Button style={style.text}>Action Requested</Button>
+			</TouchableHighlight>
+		  </View>
+>>>>>>> origin/sortfeature
  	</View>
 );
 
