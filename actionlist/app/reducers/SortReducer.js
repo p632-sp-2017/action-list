@@ -8,14 +8,11 @@ export const defaultState = {
   dataSource: processInstances,
 };
 
-
-const sortByCreationDate = (state, action) => {
+const sortByCreationDate = (state) => {
   return {
     ...state,
-    drawerExpanded: !state.drawerExpanded,
   };
 };
-
 
 export default handleActions({
   [SORT_BY_CREATION_DATE]: sortByCreationDate,
