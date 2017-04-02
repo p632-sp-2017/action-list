@@ -1,6 +1,6 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { SORT_BY_CREATE_DATE } from '../actions/types';
+import { SORT_BY_CREATION_DATE } from '../actions/types';
 import { processInstances } from '../lib/commons';
 
 
@@ -19,5 +19,5 @@ const sortByCreationDate = (state,action) => {
 
 
 export default handleActions({
-  [SORT_BY_CREATE_DATE]: sortByCreationDate,
+  [SORT_BY_CREATION_DATE]: sortByCreationDate,
 }, defaultState);

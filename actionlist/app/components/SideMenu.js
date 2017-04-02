@@ -8,7 +8,7 @@ import {
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
 
-import { sortByCreationDate} from '../actions/action_items';
+import { sortByCreationDate } from '../actions/action_items';
 
 const style = StyleSheet.create({
   view: {
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = () => (
+const SideMenu = ({ onSortByCreationDate }) => (
 <View style={style.view}>
   <Button style={style.text}>Home</Button>
   <Button style={style.text}>Prefrences</Button>
@@ -47,8 +47,11 @@ const SideMenu = () => (
  	</View>
 );
 
+
+
 const mapDispatchToProps = dispatch => ({
   onSortByCreationDate: () => dispatch(sortByCreationDate()),
 });
+
 
 export default connect(null, mapDispatchToProps)(SideMenu);
