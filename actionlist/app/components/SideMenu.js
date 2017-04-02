@@ -29,24 +29,23 @@ const style = StyleSheet.create({
 });
 
 const SideMenu = ({ onSortByCreationDate }) => (
-<View style={style.view}>
-  <Button style={style.text}>Home</Button>
-  <Button style={style.text}>Prefrences</Button>
-  <Button style={style.text}>Filter</Button>
+	<View style={style.view}>
+  	<Button style={style.text}>Home</Button>
+  	<Button style={style.text}>Prefrences</Button>
+  	<Button style={style.text}>Filter</Button>
 		<View style={style.view}>
-		  <Text style={style.text}>
-			  Sort
+			<Text style={style.text}>
+				Sort
 			</Text>
-        <TouchableHighlight onPress = {() => onSortByCreationDate()}>
-				  <Text style={style.text}> Date Created</Text>
-        </TouchableHighlight>
-				<Button style={style.text}>Last Updated</Button>
-				<Button style={style.text}>Process Type</Button>
-				<Button style={style.text}>Action Requested</Button>
+			<TouchableHighlight onPress = {() => onSortByCreationDate()}>
+				<Text style={style.text}> Date Created</Text>
+      </TouchableHighlight>
+			<Button style={style.text}>Last Updated</Button>
+			<Button style={style.text}>Process Type</Button>
+			<Button style={style.text}>Action Requested</Button>
 		</View>
  	</View>
 );
-
 
 
 const mapDispatchToProps = dispatch => ({
