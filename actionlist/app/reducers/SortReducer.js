@@ -14,7 +14,7 @@ const toggler = (dataSource) => {
     const obj = dataSource[key];
     temp[key] = {
       ...obj,
-      title: "Test",
+      title: 'Test',
     };
   });
   return temp;
@@ -26,8 +26,8 @@ const sortByCreationDate = (state) => {
   return {
     ...state,
     dataSource: {
-      ...dataS
-    }
+      ...dataS,
+    },
   };
 };
 

@@ -33,6 +33,7 @@ const DisplayList = ({ dataSource }) => (
 
 const mapStateToProps = state => ({
   dataSource: state.actionItemsReducer.dataSource,
+
 });
 
 DisplayList.propTypes = {
