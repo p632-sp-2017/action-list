@@ -57,6 +57,7 @@ onSortByProcessType, onSortByActionRequested }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
+  console.log("HEre");
   onSortByCreationDate: () => dispatch(sortByCreationDate()),
 	onSortByLastUpdatedDate: () => dispatch(sortByLastUpdatedDate()),
 	onSortByProcessType: () => dispatch(sortByProcessType()),

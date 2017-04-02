@@ -15,13 +15,13 @@ const toggleHelper = (dataSource) => {
     const obj = dataSource[key];
     temp[key] = {
       ...obj,
-      expanded: false,
+      title: "Test",
     };
   });
   return temp;
 };
 
-
+ 
 const toggleItem = (state, action) => {
   let dataS = state.dataSource;
   const oldItem = dataS[action.payload];

@@ -25,6 +25,7 @@ const DisplayList = ({ dataSource }) => (
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 const mapStateToProps = state => ({
+
   dataSource: ds.cloneWithRows(state.actionItemsReducer.dataSource),
 });
 
@@ -33,3 +34,4 @@ DisplayList.propTypes = {
 };
 
 export default connect(mapStateToProps)(DisplayList);
+ 
