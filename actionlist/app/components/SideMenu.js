@@ -33,25 +33,25 @@ const style = StyleSheet.create({
 const SideMenu = ({ onSortByCreationDate, onSortByLastUpdatedDate,
 onSortByProcessType, onSortByActionRequested }) => (
   <View style={style.view}>
-    <Button style={style.text}>Home</Button>
+		<Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
     <Button style={style.text}>Filter</Button>
     <View style={style.view}>
-		<Text style={style.text}>
-			Sort
-		</Text>
-		<TouchableHighlight onPress={() => onSortByCreationDate()}>
-			<Text style={style.text}> Date Created</Text>
-		</TouchableHighlight>
-		<TouchableHighlight onPress={() => onSortByLastUpdatedDate()}>
-			<Text style={style.text}> Last Updated</Text>
-		</TouchableHighlight>
-		<TouchableHighlight onPress={() => onSortByProcessType()}>
-			<Text style={style.text}> Process Type</Text>
-		</TouchableHighlight>
-		<TouchableHighlight onPress={() => onSortByActionRequested()}>
-			<Text style={style.text}> Action Requested</Text>
-		</TouchableHighlight>
+			<Text style={style.text}>	
+				Sort
+			</Text>
+			<TouchableHighlight onPress={() => onSortByCreationDate()}>
+				<Text style={style.text}> Date Created</Text>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onSortByLastUpdatedDate()}>
+				<Text style={style.text}> Last Updated</Text>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onSortByProcessType()}>
+				<Text style={style.text}> Process Type</Text>
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => onSortByActionRequested()}>
+				<Text style={style.text}> Action Requested</Text>
+			</TouchableHighlight>
     </View>
   </View>
 );
