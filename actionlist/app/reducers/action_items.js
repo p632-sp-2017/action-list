@@ -15,7 +15,6 @@ const toggleItem = (state, action) => {
     ...oldItem,
     expanded: !oldItem.expanded,
   };
-
   return {
     ...state,
     dataSource: {

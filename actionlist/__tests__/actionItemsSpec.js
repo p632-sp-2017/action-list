@@ -1,6 +1,5 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
-
 import reducer from '../app/reducers/action_items';
 import { toggleItem } from '../app/actions/action_items';
 
