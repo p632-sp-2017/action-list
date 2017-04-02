@@ -30,7 +30,8 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ onSortByCreationDate, onSortByLastUpdatedDate, onSortByProcessType, onSortByActionRequested}) => (
+const SideMenu = ({ onSortByCreationDate, onSortByLastUpdatedDate, 
+									 onSortByProcessType, onSortByActionRequested}) => (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
