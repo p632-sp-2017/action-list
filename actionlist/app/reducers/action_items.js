@@ -48,5 +48,5 @@ const toggleDrawer = (state) => {
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_BY_CREATION_DATE]: sortByCreationDate,
-	[SORT_BY_LAST_APPROVED_DATE]: sortByLastApprovedDate,
+  [SORT_BY_LAST_APPROVED_DATE]: sortByLastApprovedDate,
 }, defaultState);

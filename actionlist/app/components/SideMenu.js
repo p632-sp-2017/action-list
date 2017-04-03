@@ -43,7 +43,7 @@ const SideMenu = ({ onSortByCreationDate, onSortByLastApprovedDate }) => (
       <TouchableHighlight onPress={() => onSortByCreationDate()}>
         <Text style={style.text}> Date Created</Text>
       </TouchableHighlight>
-			<TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
+      <TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
         <Text style={style.text}> Date Last Updated</Text>
       </TouchableHighlight>
     </View>
