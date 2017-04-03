@@ -9,7 +9,7 @@ import {
 
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
-import { sortByCreationDate } from '../actions/action_items';
+import { sortByCreationDate, sortByLastApprovedDate } from '../actions/action_items';
 import { Colors } from '../lib/commons';
 
 
@@ -31,7 +31,7 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ onSortByCreationDate }) => (
+const SideMenu = ({ onSortByCreationDate, onSortByLastApprovedDate }) => (
   <View style={style.view}>
     <Button style={style.text}>Home</Button>
     <Button style={style.text}>Prefrences</Button>
@@ -43,20 +43,23 @@ const SideMenu = ({ onSortByCreationDate }) => (
       <TouchableHighlight onPress={() => onSortByCreationDate()}>
         <Text style={style.text}> Date Created</Text>
       </TouchableHighlight>
+			<TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
+        <Text style={style.text}> Date Last Updated</Text>
+      </TouchableHighlight>
     </View>
   </View>
 );
 
 const mapDispatchToProps = dispatch => ({
   onSortByCreationDate: () => dispatch(sortByCreationDate()),
-  // onSortByLastUpdatedDate: () => dispatch(sortByLastUpdatedDate()),
+  onSortByLastApprovedDate: () => dispatch(sortByLastApprovedDate()),
   // onSortByProcessType: () => dispatch(sortByProcessType()),
   // onSortByActionRequested: () => dispatch(sortByActionRequested()),
 });
 
 SideMenu.propTypes = {
   onSortByCreationDate: React.PropTypes.func.isRequired,
-  // onSortByLastUpdatedDate: React.PropTypes.func.isRequired,
+  onSortByLastApprovedDate: React.PropTypes.func.isRequired,
   // onSortByProcessType: React.PropTypes.func.isRequired,
   // onSortByActionRequested: React.PropTypes.func.isRequired,
 };
