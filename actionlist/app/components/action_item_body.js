@@ -40,55 +40,54 @@ const routeLog = () => ({});
 
 const takeAction = () => ({});
 
-const ActionItemBody = ({
-  actionRequested,
-  initiator,
-  lastApprovedDate,
-  processType,
-  processInstanceStatus }) => (
-    <View>
-      <Text>{processType.label}</Text>
-      <Text>{initiator}</Text>
-      <Text>{lastApprovedDate}</Text>
-      <Text>{processInstanceStatus.label}</Text>
-      <Text>{actionRequested.label}</Text>
-      <View style={styles.bodyView}>
-        <Button
-          containerStyle={styles.routeContainer}
-          style={styles.routeButton}
-          onPress={routeLog}
-          title="Route Log"
-        />
-        <Button
-          containerStyle={styles.actionContainer}
-          style={styles.actionButton}
-          onPress={takeAction}
-          title="Take Action"
-        />
-      </View>
+const ActionItemBody = rowData => (
+  <View>
+    <Text>{rowData.processType.label}</Text>
+    <Text>{rowData.initiator}</Text>
+    <Text>{rowData.lastApprovedDate}</Text>
+    <Text>{rowData.processInstanceStatus.label}</Text>
+    <Text>{rowData.actionRequested.label}</Text>
+    <View style={styles.bodyView}>
+      <Button
+        containerStyle={styles.routeContainer}
+        style={styles.routeButton}
+        onPress={routeLog}
+        title="Route Log"
+      />
+      <Button
+        containerStyle={styles.actionContainer}
+        style={styles.actionButton}
+        onPress={takeAction}
+        title="Take Action"
+      />
     </View>
+  </View>
 );
 
-export default ActionItemBody;
-
 ActionItemBody.propTypes = {
-  processType: React.PropTypes.shape({
-    label: React.PropTypes.string,
-  }).isRequired,
-  actionRequested: React.PropTypes.shape({
-    label: React.PropTypes.string,
-  }).isRequired,
-  initiator: React.PropTypes.string.isRequired,
-  lastApprovedDate: React.PropTypes.string.isRequired,
-  processInstanceStatus: React.PropTypes.shape({
-    label: React.PropTypes.string,
+  rowData: React.PropTypes.shape({
+    processType: React.PropTypes.shape({
+      label: React.PropTypes.string,
+    }).isRequired,
+    actionRequested: React.PropTypes.shape({
+      label: React.PropTypes.string,
+    }).isRequired,
+    initiator: React.PropTypes.string.isRequired,
+    lastApprovedDate: React.PropTypes.string.isRequired,
+    processInstanceStatus: React.PropTypes.shape({
+      label: React.PropTypes.string,
+    }).isRequired,
   }).isRequired,
 };
 
 ActionItemBody.defaultProps = {
-  processType: { label: {} },
-  actionRequested: { label: {} },
-  initiator: '',
-  lastApprovedDate: '',
-  processInstanceStatus: { label: {} },
+  rowData: {
+    processType: { label: {} },
+    actionRequested: { label: {} },
+    initiator: '',
+    lastApprovedDate: '',
+    processInstanceStatus: { label: {} },
+  },
 };
+
+export default ActionItemBody;

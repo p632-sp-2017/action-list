@@ -4,7 +4,6 @@
  * https://github.com/p632-sp-2017/action-list
  * @flow
  */
-
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
