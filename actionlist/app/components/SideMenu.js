@@ -3,13 +3,13 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight,
 } from 'react-native';
 
+/* eslint-disable no-unused-vars */
 import Button from 'react-native-button';
-
+import Accordion from 'react-native-collapsible/Accordion';
+import RadioButtons from 'react-native-radio-buttons';
 import { connect } from 'react-redux';
-
 import { filterByDocumentRouteStatus, filterByActionRequested, filterByDocumentType, filterByDocumentCreationDate, filterByDocumentAssignedDate } from '../actions/action_items';
 
 const style = StyleSheet.create({
@@ -22,38 +22,80 @@ const style = StyleSheet.create({
   text: {
     color: '#7B1500',
     margin: 10,
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    fontFamily: 'BentonSansBold,   Arial, sans-serif',
     fontWeight: 'bold',
     fontSize: 15,
     textAlign: 'left',
     borderBottomWidth: 0.5,
   },
+  headerText: {
+    fontSize: 10,
+    color: '#7B1500',
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    margin: 10,
+  },
+  content: {
+    fontSize: 10,
+    color: '#7B1500',
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    margin: 10,
+  },
 });
 
-const SideMenu = ({ onFilterByDocumentRouteStatus, onFilterByActionRequested, onFilterByDocumentType, onFilterByDocumentCreationDate, onFilterByDocumentAssignedDate }) => (
-  <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Prefrences</Button>
-    <View style={style.view}>
-      <Text style={style.text}> Filter </Text>
-      <TouchableHighlight onPress={() => onFilterByDocumentRouteStatus()}>
-        <Text style={style.text}>Document Route Status</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onFilterByActionRequested()}>
-        <Text style={style.text}>Action Requested</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onFilterByDocumentType()}>
-        <Text style={style.text}>Document Type</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onFilterByDocumentCreationDate()}>
-        <Text style={style.text}>Document Creation Date</Text>
-      </TouchableHighlight>
-       <TouchableHighlight onPress={() => onFilterByDocumentAssignedDate()}>
-        <Text style={style.text}>Document Assigned Date</Text>
-      </TouchableHighlight>
-    </View>
-    <Button style={style.text}>Sort</Button>
+const FILTERS = [
+  {
+    title: 'Document Route Status',
+    data: ['one', 'two'],
+  },
+  {
+    title: 'Document Type',
+    data: ['one', 'two'],
+  },
+  {
+    title: 'Action Requested',
+    data: ['one', 'two'],
+  },
+  {
+    title: 'Document Created Date',
+    data: ['one', 'two'],
+  },
+  {
+    title: 'Document Assigned Date',
+    data: ['one', 'two'],
+  },
+];
+
+const renderHeader = section => (
+  <View style={style.header}>
+    <Text style={style.headerText}>{section.title}</Text>
   </View>
+);
+
+const renderContent = section => (
+  <View style={style.content}>
+    <RadioButtons
+      options={section.data}
+    />
+  </View>
+);
+
+const SideMenu = ({
+  onFilterByDocumentRouteStatus,
+  onFilterByActionRequested,
+  onFilterByDocumentType,
+  onFilterByDocumentCreationDate,
+  onFilterByDocumentAssignedDate }) => (
+    <View style={style.view}>
+      <Button style={style.text}>Home</Button>
+      <Button style={style.text}>Prefrences</Button>
+      <Text style={style.text}>Filter</Text>
+      <Accordion
+        sections={FILTERS}
+        renderHeader={renderHeader}
+        renderContent={renderContent}
+      />
+      <Button style={style.text}>Sort</Button>
+    </View>
 );
 
 const mapDispatchToProps = dispatch => ({
@@ -71,5 +113,6 @@ SideMenu.propTypes = {
   onFilterByDocumentCreationDate: React.PropTypes.func.isRequired,
   onFilterByDocumentAssignedDate: React.PropTypes.func.isRequired,
 };
+/* eslint-enable no-unused-vars */
 
 export default connect(null, mapDispatchToProps)(SideMenu);
