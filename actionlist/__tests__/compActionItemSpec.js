@@ -4,14 +4,13 @@ import { View, Text, Image } from 'react-native';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
-import ActionItem from '../app/components/action_item';
-import ActionItemBody from '../app/components/action_item_body';
+import ActionItemHeader from '../app/components/action_item_header';
 
 require('react-native-mock-render/mock');
 
 jest.unmock('redux-mock-store');
 
-jest.unmock('../app/components/action_item');
+jest.unmock('../app/components/action_item_header');
 
 const jsdom = require('jsdom').jsdom;
 
@@ -27,10 +26,10 @@ describe('action_items', () => {
   it('should take props and contain row title, actual lengths and should not contain the ActionItemBody child component as expanded is false', () => {
     const props = {
       rowData: {
-        expanded: false,
         title: 'Hello World',
       },
-      onToggle: () => {},
+      index: 3,
+      isActive: true,
     };
     const middlewares = [];
     const initialState = {};
@@ -38,27 +37,20 @@ describe('action_items', () => {
     const store = mockStore(initialState);
     const wrapper = mount(
       <Provider store={store}>
-        <ActionItem {...props} />
+        <ActionItemHeader {...props} />
       </Provider>);
-    expect(wrapper.find(View).find(View).find(Text)
-      .first()
-        .text()).to.equal('Hello World');
-    expect(wrapper.find(View).length).to.equal(3);
-    expect(wrapper.find(View).find(View)
+    expect(wrapper.find(View).find(Text)
+          .text()).to.equal('Hello World');
+    expect(wrapper.find(View)
       .first().length).to.equal(1);
-    expect(wrapper.find(View).find(View)
-      .first().find(Image)
-        .first()).to.have.length(1);
-    expect(wrapper.find(View).find(View).contains(ActionItemBody))
-      .to.equal(false);
   });
   it('should contain image source according to the props passed', () => {
     const props = {
       rowData: {
-        expanded: false,
         title: 'Hello World',
       },
-      onToggle: () => {},
+      index: 3,
+      isActive: false,
     };
     const middlewares = [];
     const icons = {
@@ -73,12 +65,12 @@ describe('action_items', () => {
     const store = mockStore(initialState);
     const wrapper = mount(
       <Provider store={store}>
-        <ActionItem {...props} />
+        <ActionItemHeader {...props} />
       </Provider>);
-    expect(wrapper.find(View).find(View)
+    expect(wrapper.find(View)
       .first().find(Image)
         .first()).to.have.length(1);
-    expect(wrapper.find(View).find(View)
+    expect(wrapper.find(View)
       .first().find(Image)
         .first()
           .props().source).to.equal(icons.down);
