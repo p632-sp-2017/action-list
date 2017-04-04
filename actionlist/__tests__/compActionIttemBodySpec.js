@@ -6,20 +6,9 @@ import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import ActionItemBody from '../app/components/action_item_body';
 
-require('react-native-mock-render/mock');
+require('../testConfig')
 
-jest.unmock('redux-mock-store');
 jest.unmock('../app/components/action_item_body');
-
-const jsdom = require('jsdom').jsdom;
-
-global.document = jsdom('');
-global.window = document.defaultView;
-Object.keys(document.defaultView).forEach((property) => {
-  if (typeof global[property] === 'undefined') {
-    global[property] = document.defaultView[property];
-  }
-});
 
 describe('Action_Item_Body', () => {
   it('correctly passes our props to Text Components in the View Component', () => {
