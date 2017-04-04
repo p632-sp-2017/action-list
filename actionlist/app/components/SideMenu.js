@@ -71,13 +71,56 @@ const renderHeader = section => (
   </View>
 );
 
-const renderContent = section => (
-  <View style={style.content}>
-    <RadioButtons
-      options={section.data}
-    />
-  </View>
-);
+const renderContent = section => {
+  switch(section.title){
+    case "Document Route Status": {
+        return (
+          <View style={style.content}>
+            <RadioButtons
+              options={section.data}
+              onSelection={ onFilterByDocumentRouteStatus }
+            />
+          </View>
+        );
+    }
+    case "Document Type": {
+      return(
+          <View style={style.content}>
+            <RadioButtons
+              options={section.data}
+            />
+          </View>
+        );
+      }
+    case "Action Requested": {
+      return(
+        <View style={style.content}>
+          <RadioButtons
+            options={section.data}
+          />
+        </View>
+      );
+    }
+    case "Document Created Date": {
+        return(
+          <View style={style.content}>
+            <RadioButtons
+              options={section.data}
+            />
+          </View>
+        );
+    }
+    case "Document Assigned Date": {
+      return(
+          <View style={style.content}>
+            <RadioButtons
+              options={section.data}
+            />
+          </View>
+      )
+    }
+  }
+};
 
 const SideMenu = ({
   onFilterByDocumentRouteStatus,
