@@ -36,16 +36,21 @@ const toggleDrawer = (state) => {
 };
 
 const filterActionList = (state,action) => {
-  filtereddataSource = filterfunction(defaultState,action.payload.value,action.payload.filterType)
-  return{
-    ...state,
-    dataSource: {
-      ...filtereddataSource
-    }
-    defaultFilterStatus:{
+  const filtereddataSource = defaultState.dataSource;
+  const temp = action.payload.filterType;
+  defaultState.FilterStatus.temp = action.payload.value;
+  console.log( defaultState.FilterStatus.temp);
+  // filtereddataSource.filter((actionItem) => {
+  //   const filterCriteria = "test";
+  //   return
+  // });
+  // return{
+  //   ...state,
+  //   dataSource: {
+  //     ...filtereddataSource
+  //   }
 
-    }
-  }
+  // }
   console.log(action.payload.value);
   console.log(action.payload.filterType);
 }
