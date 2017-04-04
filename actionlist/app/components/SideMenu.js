@@ -45,7 +45,7 @@ const style = StyleSheet.create({
 const FILTERS = [
   {
     title: 'Document Route Status',
-    data: ['one', 'two'],
+    data: ['All', 'Saved', 'Initiated', 'Disapproved', 'Enroute', 'Approved', 'Final', 'Processed', 'Exception', 'Canceled'],
   },
   {
     title: 'Document Type',
@@ -53,7 +53,7 @@ const FILTERS = [
   },
   {
     title: 'Action Requested',
-    data: ['one', 'two'],
+    data: ['All', 'Approve', 'Complete', 'Acknowledge', 'FYI'],
   },
   {
     title: 'Document Created Date',
