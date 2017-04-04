@@ -1,12 +1,16 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
 import { TOGGLE_ITEM, TOGGLE_DRAWER } from '../actions/types';
-import { processInstances } from '../lib/commons';
+import { FILTER_ACTION_LIST } from '../actions/types';
+import { processInstances,filterStatus } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
+  FilterStatus: filterStatus,
 };
+
+
 
 const toggleItem = (state, action) => {
   const dataSource = state.dataSource;
@@ -15,7 +19,6 @@ const toggleItem = (state, action) => {
     ...oldItem,
     expanded: !oldItem.expanded,
   };
-
   return {
     ...state,
     dataSource: {
@@ -32,8 +35,23 @@ const toggleDrawer = (state) => {
   };
 };
 
+const filterActionList = (state,action) => {
+  filtereddataSource = filterfunction(defaultState,action.payload.value,action.payload.filterType)
+  return{
+    ...state,
+    dataSource: {
+      ...filtereddataSource
+    }
+    defaultFilterStatus:{
+
+    }
+  }
+  console.log(action.payload.value);
+  console.log(action.payload.filterType);
+}
 export default handleActions({
   [TOGGLE_ITEM]: toggleItem,
   [TOGGLE_DRAWER]: toggleDrawer,
+  [FILTER_ACTION_LIST]: filterActionList,
 }, defaultState);
 

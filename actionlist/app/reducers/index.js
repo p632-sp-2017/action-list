@@ -4,5 +4,4 @@ import filterReducer from './FilterReducer';
 
 export default combineReducers({
   actionItemsReducer,
-  filterReducer,
 });

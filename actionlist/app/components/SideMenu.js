@@ -11,7 +11,7 @@ import Button from 'react-native-button';
 import Accordion from 'react-native-collapsible/Accordion';
 import RadioButtons from 'react-native-radio-buttons';
 import { connect } from 'react-redux';
-import { filterByDocumentRouteStatus, filterByActionRequested, filterByDocumentType, filterByDocumentCreationDate, filterByDocumentAssignedDate } from '../actions/action_items';
+import { filterActionList } from '../actions/action_items';
 import { filterTypes } from '../lib/commons';
 
 const style = StyleSheet.create({
@@ -75,12 +75,7 @@ const FILTERS = [
 
 
 
-const SideMenu = ({
-  onFilterByDocumentRouteStatus,
-  onFilterByActionRequested,
-  onFilterByDocumentType,
-  onFilterByDocumentCreationDate,
-  onFilterByDocumentAssignedDate }) => (
+const SideMenu = ({ onActionListFiltering }) => (
     <ScrollView style={style.container}>
       <View style={style.view}>
         <Button style={style.text}>Home</Button>
@@ -92,7 +87,7 @@ const SideMenu = ({
         <View style={style.content}>
           <RadioButtons
             options={FILTERS[0].data}
-            onSelection={ (selectedOption) => onFilterByDocumentRouteStatus(selectedOption) }
+            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
           />
         </View>
         <View style={style.header}>
@@ -101,6 +96,7 @@ const SideMenu = ({
         <View style={style.content}>
           <RadioButtons
             options={FILTERS[1].data}
+            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
           />
         </View>
         <View style={style.header}>
@@ -109,6 +105,7 @@ const SideMenu = ({
         <View style={style.content}>
           <RadioButtons
            options={FILTERS[2].data}
+           onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
           />
         </View>
         <View style={style.header}>
@@ -117,6 +114,7 @@ const SideMenu = ({
         <View style={style.content}>
           <RadioButtons
             options={FILTERS[3].data}
+            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
           />
         </View>
         <View style={style.header}>
@@ -125,27 +123,20 @@ const SideMenu = ({
         <View style={style.content}>
           <RadioButtons
             options={FILTERS[4].data}
+            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
           />
         </View>
-        <Button style={style.text}>Sort</Button>
-    </View>
+        </View>
     </ScrollView>
 );
 
+
 const mapDispatchToProps = dispatch => ({
-  onFilterByDocumentRouteStatus: (value) => dispatch(filterByDocumentRouteStatus(value)),
-  onFilterByActionRequested: () => dispatch(filterByActionRequested()),
-  onFilterByDocumentType: () => dispatch(filterByDocumentType()),
-  onFilterByDocumentCreationDate: () => dispatch(filterByDocumentCreationDate()),
-  onFilterByDocumentAssignedDate: () => dispatch(filterByDocumentAssignedDate()),
+  onActionListFiltering: (filterType,value) => dispatch(filterActionList({"filterType":filterType,"value":value})),
 });
 
 SideMenu.propTypes = {
-  onFilterByDocumentRouteStatus: React.PropTypes.func.isRequired,
-  onFilterByActionRequested: React.PropTypes.func.isRequired,
-  onFilterByDocumentType: React.PropTypes.func.isRequired,
-  onFilterByDocumentCreationDate: React.PropTypes.func.isRequired,
-  onFilterByDocumentAssignedDate: React.PropTypes.func.isRequired,
+  onActionListFiltering: React.PropTypes.func.isRequired,
 };
 /* eslint-enable no-unused-vars */
 
