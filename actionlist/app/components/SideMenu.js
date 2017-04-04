@@ -12,6 +12,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import RadioButtons from 'react-native-radio-buttons';
 import { connect } from 'react-redux';
 import { filterByDocumentRouteStatus, filterByActionRequested, filterByDocumentType, filterByDocumentCreationDate, filterByDocumentAssignedDate } from '../actions/action_items';
+import { filterTypes } from '../lib/commons';
 
 const style = StyleSheet.create({
   view: {
@@ -86,7 +87,7 @@ const SideMenu = ({
         <Button style={style.text}>Prefrences</Button>
         <Text style={style.text}>Filter</Text>
         <View style={style.header}>
-          <Text style={style.headerText}>Document Route Status</Text>
+          <Text style={style.headerText}>{filterTypes.DocumentRouteStatus}</Text>
         </View>
         <View style={style.content}>
           <RadioButtons
@@ -95,7 +96,7 @@ const SideMenu = ({
           />
         </View>
         <View style={style.header}>
-          <Text style={style.headerText}>Document Type</Text>
+          <Text style={style.headerText}>{filterTypes.DocumentType}</Text>
         </View>
         <View style={style.content}>
           <RadioButtons
@@ -103,7 +104,7 @@ const SideMenu = ({
           />
         </View>
         <View style={style.header}>
-          <Text style={style.headerText}>Action Requested</Text>
+          <Text style={style.headerText}>{filterTypes.ActionRequested}</Text>
         </View>
         <View style={style.content}>
           <RadioButtons
@@ -111,7 +112,7 @@ const SideMenu = ({
           />
         </View>
         <View style={style.header}>
-         <Text style={style.headerText}>Document Created Date</Text>
+         <Text style={style.headerText}>{filterTypes.DocumentCreatedDate}</Text>
         </View>
         <View style={style.content}>
           <RadioButtons
@@ -119,7 +120,7 @@ const SideMenu = ({
           />
         </View>
         <View style={style.header}>
-         <Text style={style.headerText}>Document Assigned Date</Text>
+         <Text style={style.headerText}>{filterTypes.DocumentAssignedDate}</Text>
         </View>
         <View style={style.content}>
           <RadioButtons

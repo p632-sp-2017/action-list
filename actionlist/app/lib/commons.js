@@ -3,6 +3,13 @@ export const preferenceJSON = '{"pageSize":10,"refreshRate":15,"showPrimaryDeleg
 export const Colors = {
   IUGray: '#e9e9e9',
 };
+export const filterTypes = {
+	DocumentRouteStatus: 'Document Route Status',
+	DocumentType : 'Document Type',
+	ActionRequested : 'Action Requested',
+	DocumentCreatedDate : 'Document Created Date',
+	DocumentAssignedDate : 'Document Assigned Date',
+};
 
 // Adding expanded state and exporting to a hash
 export const processInstances = JSON.parse(processInstanceJSON).map(item => ({
