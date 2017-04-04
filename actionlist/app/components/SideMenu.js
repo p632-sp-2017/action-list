@@ -2,8 +2,8 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  Button,
 } from 'react-native';
-import Button from 'react-native-button';
 import { Colors } from '../lib/commons';
 
 const style = StyleSheet.create({
@@ -26,10 +26,10 @@ const style = StyleSheet.create({
 
 const SideMenu = () => (
   <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Prefrences</Button>
-    <Button style={style.text}>Filter</Button>
-    <Button style={style.text}>Sort</Button>
+    <Button style={style.text} title="Home" onPress="" />
+    <Button style={style.text} title="Preferences" onPress="" />
+    <Button style={style.text} title="Filter" onPress="" />
+    <Button style={style.text} title="Sort" onPress="" />
   </View>
 );
 
