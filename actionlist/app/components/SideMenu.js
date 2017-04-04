@@ -29,9 +29,27 @@ const style = StyleSheet.create({
     textAlign: 'left',
     borderBottomWidth: 0.5,
   },
+  subtext: {
+    color: Colors.IUCrimson,
+    marginLeft: 15,
+    marginBottom: 10,
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    fontSize: 10,
+    textAlign: 'left',
+  },
+  selected_text: {
+    color: Colors.IUCrimson,
+    marginLeft: 15,
+    marginBottom: 10,
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    fontSize: 10,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  }
 });
 
-const SideMenu = ({ onSortByCreationDate,
+const SideMenu = ({ sort_value,
+  onSortByCreationDate,
   onSortByLastApprovedDate,
   onSortByProcessType,
   onSortByActionRequested }) => (
@@ -44,20 +62,24 @@ const SideMenu = ({ onSortByCreationDate,
           Sort
         </Text>
         <TouchableHighlight onPress={() => onSortByCreationDate()}>
-          <Text style={style.text}> Date Created</Text>
+          <Text style={(sort_value == 'CreationDate') ? style.selected_text : style.subtext}> Date Created</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
-          <Text style={style.text}> Date Last Approved</Text>
+          <Text style={(sort_value == 'ApprovedDate') ? style.selected_text : style.subtext}> Date Last Approved</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onSortByProcessType()}>
-          <Text style={style.text}> Process Type</Text>
+          <Text style={(sort_value == 'ProcessType') ? style.selected_text : style.subtext}> Process Type</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onSortByActionRequested()}>
-          <Text style={style.text}> Action Requested</Text>
+          <Text style={(sort_value == 'ActionRequested') ? style.selected_text : style.subtext}> Action Requested</Text>
         </TouchableHighlight>
       </View>
     </View>
   );
+  
+const mapStateToProps = state => ({
+  sort_value: state.actionItemsReducer.sort_value,
+});
 
 const mapDispatchToProps = dispatch => ({
   onSortByCreationDate: () => dispatch(sortByCreationDate()),
@@ -73,4 +95,4 @@ SideMenu.propTypes = {
   onSortByActionRequested: React.PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(SideMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

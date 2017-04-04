@@ -6,6 +6,7 @@ import { processInstances } from '../lib/commons';
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
+  sort_value: '',
 };
 
 const sortByCreationDate = (state) => {
@@ -21,6 +22,7 @@ const sortByCreationDate = (state) => {
     dataSource: [
       ...sortedByCreationDate,
     ],
+    sort_value: 'CreationDate',
   };
 };
 
@@ -36,6 +38,7 @@ const sortByLastApprovedDate = (state) => {
     dataSource: [
       ...sortedByLastApproved,
     ],
+    sort_value: 'ApprovedDate',
   };
 };
 
@@ -58,6 +61,7 @@ const sortByProcessType = (state) => {
     dataSource: [
       ...sortedByProcessType,
     ],
+    sort_value: 'ProcessType',
   };
 };
 
@@ -79,6 +83,7 @@ const sortByActionRequested = (state) => {
     dataSource: [
       ...sortedByActionRequested,
     ],
+    sort_value: 'ActionRequested',
   };
 };
 
