@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  ScrollView,
 } from 'react-native';
 
 /* eslint-disable no-unused-vars */
@@ -40,7 +41,12 @@ const style = StyleSheet.create({
     fontFamily: 'BentonSansBold, Arial, sans-serif',
     margin: 10,
   },
+  container: {
+    backgroundColor: '#f4f7f9',
+    paddingTop: 0,
+  },
 });
+
 
 const FILTERS = [
   {
@@ -66,63 +72,67 @@ const FILTERS = [
 ];
 
 
+
+
 const SideMenu = ({
   onFilterByDocumentRouteStatus,
   onFilterByActionRequested,
   onFilterByDocumentType,
   onFilterByDocumentCreationDate,
   onFilterByDocumentAssignedDate }) => (
-    <View style={style.view}>
-      <Button style={style.text}>Home</Button>
-      <Button style={style.text}>Prefrences</Button>
-      <Text style={style.text}>Filter</Text>
-      <View style={style.header}>
-        <Text style={style.headerText}>Document Route Status</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[0].data}
-        />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>Document Type</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[1].data}
-        />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>Action Requested</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[2].data}
-        />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>Document Created Date</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[3].data}
-        />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>Document Assigned Date</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
+    <ScrollView style={style.container}>
+      <View style={style.view}>
+        <Button style={style.text}>Home</Button>
+        <Button style={style.text}>Prefrences</Button>
+        <Text style={style.text}>Filter</Text>
+        <View style={style.header}>
+          <Text style={style.headerText}>Document Route Status</Text>
+        </View>
+        <View style={style.content}>
+          <RadioButtons
+            options={FILTERS[0].data}
+            onSelection={ (selectedOption) => onFilterByDocumentRouteStatus(selectedOption) }
+          />
+        </View>
+        <View style={style.header}>
+          <Text style={style.headerText}>Document Type</Text>
+        </View>
+        <View style={style.content}>
+          <RadioButtons
+            options={FILTERS[1].data}
+          />
+        </View>
+        <View style={style.header}>
+          <Text style={style.headerText}>Action Requested</Text>
+        </View>
+        <View style={style.content}>
+          <RadioButtons
+           options={FILTERS[2].data}
+          />
+        </View>
+        <View style={style.header}>
+         <Text style={style.headerText}>Document Created Date</Text>
+        </View>
+        <View style={style.content}>
+          <RadioButtons
+            options={FILTERS[3].data}
+          />
+        </View>
+        <View style={style.header}>
+         <Text style={style.headerText}>Document Assigned Date</Text>
+        </View>
+        <View style={style.content}>
+          <RadioButtons
             options={FILTERS[4].data}
-        />
-      </View>
-
-      <Button style={style.text}>Sort</Button>
+          />
+        </View>
+        <Button style={style.text}>Sort</Button>
     </View>
+    </ScrollView>
 );
 
 const mapDispatchToProps = dispatch => ({
-  onFilterByDocumentRouteStatus: () => dispatch(filterByDocumentRouteStatus()),
+  onFilterByDocumentRouteStatus: (value) => dispatch(filterByDocumentRouteStatus(value)),
   onFilterByActionRequested: () => dispatch(filterByActionRequested()),
   onFilterByDocumentType: () => dispatch(filterByDocumentType()),
   onFilterByDocumentCreationDate: () => dispatch(filterByDocumentCreationDate()),

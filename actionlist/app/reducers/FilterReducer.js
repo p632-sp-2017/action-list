@@ -8,10 +8,11 @@ export const defaultState = {
   dataSource: processInstances,
 };
 
-const filterByDocumentRouteStatus = (state) => {
-  return {
-    ...state,
-  };
+const filterByDocumentRouteStatus = (state, action) => {
+	const optionSelected = action.payload;
+  	return {
+   		...state,
+  	};
 };
 
 const filterByActionRequested = (state) => {
