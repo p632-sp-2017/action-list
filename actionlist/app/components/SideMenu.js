@@ -65,62 +65,6 @@ const FILTERS = [
   },
 ];
 
-const renderHeader = section => (
-  <View style={style.header}>
-    <Text style={style.headerText}>{section.title}</Text>
-  </View>
-);
-
-const renderContent = section => {
-  switch(section.title){
-    case "Document Route Status": {
-        return (
-          <View style={style.content}>
-            <RadioButtons
-              options={section.data}
-              onSelection={ onFilterByDocumentRouteStatus }
-            />
-          </View>
-        );
-    }
-    case "Document Type": {
-      return(
-          <View style={style.content}>
-            <RadioButtons
-              options={section.data}
-            />
-          </View>
-        );
-      }
-    case "Action Requested": {
-      return(
-        <View style={style.content}>
-          <RadioButtons
-            options={section.data}
-          />
-        </View>
-      );
-    }
-    case "Document Created Date": {
-        return(
-          <View style={style.content}>
-            <RadioButtons
-              options={section.data}
-            />
-          </View>
-        );
-    }
-    case "Document Assigned Date": {
-      return(
-          <View style={style.content}>
-            <RadioButtons
-              options={section.data}
-            />
-          </View>
-      )
-    }
-  }
-};
 
 const SideMenu = ({
   onFilterByDocumentRouteStatus,
@@ -132,11 +76,47 @@ const SideMenu = ({
       <Button style={style.text}>Home</Button>
       <Button style={style.text}>Prefrences</Button>
       <Text style={style.text}>Filter</Text>
-      <Accordion
-        sections={FILTERS}
-        renderHeader={renderHeader}
-        renderContent={renderContent}
-      />
+      <View style={style.header}>
+        <Text style={style.headerText}>Document Route Status</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[0].data}
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>Document Type</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[1].data}
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>Action Requested</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[2].data}
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>Document Created Date</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[3].data}
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>Document Assigned Date</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+            options={FILTERS[4].data}
+        />
+      </View>
+
       <Button style={style.text}>Sort</Button>
     </View>
 );
