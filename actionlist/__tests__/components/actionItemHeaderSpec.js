@@ -4,11 +4,11 @@ import { View, Text, Image } from 'react-native';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
-import ActionItemHeader from '../app/components/action_item_header';
+import ActionItemHeader from '../../app/components/action_item_header';
 
-require('../testConfig');
+require('../../testConfig');
 
-jest.unmock('../app/components/action_item_header');
+jest.unmock('../../app/components/action_item_header');
 
 describe('action_item_headers', () => {
   it('should take props and contain row title, actual lengths', () => {
@@ -43,8 +43,8 @@ describe('action_item_headers', () => {
     const icons = {
       /* eslint-disable global-require */
       /* rule disabled since image loading need not be global */
-      up: require('../app/components/img/up-icon.png'),
-      down: require('../app/components/img/down-icon.png'),
+      up: require('../../app/components/img/up-icon.png'),
+      down: require('../../app/components/img/down-icon.png'),
       /* eslint-enable global-require */
     };
     const initialState = {};

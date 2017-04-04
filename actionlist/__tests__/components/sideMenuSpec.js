@@ -4,11 +4,11 @@ import { View, Button } from 'react-native';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
-import SideMenu from '../app/components/SideMenu';
+import SideMenu from '../../app/components/SideMenu';
 
-require('../testConfig');
+require('../../testConfig');
 
-jest.unmock('../app/components/SideMenu');
+jest.unmock('../../app/components/SideMenu');
 
 describe('SideMenu', () => {
   it('should render the inner tree component structure properly', () => {
