@@ -31,30 +31,33 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ onSortByCreationDate, onSortByLastApprovedDate, onSortByProcessType, onSortByActionRequested }) => (
-  <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Prefrences</Button>
-    <Button style={style.text}>Filter</Button>
+const SideMenu = ({ onSortByCreationDate,
+  onSortByLastApprovedDate,
+  onSortByProcessType,
+  onSortByActionRequested }) => (
     <View style={style.view}>
-      <Text style={style.text}>
-        Sort
-      </Text>
-      <TouchableHighlight onPress={() => onSortByCreationDate()}>
-        <Text style={style.text}> Date Created</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
-        <Text style={style.text}> Date Last Approved</Text>
-      </TouchableHighlight>
-			<TouchableHighlight onPress={() => onSortByProcessType()}>
-        <Text style={style.text}> Process Type</Text>
-      </TouchableHighlight>
-			<TouchableHighlight onPress={() => onSortByActionRequested()}>
-        <Text style={style.text}> Action Requested</Text>
-      </TouchableHighlight>
+      <Button style={style.text}>Home</Button>
+      <Button style={style.text}>Prefrences</Button>
+      <Button style={style.text}>Filter</Button>
+      <View style={style.view}>
+        <Text style={style.text}>
+          Sort
+        </Text>
+        <TouchableHighlight onPress={() => onSortByCreationDate()}>
+          <Text style={style.text}> Date Created</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
+          <Text style={style.text}> Date Last Approved</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => onSortByProcessType()}>
+          <Text style={style.text}> Process Type</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => onSortByActionRequested()}>
+          <Text style={style.text}> Action Requested</Text>
+        </TouchableHighlight>
+      </View>
     </View>
-  </View>
-);
+  );
 
 const mapDispatchToProps = dispatch => ({
   onSortByCreationDate: () => dispatch(sortByCreationDate()),

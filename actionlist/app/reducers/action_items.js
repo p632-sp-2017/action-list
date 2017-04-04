@@ -9,8 +9,9 @@ export const defaultState = {
 };
 
 const sortByCreationDate = (state) => {
-  const sortedDateByCreationDate = state.dataSource;
-  sortedDateByCreationDate.sort((a, b) => {
+  const sortedByCreationDate = [...state.dataSource];
+
+  sortedByCreationDate.sort((a, b) => {
     const c = new Date(a.creationDate);
     const d = new Date(b.creationDate);
     return c - d;
@@ -18,14 +19,14 @@ const sortByCreationDate = (state) => {
   return {
     ...state,
     dataSource: [
-      ...sortedDateByCreationDate,
+      ...sortedByCreationDate,
     ],
   };
 };
 
 const sortByLastApprovedDate = (state) => {
-  const sortedDateByLastApproved = state.dataSource;
-  sortedDateByLastApproved.sort((a, b) => {
+  const sortedByLastApproved = [...state.dataSource];
+  sortedByLastApproved.sort((a, b) => {
     const c = new Date(a.lastApprovedDate);
     const d = new Date(b.lastApprovedDate);
     return c - d;
@@ -33,18 +34,25 @@ const sortByLastApprovedDate = (state) => {
   return {
     ...state,
     dataSource: [
-      ...sortedDateByLastApproved,
+      ...sortedByLastApproved,
     ],
   };
 };
 
 const sortByProcessType = (state) => {
-  const sortedByProcessType = state.dataSource;
+  const sortedByProcessType = [...state.dataSource];
   sortedByProcessType.sort((a, b) => {
-    const c = a.processType.label;
-    const d = b.processType.label;
-    return c < d;
+    const processA = a.processType.label.toUpperCase();
+    const processB = b.processType.label.toUpperCase();
+    if (processA < processB) {
+      return -1;
+    }
+    if (processA > processB) {
+      return 1;
+    }
+    return 0;
   });
+
   return {
     ...state,
     dataSource: [
@@ -54,11 +62,17 @@ const sortByProcessType = (state) => {
 };
 
 const sortByActionRequested = (state) => {
-  const sortedByActionRequested = state.dataSource;
+  const sortedByActionRequested = [...state.dataSource];
   sortedByActionRequested.sort((a, b) => {
-    const c = a.actionRequested.label;
-    const d = b.actionRequested.label;
-    return c < d;
+    const processA = a.actionRequested.label.toUpperCase();
+    const processB = b.actionRequested.label.toUpperCase();
+    if (processA < processB) {
+      return -1;
+    }
+    if (processA > processB) {
+      return 1;
+    }
+    return 0;
   });
   return {
     ...state,
@@ -80,6 +94,6 @@ export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_BY_CREATION_DATE]: sortByCreationDate,
   [SORT_BY_LAST_APPROVED_DATE]: sortByLastApprovedDate,
-	[SORT_BY_PROCESS_TYPE]: sortByProcessType,
-	[SORT_BY_ACTION_REQUIRED]: sortByActionRequested,
+  [SORT_BY_PROCESS_TYPE]: sortByProcessType,
+  [SORT_BY_ACTION_REQUIRED]: sortByActionRequested,
 }, defaultState);

@@ -44,7 +44,7 @@ const ActionItemBody = rowData => (
   <View>
     <Text>{rowData.processType.label}</Text>
     <Text>{rowData.initiator}</Text>
-    <Text>{rowData.lastApprovedDate}</Text>
+    <Text>{rowData.creationDate}</Text>
     <Text>{rowData.processInstanceStatus.label}</Text>
     <Text>{rowData.actionRequested.label}</Text>
     <View style={styles.bodyView}>
