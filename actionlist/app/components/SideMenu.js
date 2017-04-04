@@ -26,10 +26,10 @@ const style = StyleSheet.create({
 
 const SideMenu = () => (
   <View style={style.view}>
-    <Button style={style.text} title='Home' onPress='' />
-    <Button style={style.text} title='Preferences' onPress='' />
-    <Button style={style.text} title='Filter' onPress='' />
-    <Button style={style.text} title='Sort' onPress='' />
+    <Button style={style.text} title="Home" onPress="" />
+    <Button style={style.text} title="Preferences" onPress="" />
+    <Button style={style.text} title="Filter" onPress="" />
+    <Button style={style.text} title="Sort" onPress="" />
   </View>
 );
 

@@ -6,7 +6,7 @@ import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import ActionItemBody from '../app/components/action_item_body';
 
-require('../testConfig')
+require('../testConfig');
 
 jest.unmock('../app/components/action_item_body');
 
