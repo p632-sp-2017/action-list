@@ -22,7 +22,7 @@ const sortByCreationDate = (state) => {
     dataSource: [
       ...sortedByCreationDate,
     ],
-    sort_value: 'CreationDate',
+    sortValue: 'CreationDate',
   };
 };
 
@@ -38,7 +38,7 @@ const sortByLastApprovedDate = (state) => {
     dataSource: [
       ...sortedByLastApproved,
     ],
-    sort_value: 'ApprovedDate',
+    sortValue: 'ApprovedDate',
   };
 };
 
@@ -61,7 +61,7 @@ const sortByProcessType = (state) => {
     dataSource: [
       ...sortedByProcessType,
     ],
-    sort_value: 'ProcessType',
+    sortValue: 'ProcessType',
   };
 };
 

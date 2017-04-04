@@ -62,6 +62,7 @@ describe('action_items', () => {
           creationDate: '2017-08-21T12:00:00',
         },
       ],
+      sortValue: 'CreationDate',
     };
 
     deepFreeze(beforeState);
@@ -111,6 +112,7 @@ describe('action_items', () => {
           lastApprovedDate: '2017-08-21T12:00:00',
         },
       ],
+      sortValue: 'ApprovedDate',
     };
 
     deepFreeze(beforeState);
@@ -140,7 +142,6 @@ describe('action_items', () => {
           processType: { label: 'close' },
         },
       ],
-
     };
     const action = sortByProcessType();
 
@@ -162,6 +163,7 @@ describe('action_items', () => {
           processType: { label: 'open' },
         },
       ],
+      sortValue: 'ProcessType',
     };
 
     deepFreeze(beforeState);
@@ -201,6 +203,7 @@ describe('action_items', () => {
           actionRequested: { label: 'reject' },
         },
       ],
+      sortValue: 'ActionRequested',
     };
 
     deepFreeze(beforeState);
