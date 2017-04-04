@@ -45,10 +45,10 @@ const style = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     textAlign: 'left',
-  }
+  },
 });
 
-const SideMenu = ({ sort_value,
+const SideMenu = ({ sortValue,
   onSortByCreationDate,
   onSortByLastApprovedDate,
   onSortByProcessType,
@@ -62,23 +62,23 @@ const SideMenu = ({ sort_value,
           Sort
         </Text>
         <TouchableHighlight onPress={() => onSortByCreationDate()}>
-          <Text style={(sort_value == 'CreationDate') ? style.selected_text : style.subtext}> Date Created</Text>
+          <Text style={(sortValue === 'CreationDate') ? style.selected_text : style.subtext}> Date Created</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
-          <Text style={(sort_value == 'ApprovedDate') ? style.selected_text : style.subtext}> Date Last Approved</Text>
+          <Text style={(sortValue === 'ApprovedDate') ? style.selected_text : style.subtext}> Date Last Approved</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onSortByProcessType()}>
-          <Text style={(sort_value == 'ProcessType') ? style.selected_text : style.subtext}> Process Type</Text>
+          <Text style={(sortValue === 'ProcessType') ? style.selected_text : style.subtext}> Process Type</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => onSortByActionRequested()}>
-          <Text style={(sort_value == 'ActionRequested') ? style.selected_text : style.subtext}> Action Requested</Text>
+          <Text style={(sortValue === 'ActionRequested') ? style.selected_text : style.subtext}> Action Requested</Text>
         </TouchableHighlight>
       </View>
     </View>
-  );
-  
+);
+
 const mapStateToProps = state => ({
-  sort_value: state.actionItemsReducer.sort_value,
+  sortValue: state.actionItemsReducer.sortValue,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -93,6 +93,7 @@ SideMenu.propTypes = {
   onSortByLastApprovedDate: React.PropTypes.func.isRequired,
   onSortByProcessType: React.PropTypes.func.isRequired,
   onSortByActionRequested: React.PropTypes.func.isRequired,
+  sortValue: React.PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

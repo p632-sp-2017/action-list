@@ -83,7 +83,7 @@ const sortByActionRequested = (state) => {
     dataSource: [
       ...sortedByActionRequested,
     ],
-    sort_value: 'ActionRequested',
+    sortValue: 'ActionRequested',
   };
 };
 
