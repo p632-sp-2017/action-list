@@ -4,6 +4,7 @@ import {
   View,
 } from 'react-native';
 import Button from 'react-native-button';
+import { Actions } from 'react-native-router-flux';
 import { Colors } from '../lib/commons';
 
 const style = StyleSheet.create({
@@ -26,8 +27,8 @@ const style = StyleSheet.create({
 
 const SideMenu = () => (
   <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Prefrences</Button>
+    <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
+    <Button style={style.text} onPress={() => Actions.pref()} >Prefrences</Button>
     <Button style={style.text}>Filter</Button>
     <Button style={style.text}>Sort</Button>
   </View>

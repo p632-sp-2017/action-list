@@ -8,14 +8,19 @@ import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { Scene, Router } from 'react-native-router-flux';
 import reducer from './app/reducers/index';
 import ActionListContainer from './app/containers/ActionListContainer';
+import PreferencesContainer from './app/containers/PreferencesContainer';
 
 const store = createStore(reducer);
 
 const ActionList = () => (
   <Provider store={store}>
-    <ActionListContainer />
+    <Router>
+      <Scene key="home" component={ActionListContainer} hideTabBar hideNavBar initial />
+      <Scene key="pref" component={PreferencesContainer} hideTabBar hideNavBar />
+    </Router>
   </Provider>
 );
 
