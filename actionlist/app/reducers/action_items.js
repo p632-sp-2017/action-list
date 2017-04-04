@@ -6,7 +6,7 @@ import { processInstances } from '../lib/commons';
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
-  sort_value: '',
+  sortValue: '',
 };
 
 const sortByCreationDate = (state) => {
