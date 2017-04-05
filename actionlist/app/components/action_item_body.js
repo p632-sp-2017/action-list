@@ -1,4 +1,3 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["_links"] }] */
 import React from 'react';
 import {
   StyleSheet,
@@ -37,6 +36,7 @@ const styles = StyleSheet.create({
     color: '#990000',
   },
 });
+
 
 const ActionItemBody = rowData => (
   <View>
