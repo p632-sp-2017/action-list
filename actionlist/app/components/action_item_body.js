@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: ["error", { "allow": ["_links"] }] */
 import React from 'react';
 import {
   StyleSheet,
@@ -49,10 +50,6 @@ const styles = StyleSheet.create({
     color: '#990000',
   },
 });
-
-const routeLog = () => ({});
-
-const takeAction = () => ({});
 
 const ActionItemBody = rowData => (
   <View style={styles.container}>
