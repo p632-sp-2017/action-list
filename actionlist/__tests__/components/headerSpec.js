@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import Header from '../../app/components/header';
+import { Middlewares, InitialState } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
@@ -16,10 +17,8 @@ jest.unmock('../../app/components/header');
 
 describe('header', () => {
   it('renders the component tree correctly with all default component props', () => {
-    const middlewares = [];
-    const initialState = {};
-    const mockStore = configureStore(middlewares);
-    const store = mockStore(initialState);
+    const mockStore = configureStore(Middlewares);
+    const store = mockStore(InitialState);
     const icons = {
       /* eslint-disable global-require */
       /* rule disabled since image loading need not be global */

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import SideMenu from '../../app/components/SideMenu';
+import { Middlewares, InitialState } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
@@ -12,14 +13,8 @@ jest.unmock('../../app/components/SideMenu');
 
 describe('SideMenu', () => {
   it('should render the inner tree component structure properly', () => {
-    const middlewares = [];
-    const initialState = {
-      actionItemsReducer: {
-        sortValue: 'test',
-      },
-    };
-    const mockStore = configureStore(middlewares);
-    const store = mockStore(initialState);
+    const mockStore = configureStore(Middlewares);
+    const store = mockStore(InitialState);
     const wrapper = mount(
       <Provider store={store}>
         <SideMenu />
