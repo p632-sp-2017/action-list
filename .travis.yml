@@ -20,6 +20,7 @@ script:
   - cd android && ./gradlew assembleRelease
 after_success:
   - npm install -g codeclimate-test-reporter
+  - ls -la
   - codeclimate-test-reporter < coverage/lcov.info
 notifications:
   slack:
