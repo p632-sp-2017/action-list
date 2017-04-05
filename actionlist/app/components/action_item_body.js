@@ -3,14 +3,26 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
 } from 'react-native';
+import Button from 'react-native-button';
+import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#EDEBEB',
+    padding: 10,
+    borderBottomWidth: 0.5,
+  },
+  text: {
+    color: Colors.IUCrimson,
+    marginBottom: 2,
+  },
   actionContainer: {
     backgroundColor: '#990000',
     padding: 5,
     borderRadius: 8,
+    marginRight: 10,
+    marginTop: 10,
     width: 100,
   },
   bodyView: {
@@ -41,25 +53,23 @@ const routeLog = () => ({});
 const takeAction = () => ({});
 
 const ActionItemBody = rowData => (
-  <View>
-    <Text>{rowData.processType.label}</Text>
-    <Text>{rowData.initiator}</Text>
-    <Text>{rowData.creationDate}</Text>
-    <Text>{rowData.processInstanceStatus.label}</Text>
-    <Text>{rowData.actionRequested.label}</Text>
+  <View style={styles.container}>
+    <Text style={styles.text}>{rowData.processType.label}</Text>
+    <Text style={styles.text}>{rowData.initiator}</Text>
+    <Text style={styles.text}>{rowData.creationDate}</Text>
+    <Text style={styles.text}>{rowData.processInstanceStatus.label}</Text>
+    <Text style={styles.text}>{rowData.actionRequested.label}</Text>
     <View style={styles.bodyView}>
       <Button
-        containerStyle={styles.routeContainer}
-        style={styles.routeButton}
+        containerStyle={styles.actionContainer}
+        style={styles.actionButton}
         onPress={routeLog}
-        title="Route Log"
-      />
+      >Route Log</Button>
       <Button
         containerStyle={styles.actionContainer}
         style={styles.actionButton}
         onPress={takeAction}
-        title="Take Action"
-      />
+      >Take Action</Button>
     </View>
   </View>
 );

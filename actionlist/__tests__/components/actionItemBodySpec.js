@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
+import Button from 'react-native-button';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
@@ -65,9 +66,9 @@ describe('Action_Item_Body', () => {
       </Provider>);
     expect(wrapper.find(View).find(View).find(Button)
       .first()
-        .props().title).to.equal('Route Log');
+        .text()).to.equal('Route Log');
     expect(wrapper.find(View).find(View).find(Button)
       .at(1)
-        .props().title).to.equal('Take Action');
+        .text()).to.equal('Take Action');
   });
 });
