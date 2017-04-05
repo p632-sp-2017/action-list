@@ -1,89 +1,66 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_BY_CREATION_DATE, SORT_BY_LAST_APPROVED_DATE, SORT_BY_PROCESS_TYPE, SORT_BY_ACTION_REQUIRED } from '../actions/types';
-import { processInstances } from '../lib/commons';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST } from '../actions/types';
+import { processInstances, sortTypes } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
-  sortValue: '',
+  optionSelected: false,
 };
 
-const sortByCreationDate = (state) => {
-  const sortedByCreationDate = [...state.dataSource];
-
-  sortedByCreationDate.sort((a, b) => {
-    const c = new Date(a.creationDate);
-    const d = new Date(b.creationDate);
-    return c - d;
-  });
+const sortActionList = (state, action) => {
+  const sortedByCriteria = [...state.dataSource];
+  switch (action.payload) {
+    case sortTypes.creationDate:
+      sortedByCriteria.sort((a, b) => {
+        const c = new Date(a.creationDate);
+        const d = new Date(b.creationDate);
+        return c - d;
+      });
+      break;
+    case sortTypes.lastApprovedDate:
+      sortedByCriteria.sort((a, b) => {
+        const c = new Date(a.lastApprovedDate);
+        const d = new Date(b.lastApprovedDate);
+        return c - d;
+      });
+      break;
+    case sortTypes.processType:
+      sortedByCriteria.sort((a, b) => {
+        const processA = a.processType.label.toUpperCase();
+        const processB = b.processType.label.toUpperCase();
+        if (processA < processB) {
+          return -1;
+        }
+        if (processA > processB) {
+          return 1;
+        }
+        return 0;
+      });
+      break;
+    case sortTypes.actionRequested:
+      sortedByCriteria.sort((a, b) => {
+        const processA = a.actionRequested.label.toUpperCase();
+        const processB = b.actionRequested.label.toUpperCase();
+        if (processA < processB) {
+          return -1;
+        }
+        if (processA > processB) {
+          return 1;
+        }
+        return 0;
+      });
+      break;
+    default:
+      break;
+  }
   return {
     ...state,
     dataSource: [
-      ...sortedByCreationDate,
+      ...sortedByCriteria,
     ],
-    sortValue: 'CreationDate',
-  };
-};
-
-const sortByLastApprovedDate = (state) => {
-  const sortedByLastApproved = [...state.dataSource];
-  sortedByLastApproved.sort((a, b) => {
-    const c = new Date(a.lastApprovedDate);
-    const d = new Date(b.lastApprovedDate);
-    return c - d;
-  });
-  return {
-    ...state,
-    dataSource: [
-      ...sortedByLastApproved,
-    ],
-    sortValue: 'ApprovedDate',
-  };
-};
-
-const sortByProcessType = (state) => {
-  const sortedByProcessType = [...state.dataSource];
-  sortedByProcessType.sort((a, b) => {
-    const processA = a.processType.label.toUpperCase();
-    const processB = b.processType.label.toUpperCase();
-    if (processA < processB) {
-      return -1;
-    }
-    if (processA > processB) {
-      return 1;
-    }
-    return 0;
-  });
-
-  return {
-    ...state,
-    dataSource: [
-      ...sortedByProcessType,
-    ],
-    sortValue: 'ProcessType',
-  };
-};
-
-const sortByActionRequested = (state) => {
-  const sortedByActionRequested = [...state.dataSource];
-  sortedByActionRequested.sort((a, b) => {
-    const processA = a.actionRequested.label.toUpperCase();
-    const processB = b.actionRequested.label.toUpperCase();
-    if (processA < processB) {
-      return -1;
-    }
-    if (processA > processB) {
-      return 1;
-    }
-    return 0;
-  });
-  return {
-    ...state,
-    dataSource: [
-      ...sortedByActionRequested,
-    ],
-    sortValue: 'ActionRequested',
+    optionSelected: true,
   };
 };
 
@@ -97,8 +74,5 @@ const toggleDrawer = (state) => {
 
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
-  [SORT_BY_CREATION_DATE]: sortByCreationDate,
-  [SORT_BY_LAST_APPROVED_DATE]: sortByLastApprovedDate,
-  [SORT_BY_PROCESS_TYPE]: sortByProcessType,
-  [SORT_BY_ACTION_REQUIRED]: sortByActionRequested,
+  [SORT_ACTION_LIST]: sortActionList,
 }, defaultState);

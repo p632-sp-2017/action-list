@@ -2,7 +2,8 @@ import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 
 import reducer from '../../app/reducers/action_items';
-import { toggleDrawer, sortByCreationDate, sortByLastApprovedDate, sortByProcessType, sortByActionRequested } from '../../app/actions/action_items';
+import { toggleDrawer, sortActionList } from '../../app/actions/action_items';
+import { sortTypes } from '../../app/lib/commons';
 
 describe('action_items', () => {
   it('should have the opposite drawerExpanded value when toggled', () => {
@@ -42,7 +43,7 @@ describe('action_items', () => {
         },
       ],
     };
-    const action = sortByCreationDate();
+    const action = sortActionList(sortTypes.creationDate);
 
     const afterState = {
       dataSource: [
@@ -62,7 +63,7 @@ describe('action_items', () => {
           creationDate: '2017-08-21T12:00:00',
         },
       ],
-      sortValue: 'CreationDate',
+      optionSelected: true,
     };
 
     deepFreeze(beforeState);
@@ -92,7 +93,7 @@ describe('action_items', () => {
         },
       ],
     };
-    const action = sortByLastApprovedDate();
+    const action = sortActionList(sortTypes.lastApprovedDate);
 
     const afterState = {
       dataSource: [
@@ -112,7 +113,7 @@ describe('action_items', () => {
           lastApprovedDate: '2017-08-21T12:00:00',
         },
       ],
-      sortValue: 'ApprovedDate',
+      optionSelected: true,
     };
 
     deepFreeze(beforeState);
@@ -143,7 +144,7 @@ describe('action_items', () => {
         },
       ],
     };
-    const action = sortByProcessType();
+    const action = sortActionList(sortTypes.processType);
 
     const afterState = {
       dataSource: [
@@ -163,7 +164,7 @@ describe('action_items', () => {
           processType: { label: 'open' },
         },
       ],
-      sortValue: 'ProcessType',
+      optionSelected: true,
     };
 
     deepFreeze(beforeState);
@@ -189,7 +190,7 @@ describe('action_items', () => {
       ],
 
     };
-    const action = sortByActionRequested();
+    const action = sortActionList(sortTypes.actionRequested);
 
     const afterState = {
       dataSource: [
@@ -203,7 +204,7 @@ describe('action_items', () => {
           actionRequested: { label: 'reject' },
         },
       ],
-      sortValue: 'ActionRequested',
+      optionSelected: true,
     };
 
     deepFreeze(beforeState);

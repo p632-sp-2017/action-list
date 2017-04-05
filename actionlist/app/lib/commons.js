@@ -5,5 +5,12 @@ export const Colors = {
   IUCrimson: '#7B1500',
 };
 
+export const sortTypes = {
+  creationDate: 'creationDate',
+  lastApprovedDate: 'lastApprovedDate',
+  processType: 'processType.label',
+  actionRequested: 'actionRequested.label',
+};
+
 // Adding expanded state and exporting to a hash
 export const processInstances = JSON.parse(processInstanceJSON);

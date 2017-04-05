@@ -9,8 +9,8 @@ import {
 
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
-import { sortByCreationDate, sortByLastApprovedDate, sortByProcessType, sortByActionRequested } from '../actions/action_items';
-import { Colors } from '../lib/commons';
+import { sortActionList } from '../actions/action_items';
+import { Colors, sortTypes } from '../lib/commons';
 
 
 const style = StyleSheet.create({
@@ -48,52 +48,46 @@ const style = StyleSheet.create({
   },
 });
 
-const SideMenu = ({ sortValue,
-  onSortByCreationDate,
-  onSortByLastApprovedDate,
-  onSortByProcessType,
-  onSortByActionRequested }) => (
+const SideMenu = ({ optionSelected, onSort }) => (
+  <View style={style.view}>
+    <Button style={style.text}>Home</Button>
+    <Button style={style.text}>Preferences</Button>
+    <Button style={style.text}>Filter</Button>
     <View style={style.view}>
-      <Button style={style.text}>Home</Button>
-      <Button style={style.text}>Preferences</Button>
-      <Button style={style.text}>Filter</Button>
-      <View style={style.view}>
-        <Text style={style.text}>
-          Sort
-        </Text>
-        <TouchableHighlight onPress={() => onSortByCreationDate()}>
-          <Text style={(sortValue === 'CreationDate') ? style.selected_text : style.subtext}> Date Created</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => onSortByLastApprovedDate()}>
-          <Text style={(sortValue === 'ApprovedDate') ? style.selected_text : style.subtext}> Date Last Approved</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => onSortByProcessType()}>
-          <Text style={(sortValue === 'ProcessType') ? style.selected_text : style.subtext}> Process Type</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => onSortByActionRequested()}>
-          <Text style={(sortValue === 'ActionRequested') ? style.selected_text : style.subtext}> Action Requested</Text>
-        </TouchableHighlight>
-      </View>
+      <Text style={style.text}>
+        Sort
+      </Text>
+      <TouchableHighlight onPress={() => onSort(sortTypes.creationDate)}>
+        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+          Date Created</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => onSort(sortTypes.lastApprovedDate)}>
+        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+          Date Last Approved</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => onSort(sortTypes.processType)}>
+        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+          Process Type</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => onSort(sortTypes.actionRequested)}>
+        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+          Action Requested</Text>
+      </TouchableHighlight>
     </View>
+  </View>
 );
 
 const mapStateToProps = state => ({
-  sortValue: state.actionItemsReducer.sortValue,
+  optionSelected: state.actionItemsReducer.optionSelected,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSortByCreationDate: () => dispatch(sortByCreationDate()),
-  onSortByLastApprovedDate: () => dispatch(sortByLastApprovedDate()),
-  onSortByProcessType: () => dispatch(sortByProcessType()),
-  onSortByActionRequested: () => dispatch(sortByActionRequested()),
+  onSort: criteria => dispatch(sortActionList(criteria)),
 });
 
 SideMenu.propTypes = {
-  onSortByCreationDate: React.PropTypes.func.isRequired,
-  onSortByLastApprovedDate: React.PropTypes.func.isRequired,
-  onSortByProcessType: React.PropTypes.func.isRequired,
-  onSortByActionRequested: React.PropTypes.func.isRequired,
-  sortValue: React.PropTypes.string.isRequired,
+  onSort: React.PropTypes.func.isRequired,
+  optionSelected: React.PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);
