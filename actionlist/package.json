@@ -28,7 +28,6 @@
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
     "chai": "^3.5.0",
-    "codeclimate-test-reporter": "^0.4.1",
     "deep-freeze": "0.0.1",
     "enzyme": "^2.8.0",
     "eslint": "^3.16.1",
