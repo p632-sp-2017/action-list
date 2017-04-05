@@ -58,19 +58,19 @@ const SideMenu = ({ optionSelected, onSort }) => (
         Sort
       </Text>
       <TouchableHighlight onPress={() => onSort(sortTypes.creationDate)}>
-        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+        <Text style={(optionSelected === sortTypes.creationDate) ? style.selected_text : style.subtext}>
           Date Created</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => onSort(sortTypes.lastApprovedDate)}>
-        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+        <Text style={(optionSelected === sortTypes.lastApprovedDate) ? style.selected_text : style.subtext}>
           Date Last Approved</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => onSort(sortTypes.processType)}>
-        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+        <Text style={(optionSelected === sortTypes.processType) ? style.selected_text : style.subtext}>
           Process Type</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => onSort(sortTypes.actionRequested)}>
-        <Text style={(optionSelected) ? style.selected_text : style.subtext}>
+        <Text style={(optionSelected === sortTypes.actionRequested) ? style.selected_text : style.subtext}>
           Action Requested</Text>
       </TouchableHighlight>
     </View>
@@ -87,7 +87,7 @@ const mapDispatchToProps = dispatch => ({
 
 SideMenu.propTypes = {
   onSort: React.PropTypes.func.isRequired,
-  optionSelected: React.PropTypes.bool.isRequired,
+  optionSelected: React.PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

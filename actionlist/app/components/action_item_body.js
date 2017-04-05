@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   routeContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#990000',
     padding: 5,
     borderRadius: 8,
     borderWidth: 1,
@@ -39,10 +39,11 @@ const styles = StyleSheet.create({
     width: 100,
   },
   actionButton: {
-    fontSize: 15,
+    fontSize: 40,
     color: '#ffffff',
   },
   routeButton: {
+    backgroundColor: '#990000',
     fontSize: 15,
     color: '#990000',
   },

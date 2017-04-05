@@ -6,7 +6,7 @@ import { processInstances, sortTypes } from '../lib/commons';
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
-  optionSelected: false,
+  optionSelected: '',
 };
 
 const sortActionList = (state, action) => {
@@ -60,7 +60,7 @@ const sortActionList = (state, action) => {
     dataSource: [
       ...sortedByCriteria,
     ],
-    optionSelected: true,
+    optionSelected: action.payload,
   };
 };
 
