@@ -17,6 +17,7 @@ before_script:
 script:
   - cd .. && npm run lint
   - npm test
+  - ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage/lcov.info
   - cd android && ./gradlew assembleRelease
 notifications:
   slack:
