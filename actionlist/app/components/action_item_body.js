@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: ["error", { "allow": ["_links"] }] */
 import React from 'react';
 import {
   StyleSheet,
@@ -5,6 +6,7 @@ import {
   View,
   Button,
 } from 'react-native';
+import Communications from 'react-native-communications';
 
 const styles = StyleSheet.create({
   actionContainer: {
@@ -36,10 +38,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const routeLog = () => ({});
-
-const takeAction = () => ({});
-
 const ActionItemBody = rowData => (
   <View>
     <Text>{rowData.processType.label}</Text>
@@ -51,13 +49,13 @@ const ActionItemBody = rowData => (
       <Button
         containerStyle={styles.routeContainer}
         style={styles.routeButton}
-        onPress={routeLog}
+        onPress={() => Communications.web(rowData._links.log.href)}
         title="Route Log"
       />
       <Button
         containerStyle={styles.actionContainer}
         style={styles.actionButton}
-        onPress={takeAction}
+        onPress={() => Communications.web(rowData._links.actionList.href)}
         title="Take Action"
       />
     </View>
