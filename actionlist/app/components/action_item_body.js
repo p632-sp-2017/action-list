@@ -1,16 +1,30 @@
+/* eslint no-underscore-dangle: ["error", { "allow": ["_links"] }] */
 import React from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  Button,
 } from 'react-native';
+import Button from 'react-native-button';
+import Communications from 'react-native-communications';
+import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#EDEBEB',
+    padding: 10,
+    borderBottomWidth: 0.5,
+  },
+  text: {
+    color: Colors.IUCrimson,
+    marginBottom: 2,
+  },
   actionContainer: {
     backgroundColor: '#990000',
     padding: 5,
     borderRadius: 8,
+    marginRight: 10,
+    marginTop: 10,
     width: 100,
   },
   bodyView: {
@@ -18,7 +32,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   routeContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#990000',
     padding: 5,
     borderRadius: 8,
     borderWidth: 1,
@@ -31,35 +45,30 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   routeButton: {
+    backgroundColor: '#990000',
     fontSize: 15,
     color: '#990000',
   },
 });
 
-const routeLog = () => ({});
-
-const takeAction = () => ({});
-
 const ActionItemBody = rowData => (
-  <View>
-    <Text>{rowData.processType.label}</Text>
-    <Text>{rowData.initiator}</Text>
-    <Text>{rowData.lastApprovedDate}</Text>
-    <Text>{rowData.processInstanceStatus.label}</Text>
-    <Text>{rowData.actionRequested.label}</Text>
+  <View style={styles.container}>
+    <Text style={styles.text}>{rowData.processType.label}</Text>
+    <Text style={styles.text}>{rowData.initiator}</Text>
+    <Text style={styles.text}>{rowData.creationDate}</Text>
+    <Text style={styles.text}>{rowData.processInstanceStatus.label}</Text>
+    <Text style={styles.text}>{rowData.actionRequested.label}</Text>
     <View style={styles.bodyView}>
-      <Button
-        containerStyle={styles.routeContainer}
-        style={styles.routeButton}
-        onPress={routeLog}
-        title="Route Log"
-      />
       <Button
         containerStyle={styles.actionContainer}
         style={styles.actionButton}
-        onPress={takeAction}
-        title="Take Action"
-      />
+        onPress={() => Communications.web(rowData._links.log.href)}
+      >Route Log</Button>
+      <Button
+        containerStyle={styles.actionContainer}
+        style={styles.actionButton}
+        onPress={() => Communications.web(rowData._links.actionList.href)}
+      >Take Action</Button>
     </View>
   </View>
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { View, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
@@ -13,7 +13,11 @@ jest.unmock('../../app/components/SideMenu');
 describe('SideMenu', () => {
   it('should render the inner tree component structure properly', () => {
     const middlewares = [];
-    const initialState = {};
+    const initialState = {
+      actionItemsReducer: {
+        sortValue: 'test',
+      },
+    };
     const mockStore = configureStore(middlewares);
     const store = mockStore(initialState);
     const wrapper = mount(
@@ -21,11 +25,10 @@ describe('SideMenu', () => {
         <SideMenu />
       </Provider>);
     expect(wrapper.find(View).length).to.equal(9);
-    expect(wrapper.find(Button).length).to.equal(4);
-    expect(wrapper.find(Button).length).to.equal(4);
-    expect(wrapper.find(Button).first().props().title).to.equal('Home');
-    expect(wrapper.find(Button).at(1).props().title).to.equal('Preferences');
-    expect(wrapper.find(Button).at(2).props().title).to.equal('Filter');
-    expect(wrapper.find(Button).at(3).props().title).to.equal('Sort');
+    expect(wrapper.find(Text).length).to.equal(8);
+    expect(wrapper.find(Text).first().text()).to.equal('Home');
+    expect(wrapper.find(Text).at(1).text()).to.equal('Preferences');
+    expect(wrapper.find(Text).at(2).text()).to.equal('Filter');
+    expect(wrapper.find(Text).at(3).text()).to.equal('Sort');
   });
 });

@@ -70,6 +70,7 @@ const Header = ({ ontoggleDrawer }) => (
     </TouchableHighlight>
   </View>
 );
+
 /* eslint-enable global-require */
 
 const mapDispatchToProps = dispatch => ({
