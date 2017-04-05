@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import ActionItemHeader from '../../app/components/action_item_header';
+import { Middlewares, InitialState } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
@@ -19,10 +20,8 @@ describe('action_item_headers', () => {
       index: 3,
       isActive: true,
     };
-    const middlewares = [];
-    const initialState = {};
-    const mockStore = configureStore(middlewares);
-    const store = mockStore(initialState);
+    const mockStore = configureStore(Middlewares);
+    const store = mockStore(InitialState);
     const wrapper = mount(
       <Provider store={store}>
         <ActionItemHeader {...props} />
@@ -39,7 +38,6 @@ describe('action_item_headers', () => {
       index: 3,
       isActive: false,
     };
-    const middlewares = [];
     const icons = {
       /* eslint-disable global-require */
       /* rule disabled since image loading need not be global */
@@ -47,9 +45,8 @@ describe('action_item_headers', () => {
       down: require('../../app/components/img/down-icon.png'),
       /* eslint-enable global-require */
     };
-    const initialState = {};
-    const mockStore = configureStore(middlewares);
-    const store = mockStore(initialState);
+    const mockStore = configureStore(Middlewares);
+    const store = mockStore(InitialState);
     const wrapper = mount(
       <Provider store={store}>
         <ActionItemHeader {...props} />
