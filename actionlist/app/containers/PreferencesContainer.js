@@ -35,11 +35,9 @@ const renderColors = rowData => (
 const PreferencesContainer = () => (
   <View>
     <Header />
-    
     <View style = {styles.componentContainer}>
      <Text>Preferences</Text>
     </View>
-    
     <ModalDropdown options={OPTIONS} renderRow={renderColors} />
     <Button onPress={() => Actions.home({ type: 'back' })} title="Done" />
   </View>
