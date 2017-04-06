@@ -44,16 +44,16 @@ const styles = StyleSheet.create({
 });
 
 const OPTIONS = [
-    'aqua',
-	  'blue',
-	  'green',
+'aqua',
+'blue',
+'green',
 	  'orange',
 	  'pink',
 	  'purple',
 	  'red',
   'grey',
 	  'tan',
-	'white',
+'white',
 ];
 
 
