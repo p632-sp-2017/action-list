@@ -3,10 +3,21 @@ import {
   View,
   Text,
   Button,
+  StyleSheet,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Header from '../components/header';
+
+const styles = StyleSheet.create({
+    componentContainer : {
+    backgroundColor : '#808080',
+    marginTop :10,
+    marginBottom: 5,
+    padding : 10,
+    alignItems: 'center',
+  },
+  });
 
 const OPTIONS = [
   'red',
@@ -24,7 +35,11 @@ const renderColors = rowData => (
 const PreferencesContainer = () => (
   <View>
     <Header />
-    <Text>This is Preferences</Text>
+    
+    <View style = {styles.componentContainer}>
+     <Text>Preferences</Text>
+    </View>
+    
     <ModalDropdown options={OPTIONS} renderRow={renderColors} />
     <Button onPress={() => Actions.home({ type: 'back' })} title="Done" />
   </View>
