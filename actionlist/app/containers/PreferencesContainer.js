@@ -8,6 +8,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Header from '../components/header';
+import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   componentContainer: {
@@ -44,17 +45,18 @@ const styles = StyleSheet.create({
 });
 
 const OPTIONS = [
-  'red',
-  'white',
-  'black',
+  'aqua',
+	'blue',
+	'green',
+	'orange',
+	'pink',
+	'purple',
+	'red',
+	'grey',
+	'tan',
+	'white',
 ];
 
-const renderColors = rowData => (
-  <View>
-    <View style={{ backgroundColor: rowData, flex: 0.3 }} />
-    <Text>{rowData}</Text>
-  </View>
-);
 
 const PreferencesContainer = () => (
   <View>
@@ -68,7 +70,7 @@ const PreferencesContainer = () => (
         <Text>Saved</Text>
       </View>
       <View>
-        <ModalDropdown options={OPTIONS} renderRow={renderColors} />
+        <ModalDropdown options={OPTIONS} renderRow={(rowData) => <View style={{backgroundColor:rowData}}><Text>{rowData}</Text></View>}/>
       </View>
     </View>
     <View style={styles.preferences_buttons}>
