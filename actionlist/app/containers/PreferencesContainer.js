@@ -17,6 +17,30 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
   },
+  preferenceSelect: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  actionButton: {
+    fontSize: 15,
+    color: '#ffffff',
+  },
+  preferences_buttons : {
+    flexDirection : 'row',
+    flexWrap : 'wrap',
+    marginTop : 10,
+  },
+
+  buttonContainer: {
+      backgroundColor: '#808080',
+      borderRadius:  8,
+      marginLeft :10 ,
+      width: 100,
+  },
 });
 
 const OPTIONS = [
@@ -38,9 +62,28 @@ const PreferencesContainer = () => (
     <View style={styles.componentContainer}>
       <Text>Preferences</Text>
     </View>
-    <ModalDropdown options={OPTIONS} renderRow={renderColors} />
-    <Button onPress={() => Actions.home({ type: 'back' })} title="Done" />
-  </View>
+
+    <View style= {styles.preferenceSelect}>
+      <View>
+        <Text>Saved</Text>
+      </View>
+    <View>
+      <ModalDropdown options={OPTIONS} renderRow={renderColors} />
+    </View>
+    </View>
+    <View style = {styles.preferences_buttons}>
+    <View style = {styles.buttonContainer}>
+      <Button onPress={() => Actions.home({ type: 'back' })} title="Save" />
+      </View>
+      <View style = {styles.buttonContainer}>
+      <Button onPress={() => Actions.home({ type: 'back' })} title="Cancel" />
+      </View>
+
+      <View style = {styles.buttonContainer}>
+        <Button onPress={() => Actions.home({ type: 'back' })} title="Reset" />
+      </View>
+    </View>
+    </View>
 );
 
 export default PreferencesContainer;
