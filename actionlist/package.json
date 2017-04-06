@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "./node_modules/eslint/bin/eslint.js . --ignore-pattern node_modules/"
   },
   "dependencies": {
