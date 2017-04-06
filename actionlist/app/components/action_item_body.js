@@ -5,8 +5,9 @@ import {
   View,
 } from 'react-native';
 import Button from 'react-native-button';
-import { Colors } from '../lib/commons';
 import Communications from 'react-native-communications';
+
+import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   container: {
@@ -49,10 +50,6 @@ const styles = StyleSheet.create({
     color: '#990000',
   },
 });
-
-const routeLog = () => ({});
-
-const takeAction = () => ({});
 
 const ActionItemBody = rowData => (
   <View style={styles.container}>
