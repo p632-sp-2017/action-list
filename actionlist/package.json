@@ -2,6 +2,13 @@
   "name": "ActionList",
   "version": "0.0.1",
   "private": true,
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "jest": true
+    }
+  },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
@@ -10,14 +17,19 @@
   "dependencies": {
     "@fugood/react-native-call-modal": "0.0.6",
     "react": "15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-native": "0.40.0",
-    "react-native-button": "^1.8.2"
+    "react-native-button": "^1.8.2",
+    "react-native-collapsible": "^0.8.0",
+    "react-native-drawer": "^2.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
+    "chai": "^3.5.0",
     "deep-freeze": "0.0.1",
+    "enzyme": "^2.8.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -25,15 +37,26 @@
     "eslint-plugin-react": "^6.10.0",
     "expect": "^1.20.2",
     "jest": "18.1.0",
+<<<<<<< HEAD
     "react-native-collapsible": "^0.8.0",
     "react-native-drawer": "^2.3.0",
     "react-native-radio-buttons": "^0.14.0",
     "react-native-side-menu": "^0.20.1",
+=======
+    "jsdom": "^9.12.0",
+    "mocha": "^3.2.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-native-mock": "^0.3.1",
+    "react-native-mock-render": "0.0.3",
+>>>>>>> develop
     "react-redux": "^5.0.3",
     "react-test-renderer": "15.4.2",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.1",
-    "redux-logger": "^3.0.0"
+    "redux-logger": "^3.0.0",
+    "redux-mock-store": "^1.2.2"
   },
   "jest": {
     "preset": "react-native"
