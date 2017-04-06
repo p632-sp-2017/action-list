@@ -5,6 +5,8 @@ import {
   View,
 } from 'react-native';
 import Button from 'react-native-button';
+import Communications from 'react-native-communications';
+
 import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   actionButton: {
-    fontSize: 40,
+    fontSize: 15,
     color: '#ffffff',
   },
   routeButton: {
@@ -48,10 +50,6 @@ const styles = StyleSheet.create({
     color: '#990000',
   },
 });
-
-const routeLog = () => ({});
-
-const takeAction = () => ({});
 
 const ActionItemBody = rowData => (
   <View style={styles.container}>
@@ -64,12 +62,12 @@ const ActionItemBody = rowData => (
       <Button
         containerStyle={styles.actionContainer}
         style={styles.actionButton}
-        onPress={routeLog}
+        onPress={() => Communications.web(rowData._links.log.href)}
       >Route Log</Button>
       <Button
         containerStyle={styles.actionContainer}
         style={styles.actionButton}
-        onPress={takeAction}
+        onPress={() => Communications.web(rowData._links.actionList.href)}
       >Take Action</Button>
     </View>
   </View>
