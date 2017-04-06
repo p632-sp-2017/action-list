@@ -10,13 +10,13 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import Header from '../components/header';
 
 const styles = StyleSheet.create({
-    componentContainer : {
-    backgroundColor : '#808080',
-    marginTop :10,
-    marginBottom: 5,
-    padding : 10,
-    alignItems: 'center',
-  },
+  componentContainer: {
+      backgroundColor: '#808080',
+      marginTop: 10,
+      marginBottom: 5,
+      padding: 10,
+      alignItems: 'center',
+    },
   });
 
 const OPTIONS = [
