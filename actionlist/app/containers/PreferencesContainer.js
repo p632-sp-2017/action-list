@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     backgroundColor: '#808080',
-    borderRadius:  8,
-    marginLeft:10,
+    borderRadius: 8,
+    marginLeft: 10,
     width: 100,
   },
 });
@@ -68,15 +68,15 @@ const PreferencesContainer = () => (
         <Text>Saved</Text>
       </View>
       <View>
-      <ModalDropdown options={OPTIONS} renderRow={renderColors} />
-    </View>
+        <ModalDropdown options={OPTIONS} renderRow={renderColors} />
+      </View>
     </View>
     <View style={styles.preferences_buttons}>
-    <View style={styles.buttonContainer}>
-      <Button onPress={() => Actions.home({ type: 'back' })} title="Save" />
+      <View style={styles.buttonContainer}>
+        <Button onPress={() => Actions.home({ type: 'back' })} title="Save" />
       </View>
       <View style={styles.buttonContainer}>
-      <Button onPress={()=> Actions.home({ type: 'back' })} title="Cancel" />
+        <Button onPress={() => Actions.home({ type: 'back' })} title="Cancel" />
       </View>
 
       <View style={styles.buttonContainer}>
