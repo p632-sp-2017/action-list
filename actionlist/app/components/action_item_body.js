@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const ActionItemBody = rowData => (
   <View>
     <Text>{rowData.processType.label}</Text>
