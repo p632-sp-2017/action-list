@@ -13,9 +13,6 @@ import { connect } from 'react-redux';
 import { sortActionList } from '../actions/action_items';
 import { Colors, sortTypes } from '../lib/commons';
 
-
-
-
 const style = StyleSheet.create({
   view: {
     flex: 1,
