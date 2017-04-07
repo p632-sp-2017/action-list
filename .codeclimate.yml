@@ -3,13 +3,13 @@ engines:
   fixme:
     enabled: true
   eslint:
-    enabled: true
+    enabled: false
   csslint:
     enabled: true
   duplication:
     enabled: true
     config:
-      config: /actionlist/.eslintrc.json
+      config: /actionlist/.eslintrc
       languages:
         - javascript
 ratings:
