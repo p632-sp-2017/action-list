@@ -52,7 +52,7 @@ const OPTIONS = [
   'purple',
   'red',
   'grey',
-	'tan',
+  'tan',
   'white',
 ];
 
@@ -70,7 +70,7 @@ const PreferencesContainer = () => (
       </View>
       <View>
         <ModalDropdown options={OPTIONS} 
-          renderRow={(rowData) => <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>} />
+	renderRow={(rowData) => <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>} />
       </View>
     </View>
     <View style={styles.preferences_buttons}>
