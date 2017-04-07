@@ -69,8 +69,9 @@ const PreferencesContainer = () => (
         <Text>Saved</Text>
       </View>
       <View>
-        <ModalDropdown options={OPTIONS} 
-	renderRow={(rowData) => <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>} />
+        <ModalDropdown 
+          options={OPTIONS} renderRow={(rowData) => 
+          <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>} />
       </View>
     </View>
     <View style={styles.preferences_buttons}>
