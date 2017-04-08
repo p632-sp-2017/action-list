@@ -56,7 +56,6 @@ const OPTIONS = [
   'white',
 ];
 
-
 const PreferencesContainer = () => (
   <View>
     <Header />
@@ -67,6 +66,111 @@ const PreferencesContainer = () => (
     <View style={styles.preferenceSelect}>
       <View>
         <Text>Saved</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Initiated</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Disapproved</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+			
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Enroute</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Approved</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Final</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Processed</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Exception</Text>
+      </View>
+      {/* Disabled Following ES-Lint rule
+        It is corrected in latest version which is still in beta */}
+      <View>
+        <ModalDropdown
+          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+            <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+        />
+      </View>
+    </View>
+		<View style={styles.preferenceSelect}>
+      <View>
+        <Text>Cancel</Text>
       </View>
       {/* Disabled Following ES-Lint rule
         It is corrected in latest version which is still in beta */}
