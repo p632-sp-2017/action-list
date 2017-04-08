@@ -51,7 +51,7 @@ const style = StyleSheet.create({
 const SideMenu = ({ optionSelected, onSort }) => (
   <View style={style.view}>
     <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
-    <Button style={style.text} onPress={() => Actions.pref()} >Prefrences</Button>
+    <Button style={style.text} onPress={() => Actions.pref()} >Preferences</Button>
     <Button style={style.text}>Filter</Button>
     <View style={style.view}>
       <Text style={style.text}>
