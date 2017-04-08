@@ -43,6 +43,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-native-communications": "^2.2.1",
+    "react-native-lazyload": "^1.1.0",
     "react-native-mock": "^0.3.1",
     "react-native-mock-render": "0.0.3",
     "react-redux": "^5.0.3",
