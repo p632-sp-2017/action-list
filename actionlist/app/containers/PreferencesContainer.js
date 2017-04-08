@@ -94,7 +94,7 @@ const PreferencesContainer = () => (
         <Text>Disapproved</Text>
       </View>
       {/* Disabled Following ES-Lint rule
-        It is corrected in latest version which is still in beta */}		
+        It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
           options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
