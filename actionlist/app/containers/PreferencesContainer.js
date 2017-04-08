@@ -76,7 +76,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Initiated</Text>
       </View>
@@ -89,13 +89,12 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Disapproved</Text>
       </View>
       {/* Disabled Following ES-Lint rule
-        It is corrected in latest version which is still in beta */}
-			
+        It is corrected in latest version which is still in beta */}		
       <View>
         <ModalDropdown
           options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
@@ -103,7 +102,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Enroute</Text>
       </View>
@@ -116,7 +115,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Approved</Text>
       </View>
@@ -129,7 +128,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Final</Text>
       </View>
@@ -142,7 +141,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Processed</Text>
       </View>
@@ -155,7 +154,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Exception</Text>
       </View>
@@ -168,7 +167,7 @@ const PreferencesContainer = () => (
         />
       </View>
     </View>
-		<View style={styles.preferenceSelect}>
+    <View style={styles.preferenceSelect}>
       <View>
         <Text>Cancel</Text>
       </View>
