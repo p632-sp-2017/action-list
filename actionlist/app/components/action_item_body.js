@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import Communications from 'react-native-communications';
-
 import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
