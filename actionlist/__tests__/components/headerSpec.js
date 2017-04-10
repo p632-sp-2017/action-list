@@ -36,6 +36,6 @@ describe('header', () => {
       .first().find(Text)
         .first()
           .text()).to.be.equal('IU Action List');
-    expect(wrapper.find(View).find(Image).length).to.equal(3);
+    expect(wrapper.find(View).find(Image).length).to.equal(2);
   });
 });
