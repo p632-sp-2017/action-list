@@ -5,14 +5,15 @@ import {
   Button,
   StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import Header from '../components/header';
+import { selectDropdownOption } from '../actions/action_items';
 
 const styles = StyleSheet.create({
   componentContainer: {
     backgroundColor: '#808080',
-    marginTop: 10,
     marginBottom: 5,
     padding: 10,
     alignItems: 'center',
@@ -20,7 +21,6 @@ const styles = StyleSheet.create({
   preferenceSelect: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
     marginBottom: 10,
     marginLeft: 10,
     marginRight: 10,
@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     width: 100,
   },
+  dropdown: {
+    width: 150,
+    borderStyle: 'solid',
+    borderWidth: 1,
+  },
 });
 
 const OPTIONS = [
@@ -56,7 +61,7 @@ const OPTIONS = [
   'white',
 ];
 
-const PreferencesContainer = () => (
+const PreferencesContainer = ({ onSelectOption, dropdownColors}) => (
   <View>
     <Header />
     <View style={styles.componentContainer}>
@@ -71,9 +76,11 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.saved,}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-        />
+            onSelect = {(idx,value) => onSelectOption(idx,value,'saved')}
+        >
+        </ModalDropdown>
       </View>
     </View>
     <View style={styles.preferenceSelect}>
@@ -84,8 +91,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.initiated}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'initiated')}
         />
       </View>
     </View>
@@ -97,8 +105,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.disapproved}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'disapproved')}
         />
       </View>
     </View>
@@ -110,8 +119,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.enroute}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'enroute')}
         />
       </View>
     </View>
@@ -123,8 +133,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.approved}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'approved')}
         />
       </View>
     </View>
@@ -136,8 +147,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.final}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'final')}
         />
       </View>
     </View>
@@ -149,8 +161,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.processed}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'processed')}
         />
       </View>
     </View>
@@ -162,8 +175,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.exception}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'exception')}
         />
       </View>
     </View>
@@ -175,8 +189,9 @@ const PreferencesContainer = () => (
         It is corrected in latest version which is still in beta */}
       <View>
         <ModalDropdown
-          options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+          style={[styles.dropdown,{backgroundColor: dropdownColors.cancel}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
             <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
+            onSelect = {(idx,value) => onSelectOption(idx,value,'cancel')}
         />
       </View>
     </View>
@@ -195,4 +210,17 @@ const PreferencesContainer = () => (
   </View>
 );
 
-export default PreferencesContainer;
+const mapDispatchToProps = dispatch => ({
+  onSelectOption: (idx, value, option) => dispatch(selectDropdownOption({"value":value,"option":option,})),
+});
+
+const mapStateToProps = state => {
+  console.log(state.actionItemsReducer.dropdownColors);
+  return {
+    dropdownColors: state.actionItemsReducer.dropdownColors,
+  };
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PreferencesContainer);

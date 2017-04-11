@@ -1,12 +1,23 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_ACTION_LIST } from '../actions/types';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST, SELECT_DROPDOWN_OPTION } from '../actions/types';
 import { processInstances, sortTypes } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
   optionSelected: '',
+  dropdownColors: {
+    saved: 'blue',
+    initiated: 'white',
+    disapproved: 'white',
+    enroute: 'black',
+    approved: 'red',
+    final: 'green',
+    processed: 'yellow',
+    exception: 'pink',
+    cancel: 'aqua',
+  },
 };
 
 const sortActionList = (state, action) => {
@@ -72,7 +83,82 @@ const toggleDrawer = (state) => {
   };
 };
 
+const selectDropdownOption = (state, action) => {
+  console.log( action.payload.option);
+  const type = action.payload.option;
+  const olddropdowmColors = state.dropdownColors;
+  let newdropdownColors = state.dropdownColors;
+  switch (type){
+    case 'saved':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        saved: action.payload.value
+      };
+      break;
+    case 'initiated':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        initiated: action.payload.value
+      };
+      break;
+    case 'disapproved':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        disapproved: action.payload.value
+      };
+      break;
+    case 'enroute':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        enroute: action.payload.value
+      };
+      break; 
+    case 'approved':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        approved: action.payload.value
+      };
+      break; 
+    case 'final':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        final: action.payload.value
+      };
+      break; 
+    case 'processed':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        processed: action.payload.value
+      };
+      break; 
+    case 'exception':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        exception: action.payload.value
+      };
+      break; 
+    case 'cancel':
+      newdropdownColors = {
+        ...state.dropdownColors,
+        cancel: action.payload.value
+      };
+      break;  
+    default: 
+      newdropdownColors = {
+        ...state.dropdownColors,
+      };
+      break;
+  }
+  return {
+    ...state,
+    dropdownColors: {
+      ...newdropdownColors
+    }
+  };
+};
+
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_ACTION_LIST]: sortActionList,
+  [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
 }, defaultState);
