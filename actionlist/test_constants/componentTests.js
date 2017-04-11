@@ -16,7 +16,6 @@ export const Middlewares = [];
 
 export const InitialState = {
   actionItemsReducer: {
-    optionSelected: 'test',
+    sortValue: 'test',
   },
-  onSort: () => {},
 };
