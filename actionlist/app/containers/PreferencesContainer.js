@@ -233,26 +233,25 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
       </View>
     </View>
     <View style={styles.preferences_buttons}>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => Actions.home({ type: 'back' })}
-            style={styles.preferencesButton}
-          >Save</Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => Actions.home({ type: 'back' })}
-            style={styles.preferencesButton}
-          >Cancel</Button>
-        </View>
-
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => Actions.home({ type: 'back' })}
-            style={styles.preferencesButton}
-          >Reset</Button>
-        </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => Actions.home({ type: 'back' })}
+          style={styles.preferencesButton}
+        >Save</Button>
       </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => Actions.home({ type: 'back' })}
+          style={styles.preferencesButton}
+        >Cancel</Button>
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => Actions.home({ type: 'back' })}
+          style={styles.preferencesButton}
+        >Reset</Button>
+      </View>
+    </View>
   </View>
 );
 
