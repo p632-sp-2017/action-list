@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#990000',
     marginRight: 10,
-    marginLeft:10,
+    marginLeft: 10,
     padding: 5,
     fontSize: 15,
     color: '#ffffff',
@@ -102,7 +102,7 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
   <View>
     <Header />
     <View style={styles.componentContainer}>
-      <Text style = {styles.preferenceText}>Preferences</Text>
+      <Text style={styles.preferenceText}>Preferences</Text>
     </View>
     <View style={styles.preferencesContainer}>
       <View style={styles.preferenceSelect}>
@@ -231,8 +231,8 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
           />
         </View>
       </View>
-     </View>
-      <View style={styles.preferences_buttons}>
+    </View>
+    <View style={styles.preferences_buttons}>
         <View style={styles.buttonContainer}>
           <Button
             onPress={() => Actions.home({ type: 'back' })}
@@ -253,7 +253,6 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
           >Reset</Button>
         </View>
       </View>
-    
   </View>
 );
 
