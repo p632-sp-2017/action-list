@@ -15,25 +15,39 @@ import { Colors } from '../lib/commons';
 const styles = StyleSheet.create({
   componentContainer: {
     backgroundColor: '#808080',
-    marginBottom: 5,
+    marginTop: 10,
+    marginRight: 10,
+    marginLeft: 10,
     padding: 10,
     alignItems: 'center',
+    borderRadius: 8,
+    borderStyle: 'solid',
+    borderWidth: 1,
+
   },
   text: {
     color: Colors.IUCrimson,
-    marginBottom: 2,
     marginLeft: 10,
   },
   preferencesContainer: {
     marginTop: 10,
+    backgroundColor: 'grey',
+    marginRight: 10,
+    marginLeft: 10,
+    borderRadius: 8,
+    borderStyle: 'solid',
+    borderWidth: 1,
   },
   preferenceSelect: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: 13,
     marginLeft: 20,
     marginRight: 10,
-    marginTop: 10,
+    marginTop: 12,
+  },
+  preferenceText: {
+    fontSize: 15,
   },
   actionButton: {
     fontSize: 15,
@@ -43,17 +57,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 10,
-    marginLeft: 30,
-    marginRight: 30,
+    marginLeft: 10,
+    marginRight: 10,
     justifyContent: 'space-between',
   },
 
   buttonContainer: {
-    backgroundColor: '#808080',
     borderRadius: 8,
-    marginLeft: 10,
-    marginTop: 10,
-    width: 100,
+    width: 110,
   },
   dropdown: {
     width: 150,
@@ -64,6 +75,8 @@ const styles = StyleSheet.create({
   preferencesButton: {
     borderRadius: 8,
     backgroundColor: '#990000',
+    marginRight: 10,
+    marginLeft:10,
     padding: 5,
     fontSize: 15,
     color: '#ffffff',
@@ -89,7 +102,7 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
   <View>
     <Header />
     <View style={styles.componentContainer}>
-      <Text>Preferences</Text>
+      <Text style = {styles.preferenceText}>Preferences</Text>
     </View>
     <View style={styles.preferencesContainer}>
       <View style={styles.preferenceSelect}>
@@ -218,6 +231,7 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
           />
         </View>
       </View>
+     </View>
       <View style={styles.preferences_buttons}>
         <View style={styles.buttonContainer}>
           <Button
@@ -239,7 +253,7 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
           >Reset</Button>
         </View>
       </View>
-    </View>
+    
   </View>
 );
 
