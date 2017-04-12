@@ -1,30 +1,22 @@
 import React from 'react';
-
 import {
   StyleSheet,
   View,
   Text,
-<<<<<<< HEAD
   ScrollView,
+  TouchableHighlight,
 } from 'react-native';
 
 /* eslint-disable no-unused-vars */
 import Button from 'react-native-button';
+import { connect } from 'react-redux';
 import Accordion from 'react-native-collapsible/Accordion';
 import RadioButtons from 'react-native-radio-buttons';
-import { connect } from 'react-redux';
 import { filterActionList } from '../actions/action_items';
 import { filterTypes } from '../lib/commons';
-=======
-  TouchableHighlight,
-} from 'react-native';
-
-import Button from 'react-native-button';
-import { connect } from 'react-redux';
 import { sortActionList } from '../actions/action_items';
 import { Colors, sortTypes } from '../lib/commons';
 
->>>>>>> develop
 
 const style = StyleSheet.create({
   view: {
@@ -42,7 +34,6 @@ const style = StyleSheet.create({
     textAlign: 'left',
     borderBottomWidth: 0.5,
   },
-<<<<<<< HEAD
   headerText: {
     fontSize: 10,
     color: '#7B1500',
@@ -58,6 +49,23 @@ const style = StyleSheet.create({
   container: {
     backgroundColor: '#f4f7f9',
     paddingTop: 0,
+  },
+  subtext: {
+    color: Colors.IUCrimson,
+    marginLeft: 15,
+    marginBottom: 10,
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    fontSize: 10,
+    textAlign: 'left',
+  },
+  selected_text: {
+    color: Colors.IUCrimson,
+    marginLeft: 15,
+    marginBottom: 10,
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+    fontSize: 10,
+    fontWeight: 'bold',
+    textAlign: 'left',
   },
 });
 
@@ -88,98 +96,11 @@ const FILTERS = [
 
 
 
-const SideMenu = ({ onActionListFiltering }) => (
-    <ScrollView style={style.container}>
-      <View style={style.view}>
-        <Button style={style.text}>Home</Button>
-        <Button style={style.text}>Prefrences</Button>
-        <Text style={style.text}>Filter</Text>
-        <View style={style.header}>
-          <Text style={style.headerText}>{filterTypes.DocumentRouteStatus}</Text>
-        </View>
-        <View style={style.content}>
-          <RadioButtons
-            options={FILTERS[0].data}
-            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-          />
-        </View>
-        <View style={style.header}>
-          <Text style={style.headerText}>{filterTypes.DocumentType}</Text>
-        </View>
-        <View style={style.content}>
-          <RadioButtons
-            options={FILTERS[1].data}
-            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-          />
-        </View>
-        <View style={style.header}>
-          <Text style={style.headerText}>{filterTypes.ActionRequested}</Text>
-        </View>
-        <View style={style.content}>
-          <RadioButtons
-           options={FILTERS[2].data}
-           onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-          />
-        </View>
-        <View style={style.header}>
-         <Text style={style.headerText}>{filterTypes.DocumentCreatedDate}</Text>
-        </View>
-        <View style={style.content}>
-          <RadioButtons
-            options={FILTERS[3].data}
-            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-          />
-        </View>
-        <View style={style.header}>
-         <Text style={style.headerText}>{filterTypes.DocumentAssignedDate}</Text>
-        </View>
-        <View style={style.content}>
-          <RadioButtons
-            options={FILTERS[4].data}
-            onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-          />
-        </View>
-        </View>
-    </ScrollView>
-);
-
-
-const mapDispatchToProps = dispatch => ({
-  onActionListFiltering: (filterType,value) => dispatch(filterActionList({"filterType":filterType,"value":value})),
-});
-
-SideMenu.propTypes = {
-  onActionListFiltering: React.PropTypes.func.isRequired,
-};
-/* eslint-enable no-unused-vars */
-
-export default connect(null, mapDispatchToProps)(SideMenu);
-=======
-  subtext: {
-    color: Colors.IUCrimson,
-    marginLeft: 15,
-    marginBottom: 10,
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
-    fontSize: 10,
-    textAlign: 'left',
-  },
-  selected_text: {
-    color: Colors.IUCrimson,
-    marginLeft: 15,
-    marginBottom: 10,
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
-    fontSize: 10,
-    fontWeight: 'bold',
-    textAlign: 'left',
-  },
-});
-
-const SideMenu = ({ optionSelected, onSort }) => (
-  <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Preferences</Button>
-    <Button style={style.text}>Filter</Button>
+const SideMenu = ({ optionSelected, onActionListFiltering,  onSort }) => (
+  <ScrollView style={style.container}>
     <View style={style.view}>
+      <Button style={style.text}>Home</Button>
+      <Button style={style.text}>Prefrences</Button>
       <Text style={style.text}>
         Sort
       </Text>
@@ -207,8 +128,54 @@ const SideMenu = ({ optionSelected, onSort }) => (
           style.selected_text : style.subtext}
         >Action Requested</Text>
       </TouchableHighlight>
+      <Text style={style.text}>Filter</Text>
+      <View style={style.header}>
+        <Text style={style.headerText}>{filterTypes.DocumentRouteStatus}</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[0].data}
+          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>{filterTypes.DocumentType}</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[1].data}
+          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>{filterTypes.ActionRequested}</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[2].data}
+          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>{filterTypes.DocumentCreatedDate}</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[3].data}
+          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        />
+      </View>
+      <View style={style.header}>
+        <Text style={style.headerText}>{filterTypes.DocumentAssignedDate}</Text>
+      </View>
+      <View style={style.content}>
+        <RadioButtons
+          options={FILTERS[4].data}
+          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        />
+      </View>
     </View>
-  </View>
+  </ScrollView>
 );
 
 const mapStateToProps = state => ({
@@ -216,13 +183,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  onActionListFiltering: (filterType,value) => dispatch(filterActionList({"filterType":filterType,"value":value})),
   onSort: criteria => dispatch(sortActionList(criteria)),
 });
 
+/* eslint-enable no-unused-vars */
 SideMenu.propTypes = {
   onSort: React.PropTypes.func.isRequired,
   optionSelected: React.PropTypes.string.isRequired,
+  onActionListFiltering: React.PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);
->>>>>>> develop

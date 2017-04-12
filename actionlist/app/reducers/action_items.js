@@ -1,19 +1,14 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-<<<<<<< HEAD
-import { TOGGLE_ITEM, TOGGLE_DRAWER } from '../actions/types';
-import { FILTER_ACTION_LIST } from '../actions/types';
-import { processInstances,filterStatus } from '../lib/commons';
-=======
-import { TOGGLE_DRAWER, SORT_ACTION_LIST } from '../actions/types';
-import { processInstances, sortTypes } from '../lib/commons';
->>>>>>> develop
+import { } from '../actions/types';
+import { processInstances, sortTypes, filterStatus } from '../lib/commons';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST,  FILTER_ACTION_LIST } from '../actions/types';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
-<<<<<<< HEAD
   FilterStatus: filterStatus,
+  optionSelected: '',
 };
 
 
@@ -25,8 +20,6 @@ const toggleItem = (state, action) => {
     ...oldItem,
     expanded: !oldItem.expanded,
   };
-=======
-  optionSelected: '',
 };
 
 const sortActionList = (state, action) => {
@@ -75,7 +68,6 @@ const sortActionList = (state, action) => {
     default:
       break;
   }
->>>>>>> develop
   return {
     ...state,
     dataSource: [
@@ -114,9 +106,6 @@ const filterActionList = (state,action) => {
 }
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
-<<<<<<< HEAD
   [FILTER_ACTION_LIST]: filterActionList,
-=======
   [SORT_ACTION_LIST]: sortActionList,
->>>>>>> develop
 }, defaultState);
