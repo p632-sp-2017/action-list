@@ -33,11 +33,6 @@ const style = StyleSheet.create({
     marginTop: 7,
     flex: 1,
   },
-  toolbarSearch: {
-    margin: 15,
-    width: 16,
-    height: 16,
-  },
   toolbarButton: {
     margin: 15,
     width: 16,
@@ -58,10 +53,6 @@ const Header = ({ ontoggleDrawer }) => (
     <Text style={style.toolbarTitle}>
       IU Action List
     </Text>
-    <Image
-      style={style.toolbarSearch}
-      source={require('./img/search.png')}
-    />
     <TouchableHighlight onPress={() => ontoggleDrawer()}>
       <Image
         style={style.toolbarButton}
