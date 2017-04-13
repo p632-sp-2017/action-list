@@ -50,7 +50,7 @@ const mapDispatchToProps = dispatch => ({
 Dropdown.propTypes = {
   onSelectOption: React.PropTypes.func.isRequired,
   dropdownColors: React.PropTypes.shape({}).isRequired,
-  option: React.PropTypes.func.string.isRequired,
+  option: React.PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);
