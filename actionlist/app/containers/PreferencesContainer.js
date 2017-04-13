@@ -5,16 +5,14 @@ import {
   StyleSheet,
 } from 'react-native';
 import Button from 'react-native-button';
-import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import ModalDropdown from 'react-native-modal-dropdown';
 import Header from '../components/header';
-import { selectDropdownOption } from '../actions/action_items';
+import Dropdown from '../components/Dropdown';
 import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   componentContainer: {
-    backgroundColor: '#808080',
+    backgroundColor: Colors.Grey,
     marginTop: 10,
     marginRight: 10,
     marginLeft: 10,
@@ -66,15 +64,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: 110,
   },
-  dropdown: {
-    width: 150,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    marginRight: 30,
-  },
   preferencesButton: {
     borderRadius: 8,
-    backgroundColor: '#990000',
+    backgroundColor: Colors.IUCrimsonDark,
     marginRight: 10,
     marginLeft: 10,
     padding: 5,
@@ -85,20 +77,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const OPTIONS = [
-  'aqua',
-  'blue',
-  'green',
-  'orange',
-  'pink',
-  'purple',
-  'red',
-  'grey',
-  'tan',
-  'white',
-];
-
-const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
+const PreferencesContainer = () => (
   <View>
     <Header />
     <View style={styles.componentContainer}>
@@ -109,126 +88,72 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
         <View>
           <Text style={styles.text}>Saved</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.saved,}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'saved')}
-          />
+          <Dropdown option="saved" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Initiated</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.initiated}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'initiated')}
-          />
+          <Dropdown option="initiated" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Disapproved</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.disapproved}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'disapproved')}
-          />
+          <Dropdown option="disapproved" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Enroute</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.enroute}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'enroute')}
-          />
+          <Dropdown option="enroute" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Approved</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.approved}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'approved')}
-          />
+          <Dropdown option="approved" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Final</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.final}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'final')}
-          />
+          <Dropdown option="final" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Processed</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.processed}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'processed')}
-          />
+          <Dropdown option="processed" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Exception</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.exception}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'exception')}
-          />
+          <Dropdown option="exception" />
         </View>
       </View>
       <View style={styles.preferenceSelect}>
         <View>
           <Text style={styles.text}>Cancel</Text>
         </View>
-        {/* Disabled Following ES-Lint rule
-          It is corrected in latest version which is still in beta */}
         <View>
-          <ModalDropdown
-            style={[styles.dropdown,{backgroundColor: dropdownColors.cancel}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
-              <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-            onSelect={(idx, value) => onSelectOption(idx, value, 'cancel')}
-          />
+          <Dropdown option="cancel" />
         </View>
       </View>
     </View>
@@ -255,17 +180,4 @@ const PreferencesContainer = ({ onSelectOption, dropdownColors }) => (
   </View>
 );
 
-const mapDispatchToProps = dispatch => ({
-  onSelectOption: (idx, value, option) =>
-    dispatch(selectDropdownOption({ value, option })),
-});
-
-const mapStateToProps = state => ({
-  dropdownColors: state.actionItemsReducer.dropdownColors,
-});
-
-PreferencesContainer.propTypes = {
-  onSelectOption: React.PropTypes.func.isRequired,
-  dropdownColors: React.PropTypes.shape({}).isRequired,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(PreferencesContainer);
+export default PreferencesContainer;

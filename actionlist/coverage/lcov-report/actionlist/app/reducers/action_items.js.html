@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.67% </span>
+        <span class="strong">87.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>33/36</span>
+        <span class='fraction'>34/39</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">76.92% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>10/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>6/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.67% </span>
+        <span class="strong">87.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>33/36</span>
+        <span class='fraction'>34/39</span>
       </div>
     </div>
   </div>
@@ -121,12 +121,46 @@
 76
 77
 78
-79</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,6 +224,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -201,13 +247,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_ACTION_LIST } from '../actions/types';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST, SELECT_DROPDOWN_OPTION } from '../actions/types';
 import { processInstances, sortTypes } from '../lib/commons';
 &nbsp;
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
   optionSelected: '',
+  dropdownColors: {
+    saved: 'white',
+    initiated: 'white',
+    disapproved: 'white',
+    enroute: 'white',
+    approved: 'white',
+    final: 'white',
+    processed: 'white',
+    exception: 'white',
+    cancel: 'white',
+  },
 };
 &nbsp;
 const sortActionList = (state, action) =&gt; {
@@ -273,9 +330,21 @@ const toggleDrawer = (state) =&gt; {
   };
 };
 &nbsp;
+const selectDropdownOption = <span class="fstat-no" title="function not covered" >(s</span>tate, action) =&gt; {
+  const newdropdownColors = <span class="cstat-no" title="statement not covered" >state.dropdownColors;</span>
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    ...state,
+    dropdownColors: {
+      ...newdropdownColors,
+      [action.payload.option]: action.payload.value,
+    },
+  };
+};
+&nbsp;
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_ACTION_LIST]: sortActionList,
+  [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
 }, defaultState);
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -283,7 +352,7 @@ export default handleActions({
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 10 2017 17:56:18 GMT-0400 (EDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Apr 13 2017 15:25:28 GMT-0400 (EDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

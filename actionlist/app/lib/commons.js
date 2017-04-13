@@ -3,6 +3,8 @@ export const preferenceJSON = '{"pageSize":10,"refreshRate":15,"showPrimaryDeleg
 export const Colors = {
   IUGray: '#e9e9e9',
   IUCrimson: '#7B1500',
+  IUCrimsonDark: '#990000',
+  Grey: '#808080',
 };
 
 export const sortTypes = {

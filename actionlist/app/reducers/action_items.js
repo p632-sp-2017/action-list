@@ -84,73 +84,12 @@ const toggleDrawer = (state) => {
 };
 
 const selectDropdownOption = (state, action) => {
-  const type = action.payload.option;
-  let newdropdownColors = state.dropdownColors;
-  switch (type) {
-    case 'saved':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        saved: action.payload.value,
-      };
-      break;
-    case 'initiated':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        initiated: action.payload.value,
-      };
-      break;
-    case 'disapproved':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        disapproved: action.payload.value,
-      };
-      break;
-    case 'enroute':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        enroute: action.payload.value,
-      };
-      break;
-    case 'approved':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        approved: action.payload.value,
-      };
-      break;
-    case 'final':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        final: action.payload.value,
-      };
-      break;
-    case 'processed':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        processed: action.payload.value,
-      };
-      break;
-    case 'exception':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        exception: action.payload.value,
-      };
-      break;
-    case 'cancel':
-      newdropdownColors = {
-        ...state.dropdownColors,
-        cancel: action.payload.value,
-      };
-      break;
-    default:
-      newdropdownColors = {
-        ...state.dropdownColors,
-      };
-      break;
-  }
+  const newdropdownColors = state.dropdownColors;
   return {
     ...state,
     dropdownColors: {
       ...newdropdownColors,
+      [action.payload.option]: action.payload.value,
     },
   };
 };
