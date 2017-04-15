@@ -1,3 +1,11 @@
+/*
+This is a untility component for preferences page,
+where we have set colors for each action type.
+option - This variable has the avction type
+onSelectOption -  This is a function that is called,
+ when a color is selected for a specific option in dropdown.
+ optionColor - This is the variable that holds a color for specific action type
+*/
 import React from 'react';
 import {
   View,
@@ -20,7 +28,8 @@ const styles = StyleSheet.create({
 
 const Dropdown = ({ option, onSelectOption, optionColor }) => (
   <ModalDropdown
-    style={[styles.dropdown,{backgroundColor: optionColor}]} options={Object.values(preferenceColors)} renderRow={(rowData) => // eslint-disable-line
+    style={[styles.dropdown, { backgroundColor: optionColor }]}
+    options={Object.values(preferenceColors)} renderRow={rowData =>
       <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
     onSelect={(idx, value) => onSelectOption(idx, value, option)}
   />
