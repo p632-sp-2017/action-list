@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@fugood/react-native-call-modal": "0.0.6",
+    "camel-case": "^3.0.0",
+    "change-case": "^3.0.1",
     "react": "15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-native": "0.40.0",
@@ -60,6 +62,8 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": ["./jest/setup.js"]
+    "setupFiles": [
+      "./jest/setup.js"
+    ]
   }
 }

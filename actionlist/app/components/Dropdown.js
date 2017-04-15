@@ -7,19 +7,7 @@ import {
 import { connect } from 'react-redux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { selectDropdownOption } from '../actions/action_items';
-
-const OPTIONS = [
-  'aqua',
-  'blue',
-  'green',
-  'orange',
-  'pink',
-  'purple',
-  'red',
-  'grey',
-  'tan',
-  'white',
-];
+import { preferenceColors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   dropdown: {
@@ -32,7 +20,7 @@ const styles = StyleSheet.create({
 
 const Dropdown = ({ option, onSelectOption, dropdownColors }) => (
   <ModalDropdown
-    style={[styles.dropdown,{backgroundColor: dropdownColors[option]}]} options={OPTIONS} renderRow={(rowData) => // eslint-disable-line
+    style={[styles.dropdown,{backgroundColor: dropdownColors[option]}]} options={Object.values(preferenceColors)} renderRow={(rowData) => // eslint-disable-line
       <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
     onSelect={(idx, value) => onSelectOption(idx, value, option)}
   />
