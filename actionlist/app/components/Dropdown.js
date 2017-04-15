@@ -18,16 +18,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const Dropdown = ({ option, onSelectOption, dropdownColors }) => (
+const Dropdown = ({ option, onSelectOption, optionColor }) => (
   <ModalDropdown
-    style={[styles.dropdown,{backgroundColor: dropdownColors[option]}]} options={Object.values(preferenceColors)} renderRow={(rowData) => // eslint-disable-line
+    style={[styles.dropdown,{backgroundColor: optionColor}]} options={Object.values(preferenceColors)} renderRow={(rowData) => // eslint-disable-line
       <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
     onSelect={(idx, value) => onSelectOption(idx, value, option)}
   />
 );
 
-const mapStateToProps = state => ({
-  dropdownColors: state.actionItemsReducer.dropdownColors,
+const mapStateToProps = (state, ownProps) => ({
+  optionColor: state.actionItemsReducer.dropdownColors[ownProps.option],
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
 
 Dropdown.propTypes = {
   onSelectOption: React.PropTypes.func.isRequired,
-  dropdownColors: React.PropTypes.shape({}).isRequired,
+  optionColor: React.PropTypes.string.isRequired,
   option: React.PropTypes.string.isRequired,
 };
 
