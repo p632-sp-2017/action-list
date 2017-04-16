@@ -11,10 +11,10 @@ So this is an android mobile application for action list built with react-native
 2. Clone or Download this Project zip to a new empty local directory.
 3. Open terminal and migrate to the directory which contains the downloaded project.
 4. Make Sure you have node installed in that directory. if not click [here](http://blog.teamtreehouse.com/install-node-js-npm-mac) for instructions on installation. 
-5. Set the android Environmental Variables in the current directory as shown below
-> export ANDROID_HOME=${HOME}/Library/Android/sdk
-> export PATH=${PATH}:${ANDROID_HOME}/tools
-> export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+5. Set the android Environmental Variables in the current directory by executing the following commands
+> export ANDROID_HOME=${HOME}/Library/Android/sdk  
+> export PATH=${PATH}:${ANDROID_HOME}/tools  
+> export PATH=${PATH}:${ANDROID_HOME}/platform-tools  
 6. Run the following command to install all the missing node modules for the current project.
 > npm install
 7. Run the following command to start the android virtual device (AVD).
