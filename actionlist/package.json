@@ -12,10 +12,12 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest --coverage",
-    "lint": "./node_modules/eslint/bin/eslint.js . --ignore-pattern node_modules/"
+    "lint": "./node_modules/eslint/bin/eslint.js . --ignore-pattern node_modules/ --ignore-pattern coverage/"
   },
   "dependencies": {
     "@fugood/react-native-call-modal": "0.0.6",
+    "camel-case": "^3.0.0",
+    "change-case": "^3.0.1",
     "react": "15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-native": "0.40.0",
@@ -37,6 +39,11 @@
     "eslint-plugin-react": "^6.10.0",
     "expect": "^1.20.2",
     "jest": "18.1.0",
+    "react-native-collapsible": "^0.8.0",
+    "react-native-drawer": "^2.3.0",
+    "react-native-modal-dropdown": "^0.4.2",
+    "react-native-router-flux": "^3.38.0",
+    "react-native-side-menu": "^0.20.1",
     "jsdom": "^9.12.0",
     "mocha": "^3.2.0",
     "react": "^15.4.2",
@@ -54,6 +61,9 @@
     "redux-mock-store": "^1.2.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest/setup.js"
+    ]
   }
 }
