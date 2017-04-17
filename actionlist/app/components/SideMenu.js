@@ -9,6 +9,7 @@ import {
 
 /* eslint-disable no-unused-vars */
 import Button from 'react-native-button';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Accordion from 'react-native-collapsible/Accordion';
 import RadioButtons from 'react-native-radio-buttons';
@@ -16,7 +17,6 @@ import { filterActionList } from '../actions/action_items';
 import { filterTypes } from '../lib/commons';
 import { sortActionList } from '../actions/action_items';
 import { Colors, sortTypes } from '../lib/commons';
-
 
 const style = StyleSheet.create({
   view: {
@@ -69,7 +69,6 @@ const style = StyleSheet.create({
   },
 });
 
-
 const FILTERS = [
   {
     title: 'Document Route Status',
@@ -93,11 +92,12 @@ const FILTERS = [
   },
 ];
 
-
-
-
-const SideMenu = ({ optionSelected, onActionListFiltering,  onSort }) => (
+const SideMenu = ({ optionSelected, onSort }) => (
   <ScrollView style={style.container}>
+  <View style={style.view}>
+    <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
+    <Button style={style.text} onPress={() => Actions.pref()} >Preferences</Button>
+    <Button style={style.text}>Filter</Button>
     <View style={style.view}>
       <Button style={style.text}>Home</Button>
       <Button style={style.text}>Prefrences</Button>
@@ -175,6 +175,7 @@ const SideMenu = ({ optionSelected, onActionListFiltering,  onSort }) => (
         />
       </View>
     </View>
+  </View>
   </ScrollView>
 );
 
