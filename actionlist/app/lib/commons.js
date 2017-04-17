@@ -3,7 +3,26 @@ export const preferenceJSON = '{"pageSize":10,"refreshRate":15,"showPrimaryDeleg
 export const Colors = {
   IUGray: '#e9e9e9',
   IUCrimson: '#7B1500',
+  IUCrimsonDark: '#990000',
+  IULimeStone: '#AEA79F',
+  Grey: '#808080',
+  White: 'white',
 };
+
+export const preferenceColors = {
+  aqua: 'aqua',
+  blue: 'blue',
+  green: 'green',
+  orange: 'orange',
+  pink: 'pink',
+  purple: 'purple',
+  red: 'red',
+  grey: 'grey',
+  tan: 'tan',
+  white: 'white',
+};
+
+export const documentStatuses = ['saved', 'initiated', 'disapproved', 'enroute', 'approved', 'final', 'processed', 'exception', 'cancel'];
 
 export const sortTypes = {
   creationDate: 'creationDate',

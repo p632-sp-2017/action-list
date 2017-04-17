@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 
 import Button from 'react-native-button';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { sortActionList } from '../actions/action_items';
 import { Colors, sortTypes } from '../lib/commons';
-
 
 const style = StyleSheet.create({
   view: {
@@ -50,8 +50,8 @@ const style = StyleSheet.create({
 
 const SideMenu = ({ optionSelected, onSort }) => (
   <View style={style.view}>
-    <Button style={style.text}>Home</Button>
-    <Button style={style.text}>Preferences</Button>
+    <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
+    <Button style={style.text} onPress={() => Actions.pref()} >Preferences</Button>
     <Button style={style.text}>Filter</Button>
     <View style={style.view}>
       <Text style={style.text}>
