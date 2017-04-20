@@ -90,7 +90,7 @@ const PreferencesContainer = () => (
 
 renderStatus.propTypes = {
   documentStatus: React.PropTypes.string.isRequired,
-  i: React.PropTypes.integer.isRequired,
+  i: React.PropTypes.number.isRequired,
 };
 
 export default PreferencesContainer;
