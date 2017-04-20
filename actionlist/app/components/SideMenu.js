@@ -13,10 +13,9 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Accordion from 'react-native-collapsible/Accordion';
 import RadioButtons from 'react-native-radio-buttons';
-import { filterActionList } from '../actions/action_items';
-import { filterTypes } from '../lib/commons';
-import { sortActionList } from '../actions/action_items';
-import { Colors, sortTypes } from '../lib/commons';
+import { sortActionList, resetFilters } from '../actions/action_items';
+import { Colors, sortTypes, filterTypes } from '../lib/commons';
+import FilterPicker from './filterPicker';
 
 const style = StyleSheet.create({
   view: {
@@ -34,13 +33,26 @@ const style = StyleSheet.create({
     textAlign: 'left',
     borderBottomWidth: 0.5,
   },
-  headerText: {
-    fontSize: 10,
-    color: '#7B1500',
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
-    margin: 10,
+  resetContainer: {
+    backgroundColor: '#990000',
+    padding: 5,
+    borderRadius: 8,
+    marginRight: 10,
+    marginLeft: 70,
+    marginBottom: 10,
+    marginTop: 10,
+    width: 100,
   },
-  content: {
+  resetButton: {
+    fontSize: 10,
+    color: '#ffffff',
+  },
+  picker: {
+    fontSize: 10,
+    color: Colors.IUGray,
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
+  },
+  headerText: {
     fontSize: 10,
     color: '#7B1500',
     fontFamily: 'BentonSansBold, Arial, sans-serif',
@@ -69,122 +81,83 @@ const style = StyleSheet.create({
   },
 });
 
-const FILTERS = [
-  {
-    title: 'Document Route Status',
-    data: ['All', 'Saved', 'Initiated', 'Disapproved', 'Enroute', 'Approved', 'Final', 'Processed', 'Exception', 'Canceled'],
-  },
-  {
-    title: 'Document Type',
-    data: ['one', 'two'],
-  },
-  {
-    title: 'Action Requested',
-    data: ['All', 'Approve', 'Complete', 'Acknowledge', 'FYI'],
-  },
-  {
-    title: 'Document Created Date',
-    data: ['one', 'two'],
-  },
-  {
-    title: 'Document Assigned Date',
-    data: ['one', 'two'],
-  },
-];
-
-const SideMenu = ({ optionSelected, onSort }) => (
+const SideMenu = ({ optionSelected,
+  filters,
+  onSort,
+  onReset,
+}) => (
   <ScrollView style={style.container}>
-  <View style={style.view}>
-    <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
-    <Button style={style.text} onPress={() => Actions.pref()} >Preferences</Button>
-    <Button style={style.text}>Filter</Button>
     <View style={style.view}>
-      <Button style={style.text}>Home</Button>
-      <Button style={style.text}>Prefrences</Button>
-      <Text style={style.text}>
-        Sort
-      </Text>
-      <TouchableHighlight onPress={() => onSort(sortTypes.creationDate)}>
-        <Text
-          style={(optionSelected === sortTypes.creationDate) ?
-          style.selected_text : style.subtext}
-        >Date Created</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onSort(sortTypes.lastApprovedDate)}>
-        <Text
-          style={(optionSelected === sortTypes.lastApprovedDate) ?
-          style.selected_text : style.subtext}
-        >Date Last Approved</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onSort(sortTypes.processType)}>
-        <Text
-          style={(optionSelected === sortTypes.processType) ?
-          style.selected_text : style.subtext}
-        >Process Type</Text>
-      </TouchableHighlight>
-      <TouchableHighlight onPress={() => onSort(sortTypes.actionRequested)}>
-        <Text
-          style={(optionSelected === sortTypes.actionRequested) ?
-          style.selected_text : style.subtext}
-        >Action Requested</Text>
-      </TouchableHighlight>
-      <Text style={style.text}>Filter</Text>
-      <View style={style.header}>
-        <Text style={style.headerText}>{filterTypes.DocumentRouteStatus}</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[0].data}
-          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+      <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
+      <Button style={style.text} onPress={() => Actions.pref()} >Preferences</Button>
+      <Button style={style.text}>Filter</Button>
+      <View style={style.view}>
+        <Text style={style.text}>
+          Sort
+        </Text>
+        <TouchableHighlight onPress={() => onSort(sortTypes.creationDate)}>
+          <Text
+            style={(optionSelected === sortTypes.creationDate) ?
+            style.selected_text : style.subtext}
+          >Date Created</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => onSort(sortTypes.lastApprovedDate)}>
+          <Text
+            style={(optionSelected === sortTypes.lastApprovedDate) ?
+            style.selected_text : style.subtext}
+          >Date Last Approved</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => onSort(sortTypes.processType)}>
+          <Text
+            style={(optionSelected === sortTypes.processType) ?
+            style.selected_text : style.subtext}
+          >Process Type</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => onSort(sortTypes.actionRequested)}>
+          <Text
+            style={(optionSelected === sortTypes.actionRequested) ?
+            style.selected_text : style.subtext}
+          >Action Requested</Text>
+        </TouchableHighlight>
+        <Text style={style.text}>Filter</Text>
+        <FilterPicker
+          filter={filterTypes.DocumentRouteStatus}
+          value={filters.documentRouteStatus}
+          filterKey={'documentRouteStatus'}
         />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>{filterTypes.DocumentType}</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[1].data}
-          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        <FilterPicker
+          filter={filterTypes.DocumentType}
+          value={filters.documentType}
+          filterKey={'documentType'}
         />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>{filterTypes.ActionRequested}</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[2].data}
-          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
+        <FilterPicker
+          filter={filterTypes.ActionRequested}
+          value={filters.actionRequested}
+          filterKey={'actionRequested'}
         />
+        <View style={style.header}>
+          <Text style={style.headerText}>{filterTypes.DocumentCreatedDate.title}</Text>
+        </View>
+        <View style={style.header}>
+          <Text style={style.headerText}>{filterTypes.DocumentAssignedDate.title}</Text>
+        </View>
       </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>{filterTypes.DocumentCreatedDate}</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[3].data}
-          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-        />
-      </View>
-      <View style={style.header}>
-        <Text style={style.headerText}>{filterTypes.DocumentAssignedDate}</Text>
-      </View>
-      <View style={style.content}>
-        <RadioButtons
-          options={FILTERS[4].data}
-          onSelection={ (selectedOption) => onActionListFiltering(filterTypes.DocumentRouteStatus,selectedOption) }
-        />
-      </View>
+      <Button
+        containerStyle={style.resetContainer}
+        style={style.resetButton}
+        onPress={() => onReset()}
+      >Reset Filters</Button>
     </View>
-  </View>
   </ScrollView>
 );
 
 const mapStateToProps = state => ({
   optionSelected: state.actionItemsReducer.optionSelected,
+  filters: state.actionItemsReducer.filterStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onActionListFiltering: (filterType,value) => dispatch(filterActionList({"filterType":filterType,"value":value})),
+  onReset: () => dispatch(resetFilters()),
   onSort: criteria => dispatch(sortActionList(criteria)),
 });
 
@@ -192,7 +165,14 @@ const mapDispatchToProps = dispatch => ({
 SideMenu.propTypes = {
   onSort: React.PropTypes.func.isRequired,
   optionSelected: React.PropTypes.string.isRequired,
-  onActionListFiltering: React.PropTypes.func.isRequired,
+  onReset: React.PropTypes.func.isRequired,
+  filters: React.PropTypes.shape({
+    documentRouteStatus: React.PropTypes.string,
+    documentType: React.PropTypes.string,
+    documentCreationDate: React.PropTypes.string,
+    documentAssignedDate: React.PropTypes.string,
+    actionRequested: React.PropTypes.string,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

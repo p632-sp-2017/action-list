@@ -1,12 +1,12 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, SELECT_DROPDOWN_OPTION } from '../actions/types';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION } from '../actions/types';
 import { processInstances, sortTypes, filterStatus, Colors } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
-  FilterStatus: filterStatus,
+  filterStatus,
   optionSelected: '',
   dropdownColors: {
     saved: Colors.White,
@@ -19,15 +19,6 @@ export const defaultState = {
     exception: Colors.White,
     cancel: Colors.White,
   },
-};
-
-const toggleItem = (state, action) => {
-  const dataSource = state.dataSource;
-  const oldItem = dataSource[action.payload];
-  const newItem = {
-    ...oldItem,
-    expanded: !oldItem.expanded,
-  };
 };
 
 const sortActionList = (state, action) => {
@@ -93,26 +84,6 @@ const toggleDrawer = (state) => {
   };
 };
 
-const filterActionList = (state,action) => {
-  const filtereddataSource = defaultState.dataSource;
-  const temp = action.payload.filterType;
-  defaultState.FilterStatus.temp = action.payload.value;
-  console.log( defaultState.FilterStatus.temp);
-  // filtereddataSource.filter((actionItem) => {
-  //   const filterCriteria = "test";
-  //   return
-  // });
-  // return{
-  //   ...state,
-  //   dataSource: {
-  //     ...filtereddataSource
-  //   }
-
-  // }
-  console.log(action.payload.value);
-  console.log(action.payload.filterType);
-}
-
 const selectDropdownOption = (state, action) => {
   const newdropdownColors = state.dropdownColors;
   return {
@@ -124,9 +95,27 @@ const selectDropdownOption = (state, action) => {
   };
 };
 
+const filterActionList = (state, action) => {
+  return {
+    ...state,
+    filterStatus: {
+      ...state.filterStatus,
+      [action.payload.filterType]: action.payload.value,
+    },
+  };
+};
+
+const resetFilters = (state) => {
+  return {
+    ...state,
+    filterStatus,
+  };
+};
+
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
-  [FILTER_ACTION_LIST]: filterActionList,
   [SORT_ACTION_LIST]: sortActionList,
+  [FILTER_ACTION_LIST]: filterActionList,
   [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
+  [RESET_FILTERS]: resetFilters,
 }, defaultState);

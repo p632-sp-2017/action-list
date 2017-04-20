@@ -32,21 +32,34 @@ export const sortTypes = {
   actionRequested: 'actionRequested.label',
 };
 
-export const filterTypes = {
-	DocumentRouteStatus: 'Document Route Status',
-	DocumentType : 'Document Type',
-	ActionRequested : 'Action Requested',
-	DocumentCreatedDate : 'Document Created Date',
-	DocumentAssignedDate : 'Document Assigned Date',
-};
-
 export const filterStatus = {
-  DocumentRouteStatus: 'All',
-  DocumentType: 'All',
-  DocumentCreationDate: 'All',
-  DocumentAssignedDate: 'All',
-  ActionRequested: 'All',
+  documentRouteStatus: 'All',
+  documentType: 'All',
+  documentCreationDate: 'All',
+  documentAssignedDate: 'All',
+  actionRequested: 'All',
 };
 
 // Adding expanded state and exporting to a hash
 export const processInstances = JSON.parse(processInstanceJSON);
+
+export const filterTypes = {
+  DocumentRouteStatus: {
+    title: 'Document Route Status',
+    data: ['All', 'Saved', 'Initiated', 'Disapproved', 'Enroute', 'Approved', 'Final', 'Processed', 'Exception', 'Canceled'],
+  },
+  DocumentType: {
+    title: 'Document Type',
+    data: ['All', ...new Set(processInstances.map(item => item.processType.label))],
+  },
+  ActionRequested: {
+    title: 'Action Requested',
+    data: ['All', 'Acknowledge', 'Approve', 'Complete', 'FYI'],
+  },
+  DocumentCreatedDate: {
+    title: 'Document Created Date',
+  },
+  DocumentAssignedDate: {
+    title: 'Document Assigned Date',
+  },
+};

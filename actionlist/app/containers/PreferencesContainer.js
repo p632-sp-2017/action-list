@@ -69,10 +69,10 @@ const PreferencesContainer = () => (
       documentStatuses.map(documentStatus => (
         <View style={styles.preferenceSelect}>
           <View>
-            <Text style={styles.text}>{camelCase(documentStatus)}</Text>
+            <Text style={styles.text}>{documentStatus}</Text>
           </View>
           <View>
-            <Dropdown option={camelCase(documentStatus)} />
+            <Dropdown option={documentStatus} />
           </View>
         </View>
         ))}

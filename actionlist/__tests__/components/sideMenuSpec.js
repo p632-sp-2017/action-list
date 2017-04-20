@@ -19,8 +19,8 @@ describe('SideMenu', () => {
       <Provider store={store}>
         <SideMenu />
       </Provider>);
-    expect(wrapper.find(View).length).to.equal(9);
-    expect(wrapper.find(Text).length).to.equal(8);
+    expect(wrapper.find(View).length).to.equal(21);
+    expect(wrapper.find(Text).length).to.equal(15);
     expect(wrapper.find(Text).first().text()).to.equal('Home');
     expect(wrapper.find(Text).at(1).text()).to.equal('Preferences');
     expect(wrapper.find(Text).at(2).text()).to.equal('Filter');
