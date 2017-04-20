@@ -15,24 +15,58 @@ import {
 import { connect } from 'react-redux';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { selectDropdownOption } from '../actions/action_items';
-import { preferenceColors } from '../lib/commons';
+import { Colors, preferenceColors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   dropdown: {
     width: 150,
-    borderStyle: 'solid',
-    borderWidth: 1,
+    height: 30,
     marginRight: 30,
+    borderStyle: 'solid',
+    borderColor: Colors.DarkGrey,
+    borderLeftWidth: 0,
+    borderWidth: 1,
+  },
+  dropText: {
+    color: '#333',
+    marginTop: 5,
+    marginLeft: 5,
+  },
+  contentDiv: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+  colorStub: {
+    width: 20,
+    height: 30,
+    marginRight: 10,
+  },
+  mainColorStub: {
+    width: 20,
+    height: 30,
+    borderWidth: 1,
   },
 });
 
+const dropdownOption = color => (
+  <View style={[styles.contentDiv, { width: 150 }]}>
+    <View style={[styles.colorStub, { backgroundColor: color }]} />
+    <Text style={{ color: Colors.DarkGrey }}>{color}</Text>
+  </View>
+);
+
 const Dropdown = ({ option, onSelectOption, optionColor }) => (
-  <ModalDropdown
-    style={[styles.dropdown, { backgroundColor: optionColor }]}
-    options={Object.values(preferenceColors)} renderRow={rowData =>
-      <View style={{ backgroundColor: rowData }}><Text>{rowData}</Text></View>}
-    onSelect={(idx, value) => onSelectOption(idx, value, option)}
-  />
+  <View style={styles.contentDiv}>
+    <View style={[styles.mainColorStub, { backgroundColor: optionColor }]} />
+    <ModalDropdown
+      style={styles.dropdown}
+      options={Object.values(preferenceColors)}
+      defaultValue={optionColor}
+      textStyle={styles.dropText}
+      renderRow={color => dropdownOption(color)}
+      onSelect={(idx, value) => onSelectOption(idx, value, option)}
+    />
+  </View>
 );
 
 const mapStateToProps = (state, ownProps) => ({

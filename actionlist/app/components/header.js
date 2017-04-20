@@ -44,7 +44,7 @@ const style = StyleSheet.create({
 
 /* eslint-disable global-require */
 /* rule disabled since image loading need not be global */
-const Header = ({ ontoggleDrawer }) => (
+const Header = ({ displayMenu, ontoggleDrawer }) => (
   <View style={style.toolbar}>
     <Image
       style={style.toolbarTrident}
@@ -53,12 +53,14 @@ const Header = ({ ontoggleDrawer }) => (
     <Text style={style.toolbarTitle}>
       IU Action List
     </Text>
-    <TouchableHighlight onPress={() => ontoggleDrawer()}>
-      <Image
-        style={style.toolbarButton}
-        source={require('./img/menu-icon.png')}
-      />
-    </TouchableHighlight>
+    { displayMenu &&
+      <TouchableHighlight onPress={() => ontoggleDrawer()}>
+        <Image
+          style={style.toolbarButton}
+          source={require('./img/menu-icon.png')}
+        />
+      </TouchableHighlight>
+    }
   </View>
 );
 
@@ -70,6 +72,7 @@ const mapDispatchToProps = dispatch => ({
 
 Header.propTypes = {
   ontoggleDrawer: React.PropTypes.func.isRequired,
+  displayMenu: React.PropTypes.bool.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Header);
