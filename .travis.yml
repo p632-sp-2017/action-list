@@ -12,6 +12,7 @@ android:
     - addon-google_apis-google-16
 before_script:
   - cd actionlist && npm install
+  - rm -rf node_modules/react-native-router-flux/node_modules
   - npm install -g react-native-cli
   - cd android && chmod +x gradlew
 script:
