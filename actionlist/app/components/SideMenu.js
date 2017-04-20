@@ -7,12 +7,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-/* eslint-disable no-unused-vars */
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import Accordion from 'react-native-collapsible/Accordion';
-import RadioButtons from 'react-native-radio-buttons';
 import { sortActionList, resetFilters } from '../actions/action_items';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
 import FilterPicker from './filterPicker';
@@ -27,7 +24,7 @@ const style = StyleSheet.create({
   text: {
     color: Colors.IUCrimson,
     margin: 10,
-    fontFamily: 'BentonSansBold,   Arial, sans-serif',
+    fontFamily: 'BentonSansBold, Arial, sans-serif',
     fontWeight: 'bold',
     fontSize: 15,
     textAlign: 'left',
