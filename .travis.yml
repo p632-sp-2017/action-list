@@ -13,6 +13,7 @@ android:
 before_script:
   - cd actionlist && rm -rf node_modules && npm install
   - npm install -g react-native-cli
+  - rm -rf node_modules/react-native-router-flux/node_modules
   - cd android && chmod +x gradlew
 script:
   - cd .. && npm run lint
