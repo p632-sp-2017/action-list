@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     height: 30,
     marginRight: 30,
     borderStyle: 'solid',
-    borderColor: Colors.DarkGrey,
+    borderColor: Colors.darkGrey,
     borderLeftWidth: 0,
     borderWidth: 1,
   },
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 const dropdownOption = color => (
   <View style={[styles.contentDiv, { width: 150 }]}>
     <View style={[styles.colorStub, { backgroundColor: color }]} />
-    <Text style={{ color: Colors.DarkGrey }}>{color}</Text>
+    <Text style={{ color: Colors.darkGrey }}>{color}</Text>
   </View>
 );
 

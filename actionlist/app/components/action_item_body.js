@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
   text: {
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     marginBottom: 2,
   },
   actionContainer: {

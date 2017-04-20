@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     marginLeft: 10,
   },
   container: {
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   preferencesContainer: {
     marginTop: 10,
-    backgroundColor: Colors.IULimeStone,
+    backgroundColor: Colors.iuLimeStone,
     marginRight: 10,
     marginLeft: 10,
     borderRadius: 8,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   preferenceText: {
     fontSize: 20,
-    color: Colors.IUCrimsonDark,
+    color: Colors.iuCrimsonDark,
   },
   actionButton: {
     fontSize: 15,
