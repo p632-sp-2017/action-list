@@ -158,7 +158,6 @@ const mapDispatchToProps = dispatch => ({
   onSort: criteria => dispatch(sortActionList(criteria)),
 });
 
-/* eslint-enable no-unused-vars */
 SideMenu.propTypes = {
   onSort: React.PropTypes.func.isRequired,
   optionSelected: React.PropTypes.string.isRequired,
