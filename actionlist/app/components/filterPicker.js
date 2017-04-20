@@ -1,30 +1,17 @@
 import React from 'react';
 import {
-  StyleSheet,
   View,
-  Text,
   Picker,
 } from 'react-native';
 
 /* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
 import { filterActionList } from '../actions/action_items';
-import { Colors } from '../lib/commons';
-
-const style = StyleSheet.create({
-  headerText: {
-    fontSize: 10,
-    color: Colors.IUCrimson,
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
-    margin: 10,
-  },
-});
+import ContentHeader from './contentHeader';
 
 const FilterPicker = ({ filter, value, filterKey, onActionListFiltering }) => (
   <View>
-    <View>
-      <Text style={style.headerText}>{filter.title}</Text>
-    </View>
+    <ContentHeader title={filter.title} />
     <Picker
       selectedValue={value}
       onValueChange={selectedOption => onActionListFiltering(filterKey, selectedOption)}

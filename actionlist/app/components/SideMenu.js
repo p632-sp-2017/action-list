@@ -8,11 +8,12 @@ import {
 } from 'react-native';
 
 import Button from 'react-native-button';
-import { Actions } from 'react-native-router-flux';
+import Actions from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { sortActionList, resetFilters } from '../actions/action_items';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
 import FilterPicker from './filterPicker';
+import ContentHeader from './contentHeader';
 
 const style = StyleSheet.create({
   view: {
@@ -48,12 +49,6 @@ const style = StyleSheet.create({
     fontSize: 10,
     color: Colors.IUGray,
     fontFamily: 'BentonSansBold, Arial, sans-serif',
-  },
-  headerText: {
-    fontSize: 10,
-    color: '#7B1500',
-    fontFamily: 'BentonSansBold, Arial, sans-serif',
-    margin: 10,
   },
   container: {
     backgroundColor: '#f4f7f9',
@@ -132,12 +127,8 @@ const SideMenu = ({ optionSelected,
           value={filters.actionRequested}
           filterKey={'actionRequested'}
         />
-        <View style={style.header}>
-          <Text style={style.headerText}>{filterTypes.DocumentCreatedDate.title}</Text>
-        </View>
-        <View style={style.header}>
-          <Text style={style.headerText}>{filterTypes.DocumentAssignedDate.title}</Text>
-        </View>
+        <ContentHeader title={filterTypes.DocumentCreatedDate.title} />
+        <ContentHeader title={filterTypes.DocumentAssignedDate.title} />
       </View>
       <Button
         containerStyle={style.resetContainer}

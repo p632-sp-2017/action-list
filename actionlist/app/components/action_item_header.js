@@ -59,4 +59,3 @@ ActionItemHeader.propTypes = {
 };
 
 export default ActionItemHeader;
-
