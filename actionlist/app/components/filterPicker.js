@@ -11,7 +11,7 @@ import ContentHeader from './contentHeader';
 
 const FilterPicker = ({ filter, value, filterKey, onActionListFiltering }) => (
   <View>
-    <ContentHeader title={filter.title} />
+    <ContentHeader>{filter.title}</ContentHeader>
     <Picker
       selectedValue={value}
       onValueChange={selectedOption => onActionListFiltering(filterKey, selectedOption)}

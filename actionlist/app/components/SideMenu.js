@@ -127,8 +127,8 @@ const SideMenu = ({ optionSelected,
           value={filters.actionRequested}
           filterKey={'actionRequested'}
         />
-        <ContentHeader title={filterTypes.DocumentCreatedDate.title} />
-        <ContentHeader title={filterTypes.DocumentAssignedDate.title} />
+        <ContentHeader>{filterTypes.DocumentCreatedDate.title}</ContentHeader>
+        <ContentHeader>{filterTypes.DocumentAssignedDate.title}</ContentHeader>
       </View>
       <Button
         containerStyle={style.resetContainer}

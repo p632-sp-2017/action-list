@@ -15,14 +15,14 @@ const style = StyleSheet.create({
   },
 });
 
-const ContentHeader = ({ title }) => (
+const ContentHeader = props => (
   <View>
-    <Text style={style.headerText}>{title}</Text>
+    <Text style={style.headerText}>{props.children}</Text>
   </View>
 );
 
 ContentHeader.propTypes = {
-  title: React.PropTypes.string.isRequired,
+  children: React.PropTypes.node.isRequired,
 };
 
 export default ContentHeader;
