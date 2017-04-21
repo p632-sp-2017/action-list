@@ -12,6 +12,8 @@ android:
     - addon-google_apis-google-16
 before_script:
   - cd actionlist && npm install
+  # We are removing the node_modules from react-native-router-flux as it is causing jest errors
+  # refer https://github.com/facebook/jest/issues/2070
   - rm -rf node_modules/react-native-router-flux/node_modules
   - npm install -g react-native-cli
   - cd android && chmod +x gradlew
