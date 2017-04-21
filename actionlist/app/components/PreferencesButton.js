@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   preferencesButton: {
     borderRadius: 8,
-    backgroundColor: Colors.IUCrimsonDark,
+    backgroundColor: Colors.iuCrimsonDark,
     marginRight: 10,
     marginLeft: 10,
     padding: 5,
