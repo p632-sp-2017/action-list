@@ -21,11 +21,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const DisplayList = ({ dataSource }) => (
+const filterData = (dataSource, filters) => (
+  dataSource.filter(item => ((item.actionRequested.label === filters.actionRequested || filters.actionRequested === 'All') &&
+    (item.processType.label === filters.documentType || filters.documentType === 'All') &&
+    (item.processInstanceStatus.label === filters.documentRouteStatus || filters.documentRouteStatus === 'All')))
+);
+
+const DisplayList = ({ dataSource, filterStatus }) => (
   <View style={styles.full_container}>
     <LazyloadScrollView>
       <Accordion
-        sections={dataSource}
+        sections={filterData(dataSource, filterStatus)}
         renderHeader={ActionItemHeader}
         renderContent={ActionItemBody}
       />
@@ -35,10 +41,16 @@ const DisplayList = ({ dataSource }) => (
 
 const mapStateToProps = state => ({
   dataSource: state.actionItemsReducer.dataSource,
+  filterStatus: state.actionItemsReducer.filterStatus,
 });
 
 DisplayList.propTypes = {
   dataSource: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  filterStatus: React.PropTypes.shape({
+    actionRequested: React.PropTypes.string,
+    documentType: React.PropTypes.string,
+    documentRouteStatus: React.PropTypes.string,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(DisplayList);
