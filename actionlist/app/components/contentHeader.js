@@ -9,7 +9,7 @@ import { Colors } from '../lib/commons';
 const style = StyleSheet.create({
   headerText: {
     fontSize: 10,
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     fontFamily: 'BentonSansBold, Arial, sans-serif',
     margin: 10,
   },

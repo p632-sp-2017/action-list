@@ -18,12 +18,12 @@ import ContentHeader from './contentHeader';
 const style = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: Colors.IUGray,
+    backgroundColor: Colors.iuGray,
     borderBottomWidth: 0.5,
     paddingRight: 10,
   },
   text: {
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     margin: 10,
     fontFamily: 'BentonSansBold, Arial, sans-serif',
     fontWeight: 'bold',
@@ -47,7 +47,7 @@ const style = StyleSheet.create({
   },
   picker: {
     fontSize: 10,
-    color: Colors.IUGray,
+    color: Colors.iuGray,
     fontFamily: 'BentonSansBold, Arial, sans-serif',
   },
   container: {
@@ -55,7 +55,7 @@ const style = StyleSheet.create({
     paddingTop: 0,
   },
   subtext: {
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     marginLeft: 15,
     marginBottom: 10,
     fontFamily: 'BentonSansBold, Arial, sans-serif',
@@ -63,7 +63,7 @@ const style = StyleSheet.create({
     textAlign: 'left',
   },
   selected_text: {
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     marginLeft: 15,
     marginBottom: 10,
     fontFamily: 'BentonSansBold, Arial, sans-serif',

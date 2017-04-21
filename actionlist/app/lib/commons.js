@@ -2,12 +2,14 @@ export const processInstanceJSON = '[{"id":"12345","processInstanceId":"23456","
 export const preferenceJSON = '{"pageSize":10,"refreshRate":15,"showPrimaryDelegations":true,"showSecondaryDelegations":false,"showSummary":true,"showFilters":true,"columns":[{"name":"processInstanceId","title":"Process Instance","link":"processInstance"},{"name":"processType","title":"Process Type"},{"name":"title","title":"Title"},{"name":"log","title":"Log","icon":"log","link":"log"}],"colors":{"S":"red","A":"orange"},"notifications":{"defaultFrequency":"immediate","primaryDelegation":true,"secondaryDelegation":false,"approval":true,"complete":true,"acknowledge":true,"fyi":false,"processTypeOverrides":{"Some Process":"daily"}}}';
 
 export const Colors = {
-  IUGray: '#e9e9e9',
-  IUCrimson: '#7B1500',
-  IUCrimsonDark: '#990000',
-  IULimeStone: '#AEA79F',
-  Grey: '#808080',
-  White: 'white',
+  iuGray: '#e9e9e9',
+  iuDarkLimeStone: '#EDEBEB',
+  iuCrimson: '#7B1500',
+  iuCrimsonDark: '#990000',
+  iuLimeStone: '#AEA79F',
+  grey: '#808080',
+  white: 'white',
+  darkGrey: '#333333',
 };
 
 export const preferenceColors = {
@@ -23,7 +25,7 @@ export const preferenceColors = {
   white: 'white',
 };
 
-export const documentStatuses = ['saved', 'initiated', 'disapproved', 'enroute', 'approved', 'final', 'processed', 'exception', 'cancel'];
+export const documentStatuses = ['Saved', 'Initiated', 'Disapproved', 'Enroute', 'Approved', 'Final', 'Processed', 'Exception', 'Cancel'];
 
 export const sortTypes = {
   creationDate: 'creationDate',
