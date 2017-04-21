@@ -7,6 +7,7 @@ export const Colors = {
   iuCrimsonDark: '#990000',
   iuLimeStone: '#AEA79F',
   grey: '#808080',
+  white: 'white',
   darkGrey: '#333333',
 };
 

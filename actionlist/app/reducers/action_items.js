@@ -1,22 +1,22 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
 import { TOGGLE_DRAWER, SORT_ACTION_LIST, SELECT_DROPDOWN_OPTION } from '../actions/types';
-import { processInstances, sortTypes } from '../lib/commons';
+import { processInstances, sortTypes, Colors } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
   optionSelected: '',
   dropdownColors: {
-    Saved: 'white',
-    Initiated: 'white',
-    Disapproved: 'white',
-    Enroute: 'white',
-    Approved: 'white',
-    Final: 'white',
-    Processed: 'white',
-    Exception: 'white',
-    Cancel: 'white',
+    Saved: Colors.white,
+    Initiated: Colors.white,
+    Disapproved: Colors.white,
+    Enroute: Colors.white,
+    Approved: Colors.white,
+    Final: Colors.white,
+    Processed: Colors.white,
+    Exception: Colors.white,
+    Cancel: Colors.white,
   },
 };
 
