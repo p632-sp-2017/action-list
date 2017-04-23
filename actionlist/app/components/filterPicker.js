@@ -6,7 +6,7 @@ import {
 
 /* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
-import { filterActionList } from '../actions/action_items';
+import { filterActionList } from '../actions/actionItems';
 import ContentHeader from './contentHeader';
 
 const FilterPicker = ({ filter, value, filterKey, onActionListFiltering }) => (

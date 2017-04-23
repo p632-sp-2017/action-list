@@ -8,12 +8,13 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-import { toggleDrawer } from '../actions/action_items';
+import { toggleDrawer } from '../actions/actionItems';
+import { Colors } from '../lib/commons';
 
 const style = StyleSheet.create({
   toolbar: {
-    backgroundColor: '#7a1705',
-    borderTopColor: '#990000',
+    backgroundColor: Colors.iuCrimsonDarker,
+    borderTopColor: Colors.iuCrimsonDark,
     borderTopWidth: 5,
     flexDirection: 'row',
   },
@@ -23,7 +24,7 @@ const style = StyleSheet.create({
     marginLeft: 10,
   },
   toolbarTitle: {
-    color: '#fff',
+    color: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'BentonSansBold, Arial, sans-serif',

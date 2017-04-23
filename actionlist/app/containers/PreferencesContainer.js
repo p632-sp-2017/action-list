@@ -6,8 +6,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import Header from '../components/header';
-import PreferencesButton from '../components/PreferencesButton';
-import Dropdown from '../components/Dropdown';
+import PreferencesButton from '../components/preferencesButton';
+import Dropdown from '../components/dropdown';
 import { Colors, documentStatuses } from '../lib/commons';
 
 const styles = StyleSheet.create({
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   container: {
-    backgroundColor: '#EDEBEB',
+    backgroundColor: Colors.iuDarkLimeStone,
     padding: 10,
   },
   preferencesContainer: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     fontSize: 15,
-    color: '#ffffff',
+    color: Colors.white,
   },
   preferences_buttons: {
     flexDirection: 'row',

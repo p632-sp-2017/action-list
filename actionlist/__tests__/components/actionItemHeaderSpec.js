@@ -4,12 +4,12 @@ import { View, Text, Image } from 'react-native';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
-import ActionItemHeader from '../../app/components/action_item_header';
+import ActionItemHeader from '../../app/components/actionItemHeader';
 import { Middlewares, InitialState } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
-jest.unmock('../../app/components/action_item_header');
+jest.unmock('../../app/components/actionItemHeader');
 
 describe('action_item_headers', () => {
   it('should take props and contain row title, actual lengths', () => {

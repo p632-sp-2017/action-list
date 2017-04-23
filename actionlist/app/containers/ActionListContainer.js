@@ -6,9 +6,9 @@ import {
 } from 'react-native';
 
 import Header from '../components/header';
-import DisplayList from '../components/display_list';
-import SideMenu from '../components/SideMenu';
-import { toggleDrawer } from '../actions/action_items';
+import DisplayList from '../components/displayList';
+import SideMenu from '../components/sideMenu';
+import { toggleDrawer } from '../actions/actionItems';
 
 const ActionListContainer = ({ drawerExpanded, setDrawerState }) => (
   <Drawer

@@ -7,16 +7,17 @@ import {
 } from 'react-native';
 import { LazyloadScrollView } from 'react-native-lazyload';
 import Accordion from 'react-native-collapsible/Accordion';
-import ActionItemHeader from './action_item_header';
-import ActionItemBody from './action_item_body';
+import ActionItemHeader from './actionItemHeader';
+import ActionItemBody from './actionItemBody';
+import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   full_container: {
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     paddingBottom: Navigator.NavigationBar.Styles.General.TotalNavHeight,
   },
   container: {
-    backgroundColor: '#f4f7f9',
+    backgroundColor: Colors.backgroundGrey,
     paddingTop: 0,
   },
 });
