@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import Button from 'react-native-button';
-import Actions from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { sortActionList, resetFilters } from '../actions/actionItems';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
