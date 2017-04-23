@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 
-import reducer from '../../app/reducers/action_items';
-import { toggleDrawer, sortActionList } from '../../app/actions/action_items';
+import reducer from '../../app/reducers/actionItems';
+import { toggleDrawer, sortActionList } from '../../app/actions/actionItems';
 import { sortTypes } from '../../app/lib/commons';
 
 describe('action_items', () => {

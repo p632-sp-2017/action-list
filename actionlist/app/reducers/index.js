@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import actionItemsReducer from './action_items';
+import actionItemsReducer from './actionItems';
 
 export default combineReducers({
   actionItemsReducer,

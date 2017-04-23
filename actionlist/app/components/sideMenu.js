@@ -10,7 +10,7 @@ import {
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { sortActionList, resetFilters } from '../actions/action_items';
+import { sortActionList, resetFilters } from '../actions/actionItems';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
 import FilterPicker from './filterPicker';
 import ContentHeader from './contentHeader';
@@ -32,7 +32,7 @@ const style = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
   resetContainer: {
-    backgroundColor: '#990000',
+    backgroundColor: Colors.iuCrimsonDark,
     padding: 5,
     borderRadius: 8,
     marginRight: 10,
@@ -43,7 +43,7 @@ const style = StyleSheet.create({
   },
   resetButton: {
     fontSize: 10,
-    color: '#ffffff',
+    color: Colors.white,
   },
   picker: {
     fontSize: 10,
@@ -51,7 +51,7 @@ const style = StyleSheet.create({
     fontFamily: 'BentonSansBold, Arial, sans-serif',
   },
   container: {
-    backgroundColor: '#f4f7f9',
+    backgroundColor: Colors.backgroundGrey,
     paddingTop: 0,
   },
   subtext: {
@@ -81,7 +81,7 @@ const SideMenu = ({ optionSelected,
   <ScrollView style={style.container}>
     <View style={style.view}>
       <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
-      <Button style={style.text} onPress={() => Actions.pref()} >Preferences</Button>
+      <Button style={style.text} onPress={() => Actions.pref()}>Preferences</Button>
       <Button style={style.text}>Filter</Button>
       <View style={style.view}>
         <Text style={style.text}>

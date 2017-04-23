@@ -5,12 +5,12 @@ import Button from 'react-native-button';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
-import ActionItemBody from '../../app/components/action_item_body';
+import ActionItemBody from '../../app/components/actionItemBody';
 import { ActionItemProps, Middlewares, InitialState } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
-jest.unmock('../../app/components/action_item_body');
+jest.unmock('../../app/components/actionItemBody');
 
 describe('Action_Item_Body', () => {
   it('correctly passes our props to Text Components in the View Component', () => {

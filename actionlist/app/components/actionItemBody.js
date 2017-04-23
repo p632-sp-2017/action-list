@@ -10,7 +10,7 @@ import { Colors } from '../lib/commons';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#EDEBEB',
+    backgroundColor: Colors.iuDarkLimeStone,
     padding: 10,
     borderBottomWidth: 0.5,
   },
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   actionContainer: {
-    backgroundColor: '#990000',
+    backgroundColor: Colors.iuCrimsonDark,
     padding: 5,
     borderRadius: 8,
     marginRight: 10,
@@ -31,22 +31,22 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   routeContainer: {
-    backgroundColor: '#990000',
+    backgroundColor: Colors.iuCrimsonDark,
     padding: 5,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#990000',
+    borderColor: Colors.iuCrimsonDark,
     marginRight: 10,
     width: 100,
   },
   actionButton: {
     fontSize: 15,
-    color: '#ffffff',
+    color: Colors.white,
   },
   routeButton: {
-    backgroundColor: '#990000',
+    backgroundColor: Colors.iuCrimsonDark,
     fontSize: 15,
-    color: '#990000',
+    color: Colors.iuCrimsonDark,
   },
 });
 
