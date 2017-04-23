@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import ModalDropdown from 'react-native-modal-dropdown';
-import { selectDropdownOption } from '../actions/action_items';
+import { selectDropdownOption } from '../actions/actionItems';
 import { Colors, preferenceColors } from '../lib/commons';
 
 const styles = StyleSheet.create({

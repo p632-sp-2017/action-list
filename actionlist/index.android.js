@@ -10,8 +10,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Scene, Router } from 'react-native-router-flux';
 import reducer from './app/reducers/index';
-import ActionListContainer from './app/containers/ActionListContainer';
-import PreferencesContainer from './app/containers/PreferencesContainer';
+import ActionListContainer from './app/containers/actionListContainer';
+import PreferencesContainer from './app/containers/preferencesContainer';
 
 const store = createStore(reducer);
 
