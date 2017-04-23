@@ -27,7 +27,7 @@ describe('header', () => {
     };
     const wrapper = mount(
       <Provider store={store}>
-        <Header />
+        <Header displayMenu />
       </Provider>);
     expect(wrapper.find(View).find(Image)
       .first()

@@ -10,7 +10,7 @@ import { Colors } from '../lib/commons';
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
-    backgroundColor: Colors.IUGray,
+    backgroundColor: Colors.iuGray,
     borderBottomWidth: 0.5,
     paddingRight: 10,
     overflow: 'hidden',
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   title: {
     flex: 1,
     padding: 10,
-    color: Colors.IUCrimson,
+    color: Colors.iuCrimson,
     fontWeight: 'bold',
   },
   buttonImage: {
@@ -59,4 +59,3 @@ ActionItemHeader.propTypes = {
 };
 
 export default ActionItemHeader;
-

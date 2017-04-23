@@ -17,5 +17,12 @@ export const Middlewares = [];
 export const InitialState = {
   actionItemsReducer: {
     sortValue: 'test',
+    filterStatus: {
+      documentRouteStatus: 'All',
+      documentType: 'All',
+      documentCreationDate: 'All',
+      documentAssignedDate: 'All',
+      actionRequested: 'All',
+    },
   },
 };

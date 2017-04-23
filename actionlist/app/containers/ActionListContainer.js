@@ -21,7 +21,7 @@ const ActionListContainer = ({ drawerExpanded, setDrawerState }) => (
     onClose={() => setDrawerState()}
   >
     <View>
-      <Header />
+      <Header displayMenu />
       <DisplayList />
     </View>
   </Drawer>

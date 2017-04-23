@@ -1,22 +1,23 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_ACTION_LIST, SELECT_DROPDOWN_OPTION } from '../actions/types';
-import { processInstances, sortTypes, Colors } from '../lib/commons';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION } from '../actions/types';
+import { processInstances, sortTypes, filterStatus, Colors } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
   drawerExpanded: false,
+  filterStatus,
   optionSelected: '',
   dropdownColors: {
-    saved: Colors.White,
-    initiated: Colors.White,
-    disapproved: Colors.White,
-    enroute: Colors.White,
-    approved: Colors.White,
-    final: Colors.White,
-    processed: Colors.White,
-    exception: Colors.White,
-    cancel: Colors.White,
+    Saved: Colors.white,
+    Initiated: Colors.white,
+    Disapproved: Colors.white,
+    Enroute: Colors.white,
+    Approved: Colors.white,
+    Final: Colors.white,
+    Processed: Colors.white,
+    Exception: Colors.white,
+    Cancel: Colors.white,
   },
 };
 
@@ -94,8 +95,27 @@ const selectDropdownOption = (state, action) => {
   };
 };
 
+const filterActionList = (state, action) => {
+  return {
+    ...state,
+    filterStatus: {
+      ...state.filterStatus,
+      [action.payload.filterType]: action.payload.value,
+    },
+  };
+};
+
+const resetFilters = (state) => {
+  return {
+    ...state,
+    filterStatus,
+  };
+};
+
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_ACTION_LIST]: sortActionList,
+  [FILTER_ACTION_LIST]: filterActionList,
   [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
+  [RESET_FILTERS]: resetFilters,
 }, defaultState);
