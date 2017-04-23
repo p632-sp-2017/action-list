@@ -51,12 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#ffffff',
   },
-  preferences_buttons: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    margin: 10,
-    justifyContent: 'space-between',
-  },
+
 });
 
 const renderStatus = ({ documentStatus, i }) => (
@@ -80,11 +75,7 @@ const PreferencesContainer = () => (
       documentStatuses.map((documentStatus, i) => renderStatus({ documentStatus, i }))
     }
     </View>
-    <View style={styles.preferences_buttons}>
-      <PreferencesButton buttonName="Save" />
-      <PreferencesButton buttonName="Cancel" />
-      <PreferencesButton buttonName="Back" />
-    </View>
+    <PreferencesButton />
   </ScrollView>
 );
 

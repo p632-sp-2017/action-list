@@ -1,6 +1,6 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION } from '../actions/types';
+import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION, RESET_PREFERENCES } from '../actions/types';
 import { processInstances, sortTypes, filterStatus, Colors } from '../lib/commons';
 
 export const defaultState = {
@@ -112,10 +112,19 @@ const resetFilters = (state) => {
   };
 };
 
+const resetPreferences = (state) => {
+  return {
+    ...state,
+    dropdownColors: {
+      ...defaultState.dropdownColors,
+    },
+  };
+};
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_ACTION_LIST]: sortActionList,
   [FILTER_ACTION_LIST]: filterActionList,
   [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
   [RESET_FILTERS]: resetFilters,
+  [RESET_PREFERENCES]: resetPreferences,
 }, defaultState);

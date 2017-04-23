@@ -3,40 +3,51 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { Colors } from '../lib/commons';
+import { resetPreferences } from '../actions/action_items';
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    marginTop: 20,
-    borderRadius: 8,
-    width: 110,
-  },
   preferencesButton: {
-    borderRadius: 8,
+    marginTop: 20,
+    width: 110,
     backgroundColor: Colors.iuCrimsonDark,
-    marginRight: 10,
-    marginLeft: 10,
+    borderRadius: 8,
     padding: 5,
     fontSize: 15,
     color: '#ffffff',
     height: 30,
     alignItems: 'center',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    margin: 10,
+    justifyContent: 'space-between',
+  },
 });
 
-const PreferencesButton = ({ buttonName }) => (
+const PreferencesButton = ({ onResetPreferences }) => (
   <View style={styles.buttonContainer}>
     <Button
       onPress={() => Actions.home({ type: 'back' })}
       style={styles.preferencesButton}
-    >{buttonName}</Button>
+    >Ok</Button>
+    <Button
+      onPress={() => onResetPreferences()}
+      style={styles.preferencesButton}
+    >Reset</Button>
   </View>
 );
 
+const mapDispatchToProps = dispatch => ({
+  onResetPreferences: () => dispatch(resetPreferences()),
+});
+
 PreferencesButton.propTypes = {
-  buttonName: React.PropTypes.string.isRequired,
+  onResetPreferences: React.PropTypes.func.isRequired,
 };
 
-export default PreferencesButton;
+export default connect(null, mapDispatchToProps)(PreferencesButton);
