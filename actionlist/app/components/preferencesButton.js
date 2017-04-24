@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { Colors } from '../lib/commons';
-import { resetPreferences } from '../actions/action_items';
+import { resetPreferences } from '../actions/actionItems';
 
 const styles = StyleSheet.create({
   preferencesButton: {
