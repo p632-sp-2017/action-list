@@ -2,8 +2,8 @@ import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 
 import reducer from '../../app/reducers/actionItems';
-import { toggleDrawer, sortActionList } from '../../app/actions/actionItems';
-import { sortTypes } from '../../app/lib/commons';
+import { toggleDrawer, sortActionList, resetPreferences } from '../../app/actions/actionItems';
+import { sortTypes, preferenceColors } from '../../app/lib/commons';
 
 describe('action_items', () => {
   it('should have the opposite drawerExpanded value when toggled', () => {
@@ -205,6 +205,43 @@ describe('action_items', () => {
         },
       ],
       optionSelected: sortTypes.actionRequested,
+    };
+
+    deepFreeze(beforeState);
+    deepFreeze(action);
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should have the colors reset to white on pressing reset button', () => {
+    const beforeState = {
+      dropdownColors: {
+        Saved: preferenceColors.aqua,
+        Initiated: preferenceColors.green,
+        Disapproved: preferenceColors.orange,
+        Enroute: preferenceColors.pink,
+        Approved: preferenceColors.purple,
+        Final: preferenceColors.aqua,
+        Processed: preferenceColors.orange,
+        Exception: preferenceColors.grey,
+        Cancel: preferenceColors.tan,
+      },
+    };
+    const action = resetPreferences();
+
+    const afterState = {
+      dropdownColors: {
+        Saved: preferenceColors.white,
+        Initiated: preferenceColors.white,
+        Disapproved: preferenceColors.white,
+        Enroute: preferenceColors.white,
+        Approved: preferenceColors.white,
+        Final: preferenceColors.white,
+        Processed: preferenceColors.white,
+        Exception: preferenceColors.white,
+        Cancel: preferenceColors.white,
+      },
     };
 
     deepFreeze(beforeState);
