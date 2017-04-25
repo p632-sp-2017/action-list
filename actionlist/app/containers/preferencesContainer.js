@@ -67,15 +67,17 @@ const renderStatus = ({ documentStatus, i }) => (
 
 const PreferencesContainer = () => (
   <ScrollView>
-    <Header displayMenu={false} />
-    <View style={styles.componentContainer}>
-      <Text style={styles.preferenceText}>Preferences</Text>
-    </View>
-    <View style={styles.container}>{
-      documentStatuses.map((documentStatus, i) => renderStatus({ documentStatus, i }))
-    }
-    </View>
-    <PreferencesButton />
+    <View>
+      <Header displayMenu={false} />
+      <View style={styles.componentContainer}>
+        <Text style={styles.preferenceText}>Preferences</Text>
+      </View>
+      <View style={styles.container}>{
+        documentStatuses.map((documentStatus, i) => renderStatus({ documentStatus, i }))
+      }
+      </View>
+      <PreferencesButton />
+    </View>  
   </ScrollView>
 );
 
