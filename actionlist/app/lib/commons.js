@@ -67,3 +67,22 @@ export const filterTypes = {
     title: 'Document Assigned Date',
   },
 };
+
+export const defaultState = {
+  dataSource: processInstances,
+  drawerExpanded: false,
+  filterStatus,
+  optionSelected: '',
+  dropdownColors: {
+    Saved: Colors.white,
+    Initiated: Colors.white,
+    Disapproved: Colors.white,
+    Enroute: Colors.white,
+    Approved: Colors.white,
+    Final: Colors.white,
+    Processed: Colors.white,
+    Exception: Colors.white,
+    Cancel: Colors.white,
+  },
+};
+

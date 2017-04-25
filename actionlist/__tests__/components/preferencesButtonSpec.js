@@ -5,12 +5,12 @@ import Button from 'react-native-button';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
-import PreferencesButton from '../../app/components/preferencesButton';
+import PreferencesButtons from '../../app/components/preferencesButtons';
 import { Middlewares, InitialState } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
-jest.unmock('../../app/components/preferencesButton');
+jest.unmock('../../app/components/preferencesButtons');
 
 describe('PreferencesButton', () => {
   it('should render the inner tree component structure properly', () => {
@@ -18,7 +18,7 @@ describe('PreferencesButton', () => {
     const store = mockStore(InitialState);
     const wrapper = mount(
       <Provider store={store}>
-        <PreferencesButton />
+        <PreferencesButtons />
       </Provider>);
     expect(wrapper.find(View).length).to.equal(3);
     expect(wrapper.find(View).find(Button)

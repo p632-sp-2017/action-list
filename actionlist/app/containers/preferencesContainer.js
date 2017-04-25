@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Header from '../components/header';
-import PreferencesButton from '../components/preferencesButton';
+import PreferencesButtons from '../components/preferencesButtons';
 import Dropdown from '../components/dropdown';
 import { Colors, documentStatuses } from '../lib/commons';
 
@@ -76,7 +76,7 @@ const PreferencesContainer = () => (
         documentStatuses.map((documentStatus, i) => renderStatus({ documentStatus, i }))
       }
       </View>
-      <PreferencesButton />
+      <PreferencesButtons />
     </View>
   </ScrollView>
 );

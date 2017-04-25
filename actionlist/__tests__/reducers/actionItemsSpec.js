@@ -1,9 +1,8 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
-
 import reducer from '../../app/reducers/actionItems';
 import { toggleDrawer, sortActionList, resetPreferences } from '../../app/actions/actionItems';
-import { sortTypes, preferenceColors } from '../../app/lib/commons';
+import { sortTypes, preferenceColors, defaultState } from '../../app/lib/commons';
 
 describe('action_items', () => {
   it('should have the opposite drawerExpanded value when toggled', () => {
@@ -232,15 +231,7 @@ describe('action_items', () => {
 
     const afterState = {
       dropdownColors: {
-        Saved: preferenceColors.white,
-        Initiated: preferenceColors.white,
-        Disapproved: preferenceColors.white,
-        Enroute: preferenceColors.white,
-        Approved: preferenceColors.white,
-        Final: preferenceColors.white,
-        Processed: preferenceColors.white,
-        Exception: preferenceColors.white,
-        Cancel: preferenceColors.white,
+        ...defaultState.dropdownColors,
       },
     };
 
