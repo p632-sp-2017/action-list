@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
-import reducer from '../../app/reducers/actionItems';
+import reducer, { defaultState } from '../../app/reducers/actionItems';
 import { toggleDrawer, sortActionList, resetPreferences } from '../../app/actions/actionItems';
-import { sortTypes, preferenceColors, defaultState } from '../../app/lib/commons';
+import { sortTypes, preferenceColors } from '../../app/lib/commons';
 
 describe('action_items', () => {
   it('should have the opposite drawerExpanded value when toggled', () => {

@@ -1,7 +1,25 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
 import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION, RESET_PREFERENCES } from '../actions/types';
-import { defaultState, sortTypes, filterStatus } from '../lib/commons';
+import { processInstances, sortTypes, filterStatus, Colors } from '../lib/commons';
+
+export const defaultState = {
+  dataSource: processInstances,
+  drawerExpanded: false,
+  filterStatus,
+  optionSelected: '',
+  dropdownColors: {
+    Saved: Colors.white,
+    Initiated: Colors.white,
+    Disapproved: Colors.white,
+    Enroute: Colors.white,
+    Approved: Colors.white,
+    Final: Colors.white,
+    Processed: Colors.white,
+    Exception: Colors.white,
+    Cancel: Colors.white,
+  },
+};
 
 const sortActionList = (state, action) => {
   const sortedByCriteria = [...state.dataSource];
@@ -102,6 +120,7 @@ const resetPreferences = (state) => {
     },
   };
 };
+
 export default handleActions({
   [TOGGLE_DRAWER]: toggleDrawer,
   [SORT_ACTION_LIST]: sortActionList,
