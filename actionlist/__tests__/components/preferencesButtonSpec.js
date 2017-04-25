@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Button from 'react-native-button';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';

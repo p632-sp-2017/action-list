@@ -77,7 +77,7 @@ const PreferencesContainer = () => (
       }
       </View>
       <PreferencesButton />
-    </View>  
+    </View>
   </ScrollView>
 );
 
