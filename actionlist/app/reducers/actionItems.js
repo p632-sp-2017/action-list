@@ -1,7 +1,7 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
 import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION, RESET_PREFERENCES } from '../actions/types';
-import { processInstances, sortTypes, filterStatus, Colors } from '../lib/commons';
+import { processInstances, sortTypes, filterStatus, preferenceColors } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
