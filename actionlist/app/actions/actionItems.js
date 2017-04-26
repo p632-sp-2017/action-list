@@ -1,8 +1,10 @@
 import { createAction } from 'redux-actions';
-import { TOGGLE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION } from './types';
+import { OPEN_DRAWER, CLOSE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION, DATE_FILTER_CHANGE } from './types';
 
-export const toggleDrawer = createAction(TOGGLE_DRAWER);
+export const openDrawer = createAction(OPEN_DRAWER);
+export const closeDrawer = createAction(CLOSE_DRAWER);
 export const filterActionList = createAction(FILTER_ACTION_LIST);
 export const sortActionList = createAction(SORT_ACTION_LIST);
 export const selectDropdownOption = createAction(SELECT_DROPDOWN_OPTION);
 export const resetFilters = createAction(RESET_FILTERS);
+export const dateFilterChange = createAction(DATE_FILTER_CHANGE);

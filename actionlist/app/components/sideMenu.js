@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { sortActionList, resetFilters } from '../actions/actionItems';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
 import FilterPicker from './filterPicker';
-import ContentHeader from './contentHeader';
+import DateRangePicker from './dateRangePicker';
 
 const style = StyleSheet.create({
   view: {
@@ -127,14 +127,20 @@ const SideMenu = ({ optionSelected,
           value={filters.actionRequested}
           filterKey={'actionRequested'}
         />
-        <ContentHeader>{filterTypes.DocumentCreatedDate.title}</ContentHeader>
-        <ContentHeader>{filterTypes.DocumentAssignedDate.title}</ContentHeader>
+        <DateRangePicker
+          title={filterTypes.DocumentCreatedDate.title}
+          dateSet={filters.documentCreationDate}
+        />
+        <DateRangePicker
+          title={filterTypes.DocumentAssignedDate.title}
+          dateSet={filters.documentAssignedDate}
+        />
+        <Button
+          containerStyle={style.resetContainer}
+          style={style.resetButton}
+          onPress={() => onReset()}
+        >Reset Filters</Button>
       </View>
-      <Button
-        containerStyle={style.resetContainer}
-        style={style.resetButton}
-        onPress={() => onReset()}
-      >Reset Filters</Button>
     </View>
   </ScrollView>
 );
@@ -156,8 +162,14 @@ SideMenu.propTypes = {
   filters: React.PropTypes.shape({
     documentRouteStatus: React.PropTypes.string,
     documentType: React.PropTypes.string,
-    documentCreationDate: React.PropTypes.string,
-    documentAssignedDate: React.PropTypes.string,
+    documentCreationDate: React.PropTypes.shape({
+      start: React.PropTypes.string,
+      end: React.PropTypes.string,
+    }),
+    documentAssignedDate: React.PropTypes.shape({
+      start: React.PropTypes.string,
+      end: React.PropTypes.string,
+    }),
     actionRequested: React.PropTypes.string,
   }).isRequired,
 };

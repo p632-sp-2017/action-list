@@ -8,9 +8,9 @@ import {
 import Header from '../components/header';
 import DisplayList from '../components/displayList';
 import SideMenu from '../components/sideMenu';
-import { toggleDrawer } from '../actions/actionItems';
+import { closeDrawer } from '../actions/actionItems';
 
-const ActionListContainer = ({ drawerExpanded, setDrawerState }) => (
+const ActionListContainer = ({ drawerExpanded, setDrawerClose }) => (
   <Drawer
     openDrawerOffset={100}
     type="overlay"
@@ -18,7 +18,7 @@ const ActionListContainer = ({ drawerExpanded, setDrawerState }) => (
     side={'right'}
     tapToClose
     content={<SideMenu />}
-    onClose={() => setDrawerState()}
+    onClose={() => setDrawerClose()}
   >
     <View>
       <Header displayMenu />
@@ -32,12 +32,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setDrawerState: () => dispatch(toggleDrawer()),
+  setDrawerClose: () => dispatch(closeDrawer()),
 });
 
 ActionListContainer.propTypes = {
   drawerExpanded: React.PropTypes.bool.isRequired,
-  setDrawerState: React.PropTypes.func.isRequired,
+  setDrawerClose: React.PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActionListContainer);

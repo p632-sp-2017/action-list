@@ -2,7 +2,7 @@ import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 
 import reducer from '../../app/reducers/actionItems';
-import { toggleDrawer, sortActionList } from '../../app/actions/actionItems';
+import { openDrawer, sortActionList } from '../../app/actions/actionItems';
 import { sortTypes } from '../../app/lib/commons';
 
 describe('action_items', () => {
@@ -10,7 +10,7 @@ describe('action_items', () => {
     const beforeState = {
       drawerExpanded: false,
     };
-    const action = toggleDrawer();
+    const action = openDrawer();
     const afterState = {
       drawerExpanded: true,
     };
@@ -63,6 +63,7 @@ describe('action_items', () => {
           creationDate: '2017-08-21T12:00:00',
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.creationDate,
     };
 
@@ -113,6 +114,7 @@ describe('action_items', () => {
           lastApprovedDate: '2017-08-21T12:00:00',
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.lastApprovedDate,
     };
 
@@ -164,6 +166,7 @@ describe('action_items', () => {
           processType: { label: 'open' },
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.processType,
     };
 
@@ -204,6 +207,7 @@ describe('action_items', () => {
           actionRequested: { label: 'reject' },
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.actionRequested,
     };
 
