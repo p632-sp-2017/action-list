@@ -67,5 +67,3 @@ export const filterTypes = {
     title: 'Document Assigned Date',
   },
 };
-
-
