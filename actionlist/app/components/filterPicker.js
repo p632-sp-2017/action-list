@@ -4,7 +4,6 @@ import {
   Picker,
 } from 'react-native';
 
-/* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
 import { filterActionList } from '../actions/actionItems';
 import ContentHeader from './contentHeader';

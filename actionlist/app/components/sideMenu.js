@@ -10,10 +10,10 @@ import {
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { sortActionList, resetFilters } from '../actions/actionItems';
+import { sortActionList, filterReset } from '../actions/actionItems';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
 import FilterPicker from './filterPicker';
-import ContentHeader from './contentHeader';
+import DateRangePicker from './dateRangePicker';
 
 const style = StyleSheet.create({
   view: {
@@ -82,7 +82,6 @@ const SideMenu = ({ optionSelected,
     <View style={style.view}>
       <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
       <Button style={style.text} onPress={() => Actions.pref()}>Preferences</Button>
-      <Button style={style.text}>Filter</Button>
       <View style={style.view}>
         <Text style={style.text}>
           Sort
@@ -127,14 +126,22 @@ const SideMenu = ({ optionSelected,
           value={filters.actionRequested}
           filterKey={'actionRequested'}
         />
-        <ContentHeader>{filterTypes.DocumentCreatedDate.title}</ContentHeader>
-        <ContentHeader>{filterTypes.DocumentAssignedDate.title}</ContentHeader>
+        <DateRangePicker
+          title={filterTypes.DocumentCreatedDate.title}
+          type={'documentCreationDate'}
+          dateSet={filters.documentCreationDate}
+        />
+        <DateRangePicker
+          title={filterTypes.DocumentAssignedDate.title}
+          type={'documentAssignedDate'}
+          dateSet={filters.documentAssignedDate}
+        />
+        <Button
+          containerStyle={style.resetContainer}
+          style={style.resetButton}
+          onPress={() => onReset()}
+        >Reset Filters</Button>
       </View>
-      <Button
-        containerStyle={style.resetContainer}
-        style={style.resetButton}
-        onPress={() => onReset()}
-      >Reset Filters</Button>
     </View>
   </ScrollView>
 );
@@ -145,7 +152,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onReset: () => dispatch(resetFilters()),
+  onReset: () => dispatch(filterReset()),
   onSort: criteria => dispatch(sortActionList(criteria)),
 });
 
@@ -156,8 +163,14 @@ SideMenu.propTypes = {
   filters: React.PropTypes.shape({
     documentRouteStatus: React.PropTypes.string,
     documentType: React.PropTypes.string,
-    documentCreationDate: React.PropTypes.string,
-    documentAssignedDate: React.PropTypes.string,
+    documentCreationDate: React.PropTypes.shape({
+      start: React.PropTypes.string,
+      end: React.PropTypes.string,
+    }),
+    documentAssignedDate: React.PropTypes.shape({
+      start: React.PropTypes.string,
+      end: React.PropTypes.string,
+    }),
     actionRequested: React.PropTypes.string,
   }).isRequired,
 };

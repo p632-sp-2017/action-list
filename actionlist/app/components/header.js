@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-import { toggleDrawer } from '../actions/actionItems';
+import { preferencesDrawerOpen } from '../actions/actionItems';
 import { Colors } from '../lib/commons';
 
 const style = StyleSheet.create({
@@ -45,7 +45,7 @@ const style = StyleSheet.create({
 
 /* eslint-disable global-require */
 /* rule disabled since image loading need not be global */
-const Header = ({ displayMenu, ontoggleDrawer }) => (
+const Header = ({ displayMenu, onOpenDrawer }) => (
   <View style={style.toolbar}>
     <Image
       style={style.toolbarTrident}
@@ -55,7 +55,7 @@ const Header = ({ displayMenu, ontoggleDrawer }) => (
       IU Action List
     </Text>
     { displayMenu &&
-      <TouchableHighlight onPress={() => ontoggleDrawer()}>
+      <TouchableHighlight onPress={() => onOpenDrawer()}>
         <Image
           style={style.toolbarButton}
           source={require('./img/menu-icon.png')}
@@ -68,11 +68,11 @@ const Header = ({ displayMenu, ontoggleDrawer }) => (
 /* eslint-enable global-require */
 
 const mapDispatchToProps = dispatch => ({
-  ontoggleDrawer: () => dispatch(toggleDrawer()),
+  onOpenDrawer: () => dispatch(preferencesDrawerOpen()),
 });
 
 Header.propTypes = {
-  ontoggleDrawer: React.PropTypes.func.isRequired,
+  onOpenDrawer: React.PropTypes.func.isRequired,
   displayMenu: React.PropTypes.bool.isRequired,
 };
 

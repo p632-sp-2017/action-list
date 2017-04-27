@@ -1,15 +1,17 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 import reducer, { defaultState } from '../../app/reducers/actionItems';
-import { toggleDrawer, sortActionList, resetPreferences } from '../../app/actions/actionItems';
-import { sortTypes, preferenceColors } from '../../app/lib/commons';
+import { preferencesDrawerOpen, filterActionList,
+  sortActionList, filterDate,
+  filterReset, preferencesReset } from '../../app/actions/actionItems';
+import { sortTypes, filterStatus, preferenceColors } from '../../app/lib/commons';
 
 describe('action_items', () => {
   it('should have the opposite drawerExpanded value when toggled', () => {
     const beforeState = {
       drawerExpanded: false,
     };
-    const action = toggleDrawer();
+    const action = preferencesDrawerOpen();
     const afterState = {
       drawerExpanded: true,
     };
@@ -17,6 +19,135 @@ describe('action_items', () => {
     deepFreeze(beforeState);
     deepFreeze(action);
 
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should be filtered by actionRequested', () => {
+    const beforeState = {
+      filterStatus,
+    };
+    const action = filterActionList({ filterType: 'actionRequested', value: 'Acknowledge' });
+    const afterState = {
+      drawerExpanded: false,
+      filterStatus: {
+        ...filterStatus,
+        actionRequested: 'Acknowledge',
+      },
+    };
+    deepFreeze(beforeState);
+    deepFreeze(action);
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should be filtered by documentType', () => {
+    const beforeState = {
+      filterStatus,
+    };
+    const action = filterActionList({ filterType: 'documentType', value: 'X' });
+    const afterState = {
+      drawerExpanded: false,
+      filterStatus: {
+        ...filterStatus,
+        documentType: 'X',
+      },
+    };
+    deepFreeze(beforeState);
+    deepFreeze(action);
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should be filtered by documentRouteStatus', () => {
+    const beforeState = {
+      filterStatus,
+    };
+    const action = filterActionList({ filterType: 'documentRouteStatus', value: 'Disapproved' });
+    const afterState = {
+      drawerExpanded: false,
+      filterStatus: {
+        ...filterStatus,
+        documentRouteStatus: 'Disapproved',
+      },
+    };
+    deepFreeze(beforeState);
+    deepFreeze(action);
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should be filtered by documentCreationDate', () => {
+    const beforeState = {
+      filterStatus,
+    };
+    const action = filterDate({ type: 'documentCreationDate', position: 'start', date: '2017-07-08' });
+    const afterState = {
+      drawerExpanded: false,
+      filterStatus: {
+        ...filterStatus,
+        documentCreationDate: {
+          ...filterStatus.documentCreationDate,
+          start: '2017-07-08',
+        },
+      },
+    };
+    deepFreeze(beforeState);
+    deepFreeze(action);
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should be filtered by documentAssignedDate', () => {
+    const beforeState = {
+      filterStatus,
+    };
+    const action = filterDate({ type: 'documentAssignedDate', position: 'start', date: '2017-07-08' });
+    const afterState = {
+      drawerExpanded: false,
+      filterStatus: {
+        ...filterStatus,
+        documentAssignedDate: {
+          ...filterStatus.documentAssignedDate,
+          start: '2017-07-08',
+        },
+      },
+    };
+    deepFreeze(beforeState);
+    deepFreeze(action);
+    expect(reducer(beforeState, action)).toEqual(afterState);
+  });
+});
+
+describe('action_items', () => {
+  it('should reset filters', () => {
+    const beforeState = {
+      filterStatus: {
+        documentRouteStatus: 'Acknowledge',
+        documentType: 'Y',
+        documentCreationDate: {
+          start: '2017-08-01',
+          end: '2017-12-01',
+        },
+        documentAssignedDate: {
+          start: '2012-01-06',
+          end: '2017-02-01',
+        },
+        actionRequested: 'Approve',
+      },
+    };
+    const action = filterReset();
+    const afterState = {
+      drawerExpanded: false,
+      filterStatus,
+    };
+    deepFreeze(beforeState);
+    deepFreeze(action);
     expect(reducer(beforeState, action)).toEqual(afterState);
   });
 });
@@ -62,6 +193,7 @@ describe('action_items', () => {
           creationDate: '2017-08-21T12:00:00',
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.creationDate,
     };
 
@@ -112,6 +244,7 @@ describe('action_items', () => {
           lastApprovedDate: '2017-08-21T12:00:00',
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.lastApprovedDate,
     };
 
@@ -163,6 +296,7 @@ describe('action_items', () => {
           processType: { label: 'open' },
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.processType,
     };
 
@@ -203,6 +337,7 @@ describe('action_items', () => {
           actionRequested: { label: 'reject' },
         },
       ],
+      drawerExpanded: false,
       optionSelected: sortTypes.actionRequested,
     };
 
@@ -227,7 +362,7 @@ describe('action_items', () => {
         Cancel: preferenceColors.tan,
       },
     };
-    const action = resetPreferences();
+    const action = preferencesReset();
 
     const afterState = {
       dropdownColors: {

@@ -22,8 +22,22 @@ const styles = StyleSheet.create({
   },
 });
 
+const checkItemDate = (item, filterDate) => (
+  (filterDate.start === '' ||
+    Date.parse(item.creationDate) > Date.parse(filterDate.start)) &&
+  (filterDate.end === '' ||
+    Date.parse(item.creationDate) < Date.parse(filterDate.end))
+);
+
+const dateFilter = (dataSource, filters) => (
+  dataSource.filter(item => (
+    checkItemDate(item, filters.documentCreationDate) &&
+    checkItemDate(item, filters.documentAssignedDate)))
+);
+
 const filterData = (dataSource, filters) => (
-  dataSource.filter(item => ((item.actionRequested.label === filters.actionRequested || filters.actionRequested === 'All') &&
+  dateFilter(dataSource, filters).filter(item => (
+    (item.actionRequested.label === filters.actionRequested || filters.actionRequested === 'All') &&
     (item.processType.label === filters.documentType || filters.documentType === 'All') &&
     (item.processInstanceStatus.label === filters.documentRouteStatus || filters.documentRouteStatus === 'All')))
 );

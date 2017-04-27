@@ -39,8 +39,14 @@ export const sortTypes = {
 export const filterStatus = {
   documentRouteStatus: 'All',
   documentType: 'All',
-  documentCreationDate: 'All',
-  documentAssignedDate: 'All',
+  documentCreationDate: {
+    start: '',
+    end: '',
+  },
+  documentAssignedDate: {
+    start: '',
+    end: '',
+  },
   actionRequested: 'All',
 };
 
