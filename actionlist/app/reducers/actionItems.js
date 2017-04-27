@@ -1,7 +1,9 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { OPEN_DRAWER, CLOSE_DRAWER, SORT_ACTION_LIST, FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION, DATE_FILTER_CHANGE } from '../actions/types';
-import { processInstances, sortTypes, filterTypes, filterStatus, Colors } from '../lib/commons';
+import { OPEN_DRAWER, CLOSE_DRAWER, SORT_ACTION_LIST,
+  FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION,
+  DATE_FILTER_CHANGE, RESET_PREFERENCES } from '../actions/types';
+import { processInstances, sortTypes, filterTypes, filterStatus, preferenceColors } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
@@ -9,15 +11,15 @@ export const defaultState = {
   filterStatus,
   optionSelected: '',
   dropdownColors: {
-    Saved: Colors.white,
-    Initiated: Colors.white,
-    Disapproved: Colors.white,
-    Enroute: Colors.white,
-    Approved: Colors.white,
-    Final: Colors.white,
-    Processed: Colors.white,
-    Exception: Colors.white,
-    Cancel: Colors.white,
+    Saved: preferenceColors.white,
+    Initiated: preferenceColors.white,
+    Disapproved: preferenceColors.white,
+    Enroute: preferenceColors.white,
+    Approved: preferenceColors.white,
+    Final: preferenceColors.white,
+    Processed: preferenceColors.white,
+    Exception: preferenceColors.white,
+    Cancel: preferenceColors.white,
   },
 };
 
@@ -155,6 +157,15 @@ const dateFilterChange = (state, action) => {
   }
 };
 
+const resetPreferences = (state) => {
+  return {
+    ...state,
+    dropdownColors: {
+      ...defaultState.dropdownColors,
+    },
+  };
+};
+
 export default handleActions({
   [OPEN_DRAWER]: openDrawer,
   [CLOSE_DRAWER]: closeDrawer,
@@ -163,4 +174,5 @@ export default handleActions({
   [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
   [RESET_FILTERS]: resetFilters,
   [DATE_FILTER_CHANGE]: dateFilterChange,
+  [RESET_PREFERENCES]: resetPreferences,
 }, defaultState);

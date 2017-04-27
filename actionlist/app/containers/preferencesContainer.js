@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Header from '../components/header';
-import PreferencesButton from '../components/preferencesButton';
+import PreferencesButtons from '../components/preferencesButtons';
 import Dropdown from '../components/dropdown';
 import { Colors, documentStatuses } from '../lib/commons';
 
@@ -51,12 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.white,
   },
-  preferences_buttons: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    margin: 10,
-    justifyContent: 'space-between',
-  },
+
 });
 
 const renderStatus = ({ documentStatus, i }) => (
@@ -72,18 +67,16 @@ const renderStatus = ({ documentStatus, i }) => (
 
 const PreferencesContainer = () => (
   <ScrollView>
-    <Header displayMenu={false} />
-    <View style={styles.componentContainer}>
-      <Text style={styles.preferenceText}>Preferences</Text>
-    </View>
-    <View style={styles.container}>{
-      documentStatuses.map((documentStatus, i) => renderStatus({ documentStatus, i }))
-    }
-    </View>
-    <View style={styles.preferences_buttons}>
-      <PreferencesButton buttonName="Save" />
-      <PreferencesButton buttonName="Cancel" />
-      <PreferencesButton buttonName="Back" />
+    <View>
+      <Header displayMenu={false} />
+      <View style={styles.componentContainer}>
+        <Text style={styles.preferenceText}>Preferences</Text>
+      </View>
+      <View style={styles.container}>{
+        documentStatuses.map((documentStatus, i) => renderStatus({ documentStatus, i }))
+      }
+      </View>
+      <PreferencesButtons />
     </View>
   </ScrollView>
 );
