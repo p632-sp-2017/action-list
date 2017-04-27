@@ -1,9 +1,9 @@
 /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 import { handleActions } from 'redux-actions';
-import { OPEN_DRAWER, CLOSE_DRAWER, SORT_ACTION_LIST,
-  FILTER_ACTION_LIST, RESET_FILTERS, SELECT_DROPDOWN_OPTION,
-  DATE_FILTER_CHANGE, RESET_PREFERENCES } from '../actions/types';
-import { processInstances, sortTypes, filterTypes, filterStatus, preferenceColors } from '../lib/commons';
+import { PREFERENCES_DRAWER_OPEN, PREFERENCES_DRAWER_CLOSE, SORT_ACTION_LIST,
+  FILTER_ACTION_LIST, FILTER_RESET, PREFERENCES_SELECT_COLOR,
+  FILTER_DATE, PREFERENCES_RESET } from '../actions/types';
+import { processInstances, sortTypes, filterStatus, preferenceColors } from '../lib/commons';
 
 export const defaultState = {
   dataSource: processInstances,
@@ -80,21 +80,30 @@ const sortActionList = (state, action) => {
 };
 
 
-const openDrawer = (state) => {
+const preferencesDrawerOpen = (state) => {
   return {
     ...state,
     drawerExpanded: true,
   };
 };
 
-const closeDrawer = (state) => {
+const preferencesDrawerClose = (state) => {
   return {
     ...state,
     drawerExpanded: false,
   };
 };
 
-const selectDropdownOption = (state, action) => {
+const preferencesReset = (state) => {
+  return {
+    ...state,
+    dropdownColors: {
+      ...defaultState.dropdownColors,
+    },
+  };
+};
+
+const preferencesSelectColor = (state, action) => {
   const newdropdownColors = state.dropdownColors;
   return {
     ...state,
@@ -116,7 +125,7 @@ const filterActionList = (state, action) => {
   };
 };
 
-const resetFilters = (state) => {
+const filterReset = (state) => {
   return {
     ...state,
     drawerExpanded: false,
@@ -124,55 +133,27 @@ const resetFilters = (state) => {
   };
 };
 
-const dateFilterChange = (state, action) => {
-  switch (action.payload.title) {
-    case filterTypes.DocumentCreatedDate.title:
-      return {
-        ...state,
-        drawerExpanded: false,
-        filterStatus: {
-          ...state.filterStatus,
-          documentCreationDate: {
-            ...state.filterStatus.documentCreationDate,
-            [action.payload.position]: action.payload.date,
-          },
-        },
-      };
-    case filterTypes.DocumentAssignedDate.title:
-      return {
-        ...state,
-        drawerExpanded: false,
-        filterStatus: {
-          ...state.filterStatus,
-          documentAssignedDate: {
-            ...state.filterStatus.documentAssignedDate,
-            [action.payload.position]: action.payload.date,
-          },
-        },
-      };
-    default:
-      return {
-        ...state,
-      };
-  }
-};
-
-const resetPreferences = (state) => {
+const filterDate = (state, action) => {
   return {
     ...state,
-    dropdownColors: {
-      ...defaultState.dropdownColors,
+    drawerExpanded: false,
+    filterStatus: {
+      ...state.filterStatus,
+      [action.payload.type]: {
+        ...state.filterStatus[action.payload.type],
+        [action.payload.position]: action.payload.date,
+      },
     },
   };
 };
 
 export default handleActions({
-  [OPEN_DRAWER]: openDrawer,
-  [CLOSE_DRAWER]: closeDrawer,
-  [SORT_ACTION_LIST]: sortActionList,
+  [PREFERENCES_DRAWER_OPEN]: preferencesDrawerOpen,
+  [PREFERENCES_DRAWER_CLOSE]: preferencesDrawerClose,
+  [PREFERENCES_RESET]: preferencesReset,
+  [PREFERENCES_SELECT_COLOR]: preferencesSelectColor,
   [FILTER_ACTION_LIST]: filterActionList,
-  [SELECT_DROPDOWN_OPTION]: selectDropdownOption,
-  [RESET_FILTERS]: resetFilters,
-  [DATE_FILTER_CHANGE]: dateFilterChange,
-  [RESET_PREFERENCES]: resetPreferences,
+  [FILTER_RESET]: filterReset,
+  [FILTER_DATE]: filterDate,
+  [SORT_ACTION_LIST]: sortActionList,
 }, defaultState);

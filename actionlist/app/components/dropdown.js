@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import ModalDropdown from 'react-native-modal-dropdown';
-import { selectDropdownOption } from '../actions/actionItems';
+import { preferencesSelectColor } from '../actions/actionItems';
 import { Colors, preferenceColors } from '../lib/commons';
 
 const styles = StyleSheet.create({
@@ -75,7 +75,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   onSelectOption: (idx, value, option) =>
-    dispatch(selectDropdownOption({ value, option })),
+    dispatch(preferencesSelectColor({ value, option })),
 });
 
 Dropdown.propTypes = {

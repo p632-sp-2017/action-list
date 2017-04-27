@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { Colors } from '../lib/commons';
-import { resetPreferences } from '../actions/actionItems';
+import { preferencesReset } from '../actions/actionItems';
 
 const styles = StyleSheet.create({
   preferencesButton: {
@@ -43,7 +43,7 @@ const PreferencesButton = ({ onResetPreferences }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  onResetPreferences: () => dispatch(resetPreferences()),
+  onResetPreferences: () => dispatch(preferencesReset()),
 });
 
 PreferencesButton.propTypes = {

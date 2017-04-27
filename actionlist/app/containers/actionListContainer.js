@@ -8,7 +8,7 @@ import {
 import Header from '../components/header';
 import DisplayList from '../components/displayList';
 import SideMenu from '../components/sideMenu';
-import { closeDrawer } from '../actions/actionItems';
+import { preferencesDrawerClose } from '../actions/actionItems';
 
 const ActionListContainer = ({ drawerExpanded, setDrawerClose }) => (
   <Drawer
@@ -32,7 +32,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setDrawerClose: () => dispatch(closeDrawer()),
+  setDrawerClose: () => dispatch(preferencesDrawerClose()),
 });
 
 ActionListContainer.propTypes = {

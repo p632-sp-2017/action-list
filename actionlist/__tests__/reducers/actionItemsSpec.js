@@ -1,7 +1,9 @@
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 import reducer, { defaultState } from '../../app/reducers/actionItems';
-import { openDrawer, filterActionList, sortActionList, dateFilterChange, resetFilters, resetPreferences } from '../../app/actions/actionItems';
+import { preferencesDrawerOpen, filterActionList,
+  sortActionList, filterDate,
+  filterReset, preferencesReset } from '../../app/actions/actionItems';
 import { sortTypes, filterStatus, preferenceColors } from '../../app/lib/commons';
 
 describe('action_items', () => {
@@ -9,7 +11,7 @@ describe('action_items', () => {
     const beforeState = {
       drawerExpanded: false,
     };
-    const action = openDrawer();
+    const action = preferencesDrawerOpen();
     const afterState = {
       drawerExpanded: true,
     };
@@ -83,7 +85,7 @@ describe('action_items', () => {
     const beforeState = {
       filterStatus,
     };
-    const action = dateFilterChange({ title: 'Document Created Date', position: 'start', date: '2017-07-08' });
+    const action = filterDate({ type: 'documentCreationDate', position: 'start', date: '2017-07-08' });
     const afterState = {
       drawerExpanded: false,
       filterStatus: {
@@ -105,7 +107,7 @@ describe('action_items', () => {
     const beforeState = {
       filterStatus,
     };
-    const action = dateFilterChange({ title: 'Document Assigned Date', position: 'start', date: '2017-07-08' });
+    const action = filterDate({ type: 'documentAssignedDate', position: 'start', date: '2017-07-08' });
     const afterState = {
       drawerExpanded: false,
       filterStatus: {
@@ -139,7 +141,7 @@ describe('action_items', () => {
         actionRequested: 'Approve',
       },
     };
-    const action = resetFilters();
+    const action = filterReset();
     const afterState = {
       drawerExpanded: false,
       filterStatus,
@@ -360,7 +362,7 @@ describe('action_items', () => {
         Cancel: preferenceColors.tan,
       },
     };
-    const action = resetPreferences();
+    const action = preferencesReset();
 
     const afterState = {
       dropdownColors: {

@@ -10,7 +10,7 @@ import {
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { sortActionList, resetFilters } from '../actions/actionItems';
+import { sortActionList, filterReset } from '../actions/actionItems';
 import { Colors, sortTypes, filterTypes } from '../lib/commons';
 import FilterPicker from './filterPicker';
 import DateRangePicker from './dateRangePicker';
@@ -128,10 +128,12 @@ const SideMenu = ({ optionSelected,
         />
         <DateRangePicker
           title={filterTypes.DocumentCreatedDate.title}
+          type={'documentCreationDate'}
           dateSet={filters.documentCreationDate}
         />
         <DateRangePicker
           title={filterTypes.DocumentAssignedDate.title}
+          type={'documentAssignedDate'}
           dateSet={filters.documentAssignedDate}
         />
         <Button
@@ -150,7 +152,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onReset: () => dispatch(resetFilters()),
+  onReset: () => dispatch(filterReset()),
   onSort: criteria => dispatch(sortActionList(criteria)),
 });
 

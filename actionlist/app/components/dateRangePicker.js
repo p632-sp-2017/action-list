@@ -8,9 +8,10 @@ import {
 /* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
 import DatePicker from 'react-native-datepicker';
-import { dateFilterChange } from '../actions/actionItems';
+import { filterDate } from '../actions/actionItems';
 import { Colors } from '../lib/commons';
 import ContentHeader from './contentHeader';
+/* eslint-enable no-unused-vars */
 
 const style = StyleSheet.create({
   timeMarkers: {
@@ -33,7 +34,7 @@ const datePickerStyles = {
   },
 };
 
-const DateRangePicker = ({ title, dateSet, onDateChanged }) => (
+const DateRangePicker = ({ title, type, dateSet, onDateChanged }) => (
   <View>
     <ContentHeader>{title}</ContentHeader>
     <View style={{ flexDirection: 'row' }}>
@@ -46,10 +47,8 @@ const DateRangePicker = ({ title, dateSet, onDateChanged }) => (
         date={dateSet.start}
         showIcon={false}
         format="YYYY-MM-DD"
-        minDate="2016-05-01"
-        maxDate="2019-06-01"
         customStyles={datePickerStyles}
-        onDateChange={date => onDateChanged(title, 'start', date)}
+        onDateChange={date => onDateChanged(type, 'start', date)}
       />
     </View>
     <View style={{ flexDirection: 'row' }}>
@@ -62,22 +61,21 @@ const DateRangePicker = ({ title, dateSet, onDateChanged }) => (
         date={dateSet.end}
         showIcon={false}
         format="YYYY-MM-DD"
-        minDate="2016-05-01"
-        maxDate="2019-06-01"
         customStyles={datePickerStyles}
-        onDateChange={date => onDateChanged(title, 'end', date)}
+        onDateChange={date => onDateChanged(type, 'end', date)}
       />
     </View>
   </View>
 );
 
 const mapDispatchToProps = dispatch => ({
-  onDateChanged: (title, position, date) => dispatch(dateFilterChange({ title, position, date })),
+  onDateChanged: (type, position, date) => dispatch(filterDate({ type, position, date })),
 });
 
 DateRangePicker.propTypes = {
   onDateChanged: React.PropTypes.func.isRequired,
   title: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string.isRequired,
   dateSet: React.PropTypes.shape({
     start: React.PropTypes.string,
     end: React.PropTypes.string,

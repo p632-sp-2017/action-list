@@ -24,10 +24,14 @@ const styles = StyleSheet.create({
 
 const dateFilter = (dataSource, filters) => (
   dataSource.filter(item => (
-    (Date.parse(item.creationDate) > Date.parse(filters.documentCreationDate.start)) &&
-    (Date.parse(item.creationDate) < Date.parse(filters.documentCreationDate.end)) &&
-    (Date.parse(item.lastApprovedDate) > Date.parse(filters.documentAssignedDate.start)) &&
-    (Date.parse(item.lastApprovedDate) < Date.parse(filters.documentAssignedDate.end))))
+    (filters.documentCreationDate.start === '' ||
+      Date.parse(item.creationDate) > Date.parse(filters.documentCreationDate.start)) &&
+    (filters.documentCreationDate.end === '' ||
+      Date.parse(item.creationDate) < Date.parse(filters.documentCreationDate.end)) &&
+    (filters.documentAssignedDate.start === '' ||
+      Date.parse(item.lastApprovedDate) > Date.parse(filters.documentAssignedDate.start)) &&
+    (filters.documentAssignedDate.start === '' ||
+      Date.parse(item.lastApprovedDate) < Date.parse(filters.documentAssignedDate.end))))
 );
 
 const filterData = (dataSource, filters) => (

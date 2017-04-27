@@ -40,12 +40,12 @@ export const filterStatus = {
   documentRouteStatus: 'All',
   documentType: 'All',
   documentCreationDate: {
-    start: '2017-01-01',
-    end: '2018-12-01',
+    start: '',
+    end: '',
   },
   documentAssignedDate: {
-    start: '2017-01-01',
-    end: '2018-12-01',
+    start: '',
+    end: '',
   },
   actionRequested: 'All',
 };

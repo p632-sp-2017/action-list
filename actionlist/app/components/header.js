@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-import { openDrawer } from '../actions/actionItems';
+import { preferencesDrawerOpen } from '../actions/actionItems';
 import { Colors } from '../lib/commons';
 
 const style = StyleSheet.create({
@@ -68,7 +68,7 @@ const Header = ({ displayMenu, onOpenDrawer }) => (
 /* eslint-enable global-require */
 
 const mapDispatchToProps = dispatch => ({
-  onOpenDrawer: () => dispatch(openDrawer()),
+  onOpenDrawer: () => dispatch(preferencesDrawerOpen()),
 });
 
 Header.propTypes = {

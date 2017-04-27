@@ -1,8 +1,14 @@
-export const OPEN_DRAWER = 'open_drawer';
-export const CLOSE_DRAWER = 'close_drawer';
-export const FILTER_ACTION_LIST = 'filter_action_list';
-export const SORT_ACTION_LIST = 'sort_action_list';
-export const SELECT_DROPDOWN_OPTION = 'select_dropdown_option';
-export const RESET_FILTERS = 'reset_filters';
-export const DATE_FILTER_CHANGE = 'date_filter_change';
-export const RESET_PREFERENCES = 'reset_preferences';
+/* Types for Filters */
+export const FILTER_ACTION_LIST = 'action_list/filter/apply';
+export const FILTER_DATE = 'action_list/filter/date_change';
+export const FILTER_RESET = 'action_list/filter/reset';
+
+/* Types for Preferences Pane */
+export const PREFERENCES_DRAWER_OPEN = 'preferences/drawer/open';
+export const PREFERENCES_DRAWER_CLOSE = 'preferences/drawer/close';
+export const PREFERENCES_RESET = 'preferences/reset';
+export const PREFERENCES_SELECT_COLOR = 'preferences/select_color';
+
+/* Types for sorting */
+export const SORT_ACTION_LIST = 'action_list/sort/apply';
+
