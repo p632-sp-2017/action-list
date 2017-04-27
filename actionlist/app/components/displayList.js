@@ -31,7 +31,8 @@ const dateFilter = (dataSource, filters) => (
 );
 
 const filterData = (dataSource, filters) => (
-  dateFilter(dataSource, filters).filter(item => ((item.actionRequested.label === filters.actionRequested || filters.actionRequested === 'All') &&
+  dateFilter(dataSource, filters).filter(item => (
+    (item.actionRequested.label === filters.actionRequested || filters.actionRequested === 'All') &&
     (item.processType.label === filters.documentType || filters.documentType === 'All') &&
     (item.processInstanceStatus.label === filters.documentRouteStatus || filters.documentRouteStatus === 'All')))
 );

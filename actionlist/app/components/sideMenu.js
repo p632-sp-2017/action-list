@@ -82,7 +82,6 @@ const SideMenu = ({ optionSelected,
     <View style={style.view}>
       <Button style={style.text} onPress={() => Actions.home()}>Home</Button>
       <Button style={style.text} onPress={() => Actions.pref()}>Preferences</Button>
-      <Button style={style.text}>Filter</Button>
       <View style={style.view}>
         <Text style={style.text}>
           Sort
