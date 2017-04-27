@@ -5,13 +5,10 @@ import {
   StyleSheet,
 } from 'react-native';
 
-/* eslint-disable no-unused-vars */
 import { connect } from 'react-redux';
 import DatePicker from 'react-native-datepicker';
 import { filterDate } from '../actions/actionItems';
-import { Colors } from '../lib/commons';
 import ContentHeader from './contentHeader';
-/* eslint-enable no-unused-vars */
 
 const style = StyleSheet.create({
   timeMarkers: {
