@@ -1,30 +1,27 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import Button from 'react-native-button';
 import Communications from 'react-native-communications';
 import { Colors } from '../lib/commons';
+import TextRow from './textRow';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.iuDarkLimeStone,
-    padding: 10,
+    padding: 12,
     borderBottomWidth: 0.5,
   },
-  text: {
-    color: Colors.iuCrimson,
-    marginBottom: 2,
-  },
   actionContainer: {
+    flex: 1,
     backgroundColor: Colors.iuCrimsonDark,
     padding: 5,
-    borderRadius: 8,
+    borderRadius: 4,
     marginRight: 10,
     marginTop: 10,
-    width: 100,
+    width: 50,
   },
   bodyView: {
     flexDirection: 'row',
@@ -52,11 +49,11 @@ const styles = StyleSheet.create({
 
 const ActionItemBody = rowData => (
   <View style={styles.container}>
-    <Text style={styles.text}>{rowData.processType.label}</Text>
-    <Text style={styles.text}>{rowData.initiator}</Text>
-    <Text style={styles.text}>{rowData.creationDate}</Text>
-    <Text style={styles.text}>{rowData.processInstanceStatus.label}</Text>
-    <Text style={styles.text}>{rowData.actionRequested.label}</Text>
+    <TextRow title={'Document Type'} data={rowData.processType.label} />
+    <TextRow title={'Initiator'} data={rowData.initiator} />
+    <TextRow title={'Date Created'} data={rowData.creationDate} />
+    <TextRow title={'Document Route Status'} data={rowData.processInstanceStatus.label} />
+    <TextRow title={'Action Requested'} data={rowData.actionRequested.label} />
     <View style={styles.bodyView}>
       <Button
         containerStyle={styles.actionContainer}

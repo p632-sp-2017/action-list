@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import configureStore from 'redux-mock-store';
 import ActionItemHeader from '../../app/components/actionItemHeader';
-import { Middlewares, InitialState } from '../../test_constants/componentTests';
+import { Middlewares, InitialState, HeaderProps } from '../../test_constants/componentTests';
 
 require('../../testConfig');
 
@@ -13,31 +13,17 @@ jest.unmock('../../app/components/actionItemHeader');
 
 describe('action_item_headers', () => {
   it('should take props and contain row title, actual lengths', () => {
-    const props = {
-      rowData: {
-        title: 'Hello World',
-      },
-      index: 3,
-      isActive: true,
-    };
     const mockStore = configureStore(Middlewares);
     const store = mockStore(InitialState);
     const wrapper = mount(
       <Provider store={store}>
-        <ActionItemHeader {...props} />
+        <ActionItemHeader {...HeaderProps} />
       </Provider>);
     expect(wrapper.find(View)
       .first().length).to.equal(1);
     expect(wrapper.find(View).find(Text).length).to.equal(1);
   });
   it('should contain image source according to the props passed', () => {
-    const props = {
-      rowData: {
-        title: 'Hello World',
-      },
-      index: 3,
-      isActive: false,
-    };
     const icons = {
       /* eslint-disable global-require */
       /* rule disabled since image loading need not be global */
@@ -47,6 +33,10 @@ describe('action_item_headers', () => {
     };
     const mockStore = configureStore(Middlewares);
     const store = mockStore(InitialState);
+    const props = {
+      ...HeaderProps,
+      isActive: false,
+    };
     const wrapper = mount(
       <Provider store={store}>
         <ActionItemHeader {...props} />
