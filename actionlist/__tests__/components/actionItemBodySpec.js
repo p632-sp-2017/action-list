@@ -21,11 +21,16 @@ describe('Action_Item_Body', () => {
         <ActionItemBody {...ActionItemProps} />
       </Provider>);
     expect(wrapper.contains(View));
-    expect(wrapper.find(View).find(Text).first().text()).to.equal('process type label');
-    expect(wrapper.find(View).find(Text).at(1).text()).to.equal('initiator');
-    expect(wrapper.find(View).find(Text).at(2).text()).to.equal('creation date');
-    expect(wrapper.find(View).find(Text).at(3).text()).to.equal('process instance status');
-    expect(wrapper.find(View).find(Text).at(4).text()).to.equal('action requested label');
+    expect(wrapper.find(View).find(Text).first().text()).to.equal('Document Type: ');
+    expect(wrapper.find(View).find(Text).at(1).text()).to.equal('process type label');
+    expect(wrapper.find(View).find(Text).at(2).text()).to.equal('Initiator: ');
+    expect(wrapper.find(View).find(Text).at(3).text()).to.equal('initiator');
+    expect(wrapper.find(View).find(Text).at(4).text()).to.equal('Date Created: ');
+    expect(wrapper.find(View).find(Text).at(5).text()).to.equal('creation date');
+    expect(wrapper.find(View).find(Text).at(6).text()).to.equal('Document Route Status: ');
+    expect(wrapper.find(View).find(Text).at(7).text()).to.equal('process instance status');
+    expect(wrapper.find(View).find(Text).at(8).text()).to.equal('Action Requested: ');
+    expect(wrapper.find(View).find(Text).at(9).text()).to.equal('action requested label');
   });
 
   it('should have correct button titles', () => {

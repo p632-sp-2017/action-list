@@ -42,12 +42,13 @@ const filterData = (dataSource, filters) => (
     (item.processInstanceStatus.label === filters.documentRouteStatus || filters.documentRouteStatus === 'All')))
 );
 
-const DisplayList = ({ dataSource, filterStatus }) => (
+const DisplayList = ({ dataSource, filterStatus, dropdownColors }) => (
   <View style={styles.full_container}>
     <LazyloadScrollView>
       <Accordion
         sections={filterData(dataSource, filterStatus)}
-        renderHeader={ActionItemHeader}
+        renderHeader={(rowData, index, isActive) =>
+          ActionItemHeader({ rowData, index, isActive, dropdownColors })}
         renderContent={ActionItemBody}
       />
     </LazyloadScrollView>
@@ -57,10 +58,22 @@ const DisplayList = ({ dataSource, filterStatus }) => (
 const mapStateToProps = state => ({
   dataSource: state.actionItemsReducer.dataSource,
   filterStatus: state.actionItemsReducer.filterStatus,
+  dropdownColors: state.actionItemsReducer.dropdownColors,
 });
 
 DisplayList.propTypes = {
   dataSource: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  dropdownColors: React.PropTypes.shape({
+    Saved: React.PropTypes.string,
+    Initiated: React.PropTypes.string,
+    Disapproved: React.PropTypes.string,
+    Enroute: React.PropTypes.string,
+    Approved: React.PropTypes.string,
+    Final: React.PropTypes.string,
+    Processed: React.PropTypes.string,
+    Exception: React.PropTypes.string,
+    Cancel: React.PropTypes.string,
+  }).isRequired,
   filterStatus: React.PropTypes.shape({
     actionRequested: React.PropTypes.string,
     documentType: React.PropTypes.string,

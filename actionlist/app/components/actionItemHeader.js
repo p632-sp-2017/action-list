@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     overflow: 'hidden',
   },
+  preferencesStub: {
+    width: 10,
+    height: 40,
+    borderRightWidth: 0.5,
+  },
   title: {
     flex: 1,
     padding: 10,
@@ -40,8 +45,14 @@ const icons = {
   /* eslint-enable global-require */
 };
 
-const ActionItemHeader = (rowData, index, isActive) => (
-  <View style={styles.titleContainer}>
+const ActionItemHeader = ({ rowData, index, isActive, dropdownColors }) => (
+  <View key={index} style={styles.titleContainer}>
+    <View
+      style={[
+        styles.preferencesStub,
+        { backgroundColor: dropdownColors[rowData.processInstanceStatus.label] },
+      ]}
+    />
     <Text style={styles.title}>
       {rowData.title}
     </Text>
@@ -53,6 +64,19 @@ const ActionItemHeader = (rowData, index, isActive) => (
 );
 
 ActionItemHeader.propTypes = {
+  dropdownColors: React.PropTypes.shape({
+    Saved: React.PropTypes.string,
+    Initiated: React.PropTypes.string,
+    Disapproved: React.PropTypes.string,
+    Enroute: React.PropTypes.string,
+    Approved: React.PropTypes.string,
+    Final: React.PropTypes.string,
+    Processed: React.PropTypes.string,
+    Exception: React.PropTypes.string,
+    Cancel: React.PropTypes.string,
+  }).isRequired,
+  index: React.PropTypes.number.isRequired,
+  isActive: React.PropTypes.bool.isRequired,
   rowData: React.PropTypes.shape({
     title: React.PropTypes.string,
   }).isRequired,
