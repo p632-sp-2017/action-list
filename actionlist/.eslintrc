@@ -1,0 +1,21 @@
+{
+  parser: "babel-eslint",
+  env: {
+    browser: true,
+    jasmine: true,
+    jest: true
+  },
+  plugins: [
+    react
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  rules: {
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "no-underscore-dangle": ["error", { "allow": ["_links"] }],
+  }
+}
