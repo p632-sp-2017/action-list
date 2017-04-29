@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   },
   preferencesStub: {
     width: 10,
-    height: 40,
     borderRightWidth: 0.5,
   },
   title: {
